@@ -1,0 +1,50 @@
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:flutter/material.dart';
+import 'package:tick_to_do/pomodoro_structure/Timer.dart';
+import 'package:tick_to_do/pomodoro_structure/TimerButtons.dart';
+
+class Pomodoro extends StatefulWidget {
+  const Pomodoro({
+    Key key,
+    @required this.buttonDuration,
+  }) : super(key: key);
+  final int buttonDuration;
+
+  @override
+  State<Pomodoro> createState() => _PomodoroState();
+}
+
+class _PomodoroState extends State<Pomodoro> {
+  @override
+  Widget build(BuildContext context) {
+    CountDownController timerController = CountDownController();
+    return Scaffold(
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset('images/logo.png'),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {
+                TimerButtons(timerController: timerController).isPause = false;
+                Navigator.pop(context);
+              });
+            },
+            icon: Icon(Icons.close),
+          ),
+        ],
+      ),
+      body: ListView(
+        children: [
+          Timer(
+              timerController: timerController,
+              duration: widget.buttonDuration),
+          SizedBox(height: MediaQuery.of(context).size.height / 6),
+          TimerButtons(timerController: timerController),
+        ],
+      ),
+    );
+  }
+}
