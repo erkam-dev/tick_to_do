@@ -18,6 +18,8 @@ dependencies:
   #Animations
   animations: ^1.1.2
 
+  flutter_lints:
+
   #Variable name is the same as font name:
       # AntDesign
       # Entypo
