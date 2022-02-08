@@ -1,7 +1,7 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
-import 'package:tick_to_do/pomodoro_structure/Timer.dart';
-import 'package:tick_to_do/pomodoro_structure/TimerButtons.dart';
+import 'package:tick_to_do/pomodoro_structure/timer.dart';
+import 'package:tick_to_do/pomodoro_structure/timer_buttons.dart';
 
 class Pomodoro extends StatefulWidget {
   const Pomodoro({
@@ -32,7 +32,7 @@ class _PomodoroState extends State<Pomodoro> {
                 Navigator.pop(context);
               });
             },
-            icon: Icon(Icons.close),
+            icon: const Icon(Icons.close),
           ),
         ],
       ),

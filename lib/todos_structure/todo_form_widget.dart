@@ -20,12 +20,12 @@ class TodoFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        padding: EdgeInsets.all(25),
+        padding: const EdgeInsets.all(25),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             buildTitle(context),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             buildDescription(context),
@@ -68,7 +68,7 @@ class TodoFormWidget extends StatelessWidget {
 
   ElevatedButton buildButton(BuildContext context) {
     return ElevatedButton.icon(
-      icon: Icon(Icons.save_outlined),
+      icon: const Icon(Icons.save_outlined),
       onPressed: () {
         HapticFeedback.heavyImpact();
         onSavedTodo();

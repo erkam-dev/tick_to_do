@@ -13,7 +13,7 @@ ThemeData myLightTheme(BuildContext context) {
         onBackground: Colors.black,
       ),
       fontFamily: 'Comfortaa',
-      textTheme: TextTheme(
+      textTheme: const TextTheme(
         headline6: TextStyle(
           color: Colors.black,
         ),
@@ -21,7 +21,7 @@ ThemeData myLightTheme(BuildContext context) {
       appBarTheme: AppBarTheme(
         backgroundColor: ThemeData.light().scaffoldBackgroundColor,
         foregroundColor: Colors.black,
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           systemNavigationBarColor: Colors.white,
           statusBarIconBrightness: Brightness.dark,
@@ -54,7 +54,7 @@ ThemeData myLightTheme(BuildContext context) {
         backgroundColor: ThemeData.light().scaffoldBackgroundColor,
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
         labelTextStyle: MaterialStateProperty.all(
-          TextStyle(
+          const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
           ),
@@ -72,7 +72,8 @@ ThemeData myLightTheme(BuildContext context) {
           borderRadius: BorderRadius.circular(30),
         ),
       ),
-      textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.black));
+      textSelectionTheme:
+          const TextSelectionThemeData(cursorColor: Colors.black));
 }
 
 ThemeData myDarkTheme(BuildContext context) {
@@ -89,7 +90,7 @@ ThemeData myDarkTheme(BuildContext context) {
       fontFamily: 'Comfortaa',
       appBarTheme: AppBarTheme(
         backgroundColor: ThemeData.dark().scaffoldBackgroundColor,
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           systemNavigationBarColor: Colors.black,
           statusBarBrightness: Brightness.light,
@@ -120,7 +121,7 @@ ThemeData myDarkTheme(BuildContext context) {
         backgroundColor: ThemeData.dark().scaffoldBackgroundColor,
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
         labelTextStyle: MaterialStateProperty.all(
-          TextStyle(
+          const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
           ),
@@ -138,5 +139,6 @@ ThemeData myDarkTheme(BuildContext context) {
           borderRadius: BorderRadius.circular(8),
         ),
       ),
-      textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.white));
+      textSelectionTheme:
+          const TextSelectionThemeData(cursorColor: Colors.white));
 }

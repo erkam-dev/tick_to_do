@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tick_to_do/elements/HeroDialogRoute.dart';
-import 'package:tick_to_do/elements/ProfilePopup.dart';
+import 'package:tick_to_do/elements/hero_dialog_route.dart';
+import 'package:tick_to_do/elements/profile_popup.dart';
 
 class ProfilePicButton extends StatelessWidget {
   const ProfilePicButton({
@@ -19,7 +19,7 @@ class ProfilePicButton extends StatelessWidget {
           Navigator.push(
             context,
             HeroDialogRoute(
-              builder: (context) => ProfilePopup(),
+              builder: (context) => const ProfilePopup(),
             ),
           );
         },
@@ -30,6 +30,7 @@ class ProfilePicButton extends StatelessWidget {
               child: Material(
                 clipBehavior: Clip.antiAlias,
                 borderRadius: BorderRadius.circular(25),
+                // ignore: sized_box_for_whitespace
                 child: Container(
                   height: 50,
                   width: 50,
@@ -41,7 +42,7 @@ class ProfilePicButton extends StatelessWidget {
               child: CircleAvatar(
                 radius: 25,
                 backgroundColor: Colors.white,
-                backgroundImage: AssetImage('images/profile_pic.png'),
+                backgroundImage: const AssetImage('images/profile_pic.png'),
                 foregroundImage: NetworkImage(user.photoURL),
               ),
             ),

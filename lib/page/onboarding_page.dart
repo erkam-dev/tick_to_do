@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:tick_to_do/provider/googleSignIn.dart';
+import 'package:tick_to_do/provider/google_sign_in.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -32,7 +32,7 @@ class OnboardingPage extends StatelessWidget {
         ],
         doneColor: Colors.blue,
         done: googleButton(),
-        next: Icon(Icons.navigate_next),
+        next: const Icon(Icons.navigate_next),
         showNextButton: true,
         color: Theme.of(context).colorScheme.onPrimary,
         showSkipButton: true,
@@ -47,8 +47,8 @@ class OnboardingPage extends StatelessWidget {
     return Center(
       child: Container(
         alignment: Alignment.center,
-        margin: EdgeInsets.all(8),
-        padding: EdgeInsets.all(4),
+        margin: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
           color: Colors.blue.shade100,
@@ -60,7 +60,7 @@ class OnboardingPage extends StatelessWidget {
               FontAwesome.google,
               color: Colors.blue.shade700,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Icon(

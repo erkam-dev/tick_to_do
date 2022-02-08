@@ -5,36 +5,38 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:tick_to_do/provider/todos.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:tick_to_do/model/StartUp.dart';
-import 'package:tick_to_do/provider/Themes.dart';
+import 'package:tick_to_do/model/startup.dart';
+import 'package:tick_to_do/provider/themes.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
         create: (context) => TodosProvider(),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          localizationsDelegates: [
+          localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
-          supportedLocales: [
+          supportedLocales: const [
             Locale('en', ''),
             Locale('tr', ''),
           ],
           theme: myLightTheme(context),
           darkTheme: myDarkTheme(context),
-          scrollBehavior: CupertinoScrollBehavior(),
-          home: StartUp(),
+          scrollBehavior: const CupertinoScrollBehavior(),
+          home: const StartUp(),
         ),
       );
 }

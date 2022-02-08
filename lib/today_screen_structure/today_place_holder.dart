@@ -14,8 +14,8 @@ class _TodayPlaceHolderState extends State<TodayPlaceHolder> {
       children: [
         ListTile(
           title: Container(
-            padding: EdgeInsets.only(left: 20),
-            child: Text(
+            padding: const EdgeInsets.only(left: 20),
+            child: const Text(
               "Bugün",
               style: TextStyle(
                 fontSize: 24,
@@ -24,24 +24,24 @@ class _TodayPlaceHolderState extends State<TodayPlaceHolder> {
             ),
           ),
         ),
-        ListTile(
+        const ListTile(
           title: Text("İpuçları"),
           trailing: Icon(Icons.cancel_outlined),
         ),
         tipList(),
-        ListTile(
+        const ListTile(
           title: Text("Yapılacaklar"),
           trailing: Icon(Icons.expand_less),
         ),
         todoItem(),
         todoItem(),
-        ListTile(
+        const ListTile(
           title: Text("Tamamlanmışlar"),
           trailing: Icon(Icons.expand_less),
         ),
         todoItem(),
         todoItem(),
-        ListTile(
+        const ListTile(
           title: Text("Pomodorolar"),
           trailing: Icon(Icons.expand_less),
         ),
@@ -58,14 +58,15 @@ class _TodayPlaceHolderState extends State<TodayPlaceHolder> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
         child: Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.all(50),
-          child: Text("Yapılacaklar öğesi"),
+          padding: const EdgeInsets.all(50),
+          child: const Text("Yapılacaklar öğesi"),
         ),
       ),
     );
   }
 
   Widget tipList() {
+    // ignore: sized_box_for_whitespace
     return Container(
       height: 50,
       width: MediaQuery.of(context).size.width,
@@ -85,14 +86,14 @@ class _TodayPlaceHolderState extends State<TodayPlaceHolder> {
 
   Container tipItem() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       alignment: Alignment.center,
       decoration: BoxDecoration(
           color: Colors.purple.shade300.withAlpha(50),
           borderRadius: BorderRadius.circular(25),
           border: Border.all(color: Colors.purple)),
       width: 100,
-      child: Text("İpucu"),
+      child: const Text("İpucu"),
     );
   }
 }

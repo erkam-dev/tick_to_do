@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 class Timer extends StatelessWidget {
   CountDownController timerController = CountDownController();
   int duration = 10;
-  Function onStart = () {};
-  Function onComplete = () {};
+  Function onStart;
+  Function onComplete;
   Timer({
     Key key,
     @required this.timerController,

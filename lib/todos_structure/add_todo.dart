@@ -1,33 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:tick_to_do/model/todo.dart';
 import 'package:tick_to_do/provider/todos.dart';
-import 'package:tick_to_do/todos_structure/TodoFormWidget.dart';
+import 'package:tick_to_do/todos_structure/todo_form_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:tick_to_do/utils.dart';
+import 'package:provider/provider.dart';
 
-class EditTodo extends StatefulWidget {
-  final Todo todo;
-
-  const EditTodo({Key key, @required this.todo}) : super(key: key);
+class AddTodo extends StatefulWidget {
+  const AddTodo({Key key}) : super(key: key);
 
   @override
-  _EditTodoState createState() => _EditTodoState();
+  State<AddTodo> createState() => _AddTodoState();
 }
 
-class _EditTodoState extends State<EditTodo> {
+class _AddTodoState extends State<AddTodo> {
   final _formKey = GlobalKey<FormState>();
-
-  String title;
-  String description;
-
-  @override
-  void initState() {
-    super.initState();
-
-    title = widget.todo.title;
-    description = widget.todo.description;
-  }
+  String title = '';
+  String description = '';
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -38,45 +26,45 @@ class _EditTodoState extends State<EditTodo> {
             Form(
               key: _formKey,
               child: Hero(
-                tag: widget.todo.id,
+                tag: 'AddTodo',
                 child: Material(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25)),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
                       maxHeight: MediaQuery.of(context).size.height / 2,
-                      maxWidth: MediaQuery.of(context).size.width / 1.2,
                       minWidth: MediaQuery.of(context).size.width / 1.2,
+                      maxWidth: MediaQuery.of(context).size.width / 1.2,
                     ),
                     child: ListView(
                       shrinkWrap: true,
                       children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                AppLocalizations.of(context).editTodo,
-                                style: TextStyle(
+                                AppLocalizations.of(context).addTodo,
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              deleteButton(context),
                             ],
                           ),
                         ),
                         TodoFormWidget(
-                          title: title,
-                          description: description,
                           onChangedTitle: (title) =>
                               setState(() => this.title = title),
                           onChangedDescription: (description) =>
                               setState(() => this.description = description),
-                          onSavedTodo: saveTodo,
+                          onSavedTodo: () {
+                            addTodo();
+                          },
                         ),
                       ],
                     ),
@@ -88,32 +76,22 @@ class _EditTodoState extends State<EditTodo> {
         ),
       );
 
-  IconButton deleteButton(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        final provider = Provider.of<TodosProvider>(context, listen: false);
-        provider.removeTodo(widget.todo);
-        Utils.showSnackBar(
-            context, AppLocalizations.of(context).snackbarDeleted.toString());
-        Navigator.pop(context);
-      },
-      icon: Icon(
-        Icons.delete_outline_rounded,
-        color: Colors.red,
-      ),
-      alignment: Alignment.topRight,
-    );
-  }
-
-  void saveTodo() {
+  void addTodo() {
     final isValid = _formKey.currentState.validate();
 
     if (!isValid) {
       return;
     } else {
-      final provider = Provider.of<TodosProvider>(context, listen: false);
+      final todo = Todo(
+        id: DateTime.now().toString(),
+        title: title,
+        description: description,
+        createdTime: DateTime.now(),
+      );
 
-      provider.updateTodo(widget.todo, title, description);
+      final provider = Provider.of<TodosProvider>(context, listen: false);
+      provider.addTodo(todo);
+
       Navigator.of(context).pop();
     }
   }

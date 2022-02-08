@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:tick_to_do/elements/HeroDialogRoute.dart';
+import 'package:tick_to_do/elements/hero_dialog_route.dart';
 import 'package:tick_to_do/model/todo.dart';
-import 'package:tick_to_do/todos_structure/EditTodo.dart';
+import 'package:tick_to_do/todos_structure/edit_todo.dart';
 import 'package:tick_to_do/provider/todos.dart';
 import 'package:tick_to_do/utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -20,7 +20,7 @@ class TodoCardWidget extends StatelessWidget {
   Widget build(BuildContext context) => buildTodo(context);
 
   Widget buildTodo(BuildContext context) => Padding(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: GestureDetector(
           onTap: () {
             editTodo(context, todo);
@@ -34,7 +34,7 @@ class TodoCardWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Theme.of(context).cardColor,
                 ),
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Row(
                   children: [
                     Checkbox(
@@ -61,17 +61,18 @@ class TodoCardWidget extends StatelessWidget {
                         children: [
                           Text(
                             todo.title,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 22,
                             ),
                           ),
                           if (todo.description.isNotEmpty)
                             Container(
-                              margin: EdgeInsets.only(top: 4),
+                              margin: const EdgeInsets.only(top: 4),
                               child: Text(
                                 todo.description,
-                                style: TextStyle(fontSize: 20, height: 1.5),
+                                style:
+                                    const TextStyle(fontSize: 20, height: 1.5),
                               ),
                             )
                         ],

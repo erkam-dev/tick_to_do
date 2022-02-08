@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tick_to_do/page/Pomodoro.dart';
+import 'package:tick_to_do/page/pomodoro.dart';
 
 class PomodoroList extends StatelessWidget {
   const PomodoroList({Key key}) : super(key: key);
@@ -8,9 +8,9 @@ class PomodoroList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        ListTile(
+        const ListTile(
           title: Padding(
-            padding: const EdgeInsets.only(left: 20),
+            padding: EdgeInsets.only(left: 20),
             child: Text(
               "Pomodoro",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -26,8 +26,8 @@ class PomodoroList extends StatelessWidget {
             quickPomodoro(context, "60", 60 * 60),
           ],
         ),
-        SizedBox(height: 20),
-        ListTile(
+        const SizedBox(height: 20),
+        const ListTile(
           title: Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text("Son pomodorolar"),
@@ -42,11 +42,11 @@ class PomodoroList extends StatelessWidget {
 
   Padding pomodoroCard(BuildContext context, String title) {
     return Padding(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
         child: Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -56,10 +56,11 @@ class PomodoroList extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  Divider(),
-                  Text("25 dakika")
+                  const Divider(),
+                  const Text("25 dakika")
                 ],
               ),
               IconButton(
@@ -67,12 +68,12 @@ class PomodoroList extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Pomodoro(
+                        builder: (context) => const Pomodoro(
                           buttonDuration: 25 * 60,
                         ),
                       ));
                 },
-                icon: Icon(Icons.play_circle),
+                icon: const Icon(Icons.play_circle),
                 iconSize: 48,
                 color: Colors.green,
               ),
@@ -101,7 +102,7 @@ class PomodoroList extends StatelessWidget {
         },
         child: Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           height: 100,
           width: 100,
           child: Text(

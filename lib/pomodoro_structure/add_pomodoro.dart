@@ -42,17 +42,18 @@ class _AddPomodoroState extends State<AddPomodoro> {
                       },
                       onChanged: (duration) {
                         setState(() {
-                          this.pomodoroDuration = duration;
+                          pomodoroDuration = duration;
                         });
                       },
-                      decoration: InputDecoration(label: Text("Süre")),
+                      decoration: const InputDecoration(label: Text("Süre")),
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 32),
+                      style: const TextStyle(fontSize: 32),
                       keyboardType: TextInputType.number,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     ),
                   ),
                   ElevatedButton.icon(
+                    // ignore: void_checks
                     onPressed: () {
                       final isValid = _formKey.currentState.validate();
                       if (!isValid) {
@@ -62,8 +63,8 @@ class _AddPomodoroState extends State<AddPomodoro> {
                         return pomodoroDuration;
                       }
                     },
-                    icon: Icon(Icons.alarm_add),
-                    label: Text("Oluştur"),
+                    icon: const Icon(Icons.alarm_add),
+                    label: const Text("Oluştur"),
                   ),
                 ],
               ),

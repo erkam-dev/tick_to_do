@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tick_to_do/elements/CustomShowCase.dart';
+import 'package:tick_to_do/elements/custom_showcase.dart';
 
 class HeroFAB extends StatelessWidget {
   final GlobalKey globalKey;
@@ -8,7 +8,7 @@ class HeroFAB extends StatelessWidget {
   final String title;
   final String showcaseDescription;
   final IconData icon;
-  HeroFAB({
+  const HeroFAB({
     Key key,
     @required this.globalKey,
     @required this.heroTag,
@@ -34,8 +34,8 @@ class HeroFAB extends StatelessWidget {
             ),
             color: Theme.of(context).colorScheme.secondary,
             child: Container(
-              margin: EdgeInsets.all(7),
-              padding: EdgeInsets.all(5),
+              margin: const EdgeInsets.all(7),
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
               ),
@@ -46,7 +46,7 @@ class HeroFAB extends StatelessWidget {
                     icon,
                     color: Theme.of(context).colorScheme.onSecondary,
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Text(
                     title,
                     style: TextStyle(

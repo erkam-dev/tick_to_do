@@ -3,20 +3,23 @@ import 'package:flutter/services.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:showcaseview/showcaseview.dart';
-import 'package:tick_to_do/elements/CustomShowCase.dart';
-import 'package:tick_to_do/elements/HeroFAB.dart';
-import 'package:tick_to_do/elements/ProfilePicButton.dart';
-import 'package:tick_to_do/page/PomodoroList.dart';
-import 'package:tick_to_do/pomodoro_structure/AddPomodoro.dart';
-import 'package:tick_to_do/today_screen_structure/TodayPlaceHolder.dart';
-import 'package:tick_to_do/todos_structure/AddTodo.dart';
-import 'package:tick_to_do/elements/HeroDialogRoute.dart';
-import 'package:tick_to_do/page/TodoList.dart';
+import 'package:tick_to_do/elements/custom_showcase.dart';
+import 'package:tick_to_do/elements/hero_fab.dart';
+import 'package:tick_to_do/elements/profile_pic_button.dart';
+import 'package:tick_to_do/page/pomodoro_list.dart';
+import 'package:tick_to_do/pomodoro_structure/add_pomodoro.dart';
+import 'package:tick_to_do/today_screen_structure/today_place_holder.dart';
+import 'package:tick_to_do/todos_structure/add_todo.dart';
+import 'package:tick_to_do/elements/hero_dialog_route.dart';
+import 'package:tick_to_do/page/todo_list.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
+  // ignore: constant_identifier_names
   static const PREFERENCES_IS_FIRST_LAUNCH_STRING =
       "PREFERENCES_IS_FIRST_LAUNCH_STRING";
+
+  const HomePage({Key key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -42,7 +45,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _isFirstLaunch().then((result) {
-        if (result)
+        if (result) {
           ShowCaseWidget.of(context).startShowCase([
             profilebutton,
             todaynavbar,
@@ -51,15 +54,20 @@ class _HomePageState extends State<HomePage> {
             addtodo,
             addpomodoro,
           ]);
+        }
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final bodyContent = [TodayPlaceHolder(), TodoList(), PomodoroList()];
+    final bodyContent = [
+      const TodayPlaceHolder(),
+      const TodoList(),
+      const PomodoroList()
+    ];
     List fabList = [
-      FloatingActionButton(child: Icon(Icons.add), onPressed: () {}),
+      FloatingActionButton(child: const Icon(Icons.add), onPressed: () {}),
       HeroFAB(
           showcaseDescription: AppLocalizations.of(context).showCaseAddTodo,
           globalKey: addtodo,
@@ -68,7 +76,7 @@ class _HomePageState extends State<HomePage> {
             HapticFeedback.lightImpact();
             Navigator.of(context).push(
               HeroDialogRoute(
-                builder: (context) => AddTodo(),
+                builder: (context) => const AddTodo(),
               ),
             );
           },
@@ -82,7 +90,7 @@ class _HomePageState extends State<HomePage> {
             HapticFeedback.lightImpact();
             Navigator.of(context).push(
               HeroDialogRoute(
-                builder: (context) => AddPomodoro(),
+                builder: (context) => const AddPomodoro(),
               ),
             );
           },
@@ -98,7 +106,7 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.only(left: 20),
           child: Image.asset('images/logo.png'),
         ),
-        title: Text(
+        title: const Text(
           "Tick To Do",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
@@ -106,7 +114,7 @@ class _HomePageState extends State<HomePage> {
           CustomShowcaseWidget(
             globalKey: profilebutton,
             description: "Ayarlarınız burada",
-            child: ProfilePicButton(),
+            child: const ProfilePicButton(),
           ),
         ],
       ),
@@ -122,7 +130,7 @@ class _HomePageState extends State<HomePage> {
           CustomShowcaseWidget(
             description: "Bugün ki öğeler burada",
             globalKey: todaynavbar,
-            child: NavigationDestination(
+            child: const NavigationDestination(
               icon: Icon(Icons.today_outlined),
               selectedIcon: Icon(Icons.today),
               label: "Bugün",
@@ -132,15 +140,15 @@ class _HomePageState extends State<HomePage> {
             globalKey: todosnavbar,
             description: AppLocalizations.of(context).showCaseTodos,
             child: NavigationDestination(
-              icon: Icon(Icons.check_box_outlined),
-              selectedIcon: Icon(Icons.check_box),
+              icon: const Icon(Icons.check_box_outlined),
+              selectedIcon: const Icon(Icons.check_box),
               label: AppLocalizations.of(context).todos.toString(),
             ),
           ),
           CustomShowcaseWidget(
             globalKey: pomodoronavbar,
             description: "Pomodoro burada",
-            child: NavigationDestination(
+            child: const NavigationDestination(
               icon: Icon(AntDesign.clockcircleo),
               selectedIcon: Icon(AntDesign.clockcircle),
               label: "Pomodoro",
@@ -158,9 +166,10 @@ Future<bool> _isFirstLaunch() async {
       sharedPreferences.getBool(HomePage.PREFERENCES_IS_FIRST_LAUNCH_STRING) ??
           true;
 
-  if (isFirstLaunch)
+  if (isFirstLaunch) {
     sharedPreferences.setBool(
         HomePage.PREFERENCES_IS_FIRST_LAUNCH_STRING, false);
+  }
 
   return isFirstLaunch;
 }

@@ -7,8 +7,10 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ayarlar"),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))],
+        title: const Text("Ayarlar"),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
+        ],
       ),
       body: ListView(
         children: [

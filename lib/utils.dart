@@ -12,7 +12,7 @@ class Utils {
             borderRadius: BorderRadius.circular(20),
           ),
           behavior: SnackBarBehavior.floating,
-          margin: EdgeInsets.all(10),
+          margin: const EdgeInsets.all(10),
           action: SnackBarAction(
             label: AppLocalizations.of(context).ok,
             onPressed: () {},

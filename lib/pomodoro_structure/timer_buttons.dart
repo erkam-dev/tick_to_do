@@ -22,7 +22,7 @@ class _TimerButtonsState extends State<TimerButtons> {
         widget.isPause
             ? resumeButton(widget.timerController)
             : pauseButton(widget.timerController),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         restartButton(widget.timerController),

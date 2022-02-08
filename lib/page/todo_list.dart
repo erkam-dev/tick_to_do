@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:tick_to_do/api/FirebaseApi.dart';
-import 'package:tick_to_do/elements/BuildError.dart';
+import 'package:tick_to_do/api/firebase_api.dart';
+import 'package:tick_to_do/elements/build_error.dart';
 import 'package:tick_to_do/model/todo.dart';
 import 'package:tick_to_do/provider/todos.dart';
-import 'package:tick_to_do/todos_structure/TodoCardWidget.dart';
+import 'package:tick_to_do/todos_structure/todo_card_widget.dart';
 
 class TodoList extends StatelessWidget {
+  const TodoList({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<Todo>>(
@@ -18,8 +20,8 @@ class TodoList extends StatelessWidget {
           case ConnectionState.waiting:
             return Center(
               child: Container(
-                padding: EdgeInsets.all(30),
-                child: CircularProgressIndicator(),
+                padding: const EdgeInsets.all(30),
+                child: const CircularProgressIndicator(),
               ),
             );
           default:
@@ -39,7 +41,7 @@ class TodoList extends StatelessWidget {
                                 Colors.blue),
                         ListView.builder(
                           shrinkWrap: true,
-                          physics: ClampingScrollPhysics(),
+                          physics: const ClampingScrollPhysics(),
                           itemCount: provider.todos.length,
                           itemBuilder: (context, index) =>
                               TodoCardWidget(todo: provider.todos[index]),
@@ -51,7 +53,7 @@ class TodoList extends StatelessWidget {
                                 Colors.green),
                         ListView.builder(
                           shrinkWrap: true,
-                          physics: ClampingScrollPhysics(),
+                          physics: const ClampingScrollPhysics(),
                           itemCount: provider.todosCompleted.length,
                           itemBuilder: (context, index) => TodoCardWidget(
                               todo: provider.todosCompleted[index]),
@@ -67,7 +69,7 @@ class TodoList extends StatelessWidget {
   ListTile todosSubtitle(String title, Color color) {
     return ListTile(
       title: Container(
-        padding: EdgeInsets.only(left: 20),
+        padding: const EdgeInsets.only(left: 20),
         child: Text(
           title,
           style: TextStyle(
@@ -95,7 +97,7 @@ class TodoList extends StatelessWidget {
             child: Text(
               AppLocalizations.of(context).noTodos,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'Comfortaa',
                 fontSize: 18,
               ),

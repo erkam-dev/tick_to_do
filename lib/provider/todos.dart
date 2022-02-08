@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tick_to_do/api/FirebaseApi.dart';
+import 'package:tick_to_do/api/firebase_api.dart';
 import 'package:tick_to_do/model/todo.dart';
 
 class TodosProvider extends ChangeNotifier {

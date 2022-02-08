@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tick_to_do/todos_structure/TodoCardWidget.dart';
-import 'TodoCardWidget.dart';
+import 'package:tick_to_do/todos_structure/todo_card_widget.dart';
+import 'todo_card_widget.dart';
 
 // ignore: must_be_immutable
 class TodoListModel extends StatelessWidget {
@@ -11,7 +11,7 @@ class TodoListModel extends StatelessWidget {
   String noTodos;
   @override
   Widget build(BuildContext context) {
-    return this.todos.isEmpty
+    return todos.isEmpty
         ? noDataBuild(context)
         : SliverList(
             delegate: SliverChildBuilderDelegate(
@@ -39,7 +39,7 @@ class TodoListModel extends StatelessWidget {
             child: Text(
               noTodos,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'Comfortaa',
                 fontSize: 18,
               ),

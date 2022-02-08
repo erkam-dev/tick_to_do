@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:showcaseview/showcaseview.dart';
-import 'package:tick_to_do/page/HomePage.dart';
-import 'package:tick_to_do/page/OnboardingPage.dart';
-import 'package:tick_to_do/provider/googleSignIn.dart';
+import 'package:tick_to_do/page/homepage.dart';
+import 'package:tick_to_do/page/onboarding_page.dart';
+import 'package:tick_to_do/provider/google_sign_in.dart';
 
 class StartUp extends StatelessWidget {
+  const StartUp({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     _portraitModeOnly();
@@ -24,11 +26,11 @@ class StartUp extends StatelessWidget {
             } else if (snapshot.hasData) {
               return ShowCaseWidget(
                 builder: Builder(
-                  builder: (_) => HomePage(),
+                  builder: (_) => const HomePage(),
                 ),
               );
             } else {
-              return OnboardingPage();
+              return const OnboardingPage();
             }
           },
         ),
@@ -36,7 +38,7 @@ class StartUp extends StatelessWidget {
     );
   }
 
-  Widget buildLoading() => Center(
+  Widget buildLoading() => const Center(
         child: CircularProgressIndicator(),
       );
 }
