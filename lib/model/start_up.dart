@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:showcaseview/showcaseview.dart';
-import 'package:tick_to_do/page/homepage.dart';
+import 'package:tick_to_do/page/home_page.dart';
 import 'package:tick_to_do/page/onboarding_page.dart';
 import 'package:tick_to_do/provider/google_sign_in.dart';
 

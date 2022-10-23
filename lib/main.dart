@@ -1,12 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:tick_to_do/provider/todos.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:tick_to_do/model/startup.dart';
+import 'package:tick_to_do/model/start_up.dart';
 import 'package:tick_to_do/provider/themes.dart';
+import 'package:tick_to_do/provider/todos.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
