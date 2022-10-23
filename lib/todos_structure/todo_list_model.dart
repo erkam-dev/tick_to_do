@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tick_to_do/todos_structure/todo_card_widget.dart';
-import 'todo_card_widget.dart';
 
 // ignore: must_be_immutable
 class TodoListModel extends StatelessWidget {
