@@ -5,7 +5,7 @@ class AddPomodoro extends StatefulWidget {
   const AddPomodoro({Key key}) : super(key: key);
 
   @override
-  _AddPomodoroState createState() => _AddPomodoroState();
+  State<AddPomodoro> createState() => _AddPomodoroState();
 }
 
 class _AddPomodoroState extends State<AddPomodoro> {

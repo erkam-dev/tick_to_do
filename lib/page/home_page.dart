@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:tick_to_do/elements/custom_showcase.dart';
+import 'package:tick_to_do/elements/hero_dialog_route.dart';
 import 'package:tick_to_do/elements/hero_fab.dart';
 import 'package:tick_to_do/elements/profile_pic_button.dart';
 import 'package:tick_to_do/page/pomodoro_list.dart';
+import 'package:tick_to_do/page/todo_list.dart';
 import 'package:tick_to_do/pomodoro_structure/add_pomodoro.dart';
 import 'package:tick_to_do/today_screen_structure/today_place_holder.dart';
 import 'package:tick_to_do/todos_structure/add_todo.dart';
-import 'package:tick_to_do/elements/hero_dialog_route.dart';
-import 'package:tick_to_do/page/todo_list.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   // ignore: constant_identifier_names
@@ -22,7 +22,7 @@ class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {

@@ -4,7 +4,7 @@ class TodayPlaceHolder extends StatefulWidget {
   const TodayPlaceHolder({Key key}) : super(key: key);
 
   @override
-  _TodayPlaceHolderState createState() => _TodayPlaceHolderState();
+  State<TodayPlaceHolder> createState() => _TodayPlaceHolderState();
 }
 
 class _TodayPlaceHolderState extends State<TodayPlaceHolder> {

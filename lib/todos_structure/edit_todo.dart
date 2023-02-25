@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:tick_to_do/model/todo.dart';
 import 'package:tick_to_do/provider/todos.dart';
 import 'package:tick_to_do/todos_structure/todo_form_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tick_to_do/utils.dart';
 
 class EditTodo extends StatefulWidget {
@@ -12,7 +12,7 @@ class EditTodo extends StatefulWidget {
   const EditTodo({Key key, @required this.todo}) : super(key: key);
 
   @override
-  _EditTodoState createState() => _EditTodoState();
+  State<EditTodo> createState() => _EditTodoState();
 }
 
 class _EditTodoState extends State<EditTodo> {

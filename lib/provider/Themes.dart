@@ -13,11 +13,6 @@ ThemeData myLightTheme(BuildContext context) {
         onBackground: Colors.black,
       ),
       fontFamily: 'Comfortaa',
-      textTheme: const TextTheme(
-        headline6: TextStyle(
-          color: Colors.black,
-        ),
-      ),
       appBarTheme: AppBarTheme(
         backgroundColor: ThemeData.light().scaffoldBackgroundColor,
         foregroundColor: Colors.black,
@@ -114,7 +109,7 @@ ThemeData myDarkTheme(BuildContext context) {
       snackBarTheme: SnackBarThemeData(
         actionTextColor: ThemeData.dark().colorScheme.onBackground,
         backgroundColor: ThemeData.dark().colorScheme.background,
-        contentTextStyle: ThemeData.dark().textTheme.bodyText1,
+        contentTextStyle: ThemeData.dark().textTheme.bodyLarge,
       ),
       navigationBarTheme: NavigationBarThemeData(
         indicatorColor: Colors.blue.shade900,

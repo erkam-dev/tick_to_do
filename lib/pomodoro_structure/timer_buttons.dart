@@ -73,11 +73,11 @@ class _TimerButtonsState extends State<TimerButtons> {
     VoidCallback onPressed,
   }) {
     return ElevatedButton(
+      onPressed: onPressed,
       child: Icon(
         icon,
         size: 50,
       ),
-      onPressed: onPressed,
     );
   }
 }

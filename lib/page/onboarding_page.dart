@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:tick_to_do/provider/google_sign_in.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({Key key}) : super(key: key);
@@ -30,11 +30,9 @@ class OnboardingPage extends StatelessWidget {
             image: buildImage('images/login.svg'),
           ),
         ],
-        doneColor: Colors.blue,
         done: googleButton(),
         next: const Icon(Icons.navigate_next),
         showNextButton: true,
-        color: Theme.of(context).colorScheme.onPrimary,
         showSkipButton: true,
         skip: Text(AppLocalizations.of(context).skip),
         onSkip: () => loginWidget(context),

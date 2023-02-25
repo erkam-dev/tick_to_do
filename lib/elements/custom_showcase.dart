@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:showcaseview/showcaseview.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 class CustomShowcaseWidget extends StatelessWidget {
   final Widget child;
@@ -15,11 +15,9 @@ class CustomShowcaseWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Showcase(
         key: globalKey,
-        child: child,
         description: description,
-        contentPadding: const EdgeInsets.all(10),
         overlayOpacity: 0,
         title: AppLocalizations.of(context).showCaseTips,
-        radius: BorderRadius.circular(15),
+        child: child,
       );
 }
