@@ -6,16 +6,16 @@ class TodoField {
 
 class Todo {
   DateTime? createdTime;
-  String? title;
-  String? id;
-  String? description;
-  bool? isDone;
+  String title;
+  String id;
+  String description;
+  bool isDone;
 
   Todo({
     required this.createdTime,
     required this.title,
+    required this.id,
     this.description = '',
-    this.id,
     this.isDone = false,
   });
 

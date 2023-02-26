@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TodoFormWidget extends StatelessWidget {
@@ -39,9 +38,6 @@ class TodoFormWidget extends StatelessWidget {
       maxLines: 1,
       initialValue: title,
       onChanged: onChangedTitle,
-      onTap: () {
-        HapticFeedback.lightImpact();
-      },
       validator: (title) {
         if (title!.isEmpty) {
           return AppLocalizations.of(context)!.notValid.toString();
@@ -57,9 +53,6 @@ class TodoFormWidget extends StatelessWidget {
     return TextFormField(
       maxLines: null,
       initialValue: description,
-      onTap: () {
-        HapticFeedback.lightImpact();
-      },
       onChanged: onChangedDescription,
       decoration: InputDecoration(
           label: Text(AppLocalizations.of(context)!.description.toString())),
@@ -69,10 +62,7 @@ class TodoFormWidget extends StatelessWidget {
   ElevatedButton buildButton(BuildContext context) {
     return ElevatedButton.icon(
       icon: const Icon(Icons.save_outlined),
-      onPressed: () {
-        HapticFeedback.heavyImpact();
-        onSavedTodo();
-      },
+      onPressed: () => onSavedTodo(),
       label: Text(AppLocalizations.of(context)!.save),
     );
   }

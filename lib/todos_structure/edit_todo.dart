@@ -17,14 +17,12 @@ class EditTodo extends StatefulWidget {
 
 class _EditTodoState extends State<EditTodo> {
   final _formKey = GlobalKey<FormState>();
-
-  String? title;
-  String? description;
+  late String title;
+  late String description;
 
   @override
   void initState() {
     super.initState();
-
     title = widget.todo.title;
     description = widget.todo.description;
   }
@@ -38,10 +36,10 @@ class _EditTodoState extends State<EditTodo> {
             Form(
               key: _formKey,
               child: Hero(
-                tag: widget.todo.id!,
+                tag: widget.todo.id,
                 child: Card(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25)),
+                      borderRadius: BorderRadius.circular(15)),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
                       maxHeight: MediaQuery.of(context).size.height / 2,
@@ -51,23 +49,12 @@ class _EditTodoState extends State<EditTodo> {
                     child: ListView(
                       shrinkWrap: true,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                AppLocalizations.of(context)!.editTodo,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              deleteButton(context),
-                            ],
+                        ListTile(
+                          title: Text(
+                            AppLocalizations.of(context)!.editTodo,
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
+                          trailing: deleteButton(context),
                         ),
                         TodoFormWidget(
                           title: title,

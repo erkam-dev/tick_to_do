@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:tick_to_do/elements/hero_dialog_route.dart';
@@ -19,75 +18,39 @@ class TodoCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => buildTodo(context);
 
-  Widget buildTodo(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(10),
-        child: GestureDetector(
-          onTap: () {
-            editTodo(context, todo);
-          },
-          child: Hero(
-            tag: todo.id!,
-            child: Card(
-              clipBehavior: Clip.antiAlias,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25)),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
-                ),
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  children: [
-                    Checkbox(
-                      activeColor: Colors.green,
-                      checkColor: Colors.white,
-                      value: todo.isDone,
-                      onChanged: (_) {
-                        bool isDone = toggleIsDone(context)!;
-                        HapticFeedback.heavyImpact();
-
-                        Utils.showSnackBar(
-                          context,
-                          isDone
-                              ? AppLocalizations.of(context)!.snackbarComplete
-                              : AppLocalizations.of(context)!
-                                  .snackbarNotComplete,
-                        );
-                      },
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            todo.title!,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
-                            ),
-                          ),
-                          if (todo.description!.isNotEmpty)
-                            Container(
-                              margin: const EdgeInsets.only(top: 4),
-                              child: Text(
-                                todo.description!,
-                                style:
-                                    const TextStyle(fontSize: 20, height: 1.5),
-                              ),
-                            )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+  Widget buildTodo(BuildContext context) => Hero(
+        tag: todo.id,
+        child: Card(
+          child: ListTile(
+            dense: true,
+            contentPadding: const EdgeInsets.only(right: 10, top: 5, bottom: 5),
+            onTap: () => editTodo(context, todo),
+            title: Text(
+              todo.title,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(fontWeight: FontWeight.bold),
             ),
+            subtitle: (todo.description.isNotEmpty)
+                ? Text(
+                    todo.description,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    maxLines: 5,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: false,
+                  )
+                : null,
+            leading: Checkbox(
+              value: todo.isDone,
+              onChanged: (_) => toggleIsDone(context),
+            ),
+            trailing: const Icon(Icons.navigate_next_outlined),
           ),
         ),
       );
 
-  bool? toggleIsDone(BuildContext context) {
+  bool toggleIsDone(BuildContext context) {
     final provider = Provider.of<TodosProvider>(context, listen: false);
     final isDone = provider.toggleTodoStatus(todo);
     return isDone;

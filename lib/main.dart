@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:tick_to_do/provider/themes.dart';
+import 'package:tick_to_do/provider/dark_theme.dart';
+import 'package:tick_to_do/provider/light_theme.dart';
 import 'package:tick_to_do/provider/todos.dart';
 
 import 'model/start_up.dart';
@@ -36,9 +37,7 @@ class MyApp extends StatelessWidget {
           theme: myLightTheme(context),
           darkTheme: myDarkTheme(context),
           scrollBehavior: const CupertinoScrollBehavior(),
-          home: const Scaffold(
-            body: StartUp(),
-          ),
+          home: const StartUp(),
         ),
       );
 }

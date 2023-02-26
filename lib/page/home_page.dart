@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:tick_to_do/elements/custom_showcase.dart';
 import 'package:tick_to_do/elements/hero_dialog_route.dart';
 import 'package:tick_to_do/elements/hero_fab.dart';
 import 'package:tick_to_do/elements/profile_pic_button.dart';
-import 'package:tick_to_do/page/pomodoro_list.dart';
 import 'package:tick_to_do/page/todo_list.dart';
 import 'package:tick_to_do/pomodoro_structure/add_pomodoro.dart';
-import 'package:tick_to_do/today_screen_structure/today_place_holder.dart';
 import 'package:tick_to_do/todos_structure/add_todo.dart';
 
 class HomePage extends StatefulWidget {
@@ -61,13 +58,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final bodyContent = [
-      const TodayPlaceHolder(),
-      const TodoList(),
-      const PomodoroList()
-    ];
+    // final bodyContent = [
+    //   const TodayPlaceHolder(),
+    //   const TodoList(),
+    //   const PomodoroList()
+    // ];
     List fabList = [
-      FloatingActionButton(child: const Icon(Icons.add), onPressed: () {}),
       HeroFAB(
           showcaseDescription: AppLocalizations.of(context)!.showCaseAddTodo,
           globalKey: addtodo,
@@ -82,12 +78,21 @@ class _HomePageState extends State<HomePage> {
           },
           title: AppLocalizations.of(context)!.addTodo,
           icon: Icons.add_task),
+      FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.of(context).push(
+              HeroDialogRoute(
+                builder: (context) => const AddTodo(),
+              ),
+            );
+          },
+          label: Text(AppLocalizations.of(context)!.addTodo),
+          icon: const Icon(Icons.add_task)),
       HeroFAB(
           showcaseDescription: "Yeni pomodoro ekleyin",
           globalKey: addpomodoro,
           heroTag: 'AddPomodoro',
           onTap: () {
-            HapticFeedback.lightImpact();
             Navigator.of(context).push(
               HeroDialogRoute(
                 builder: (context) => const AddPomodoro(),
@@ -118,44 +123,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: bodyContent[bottomSelectedIndex],
+      body: const TodoList(),
       resizeToAvoidBottomInset: false,
-      floatingActionButton: fabList[bottomSelectedIndex],
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: bottomSelectedIndex,
-        onDestinationSelected: (index) {
-          bottomTapped(index);
-        },
-        destinations: [
-          CustomShowcaseWidget(
-            description: "Bugün ki öğeler burada",
-            globalKey: todaynavbar,
-            child: const NavigationDestination(
-              icon: Icon(Icons.today_outlined),
-              selectedIcon: Icon(Icons.today),
-              label: "Bugün",
-            ),
-          ),
-          CustomShowcaseWidget(
-            globalKey: todosnavbar,
-            description: AppLocalizations.of(context)!.showCaseTodos,
-            child: NavigationDestination(
-              icon: const Icon(Icons.check_box_outlined),
-              selectedIcon: const Icon(Icons.check_box),
-              label: AppLocalizations.of(context)!.todos.toString(),
-            ),
-          ),
-          CustomShowcaseWidget(
-            globalKey: pomodoronavbar,
-            description: "Pomodoro burada",
-            child: const NavigationDestination(
-              icon: Icon(AntDesign.clockcircleo),
-              selectedIcon: Icon(AntDesign.clockcircle),
-              label: "Pomodoro",
-            ),
-          ),
-        ],
-      ),
+      floatingActionButton: fabList[1],
+      extendBody: true,
     );
   }
 }

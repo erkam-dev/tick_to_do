@@ -13,6 +13,8 @@ class StartUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _portraitModeOnly();
+    SystemChrome.setSystemUIOverlayStyle(
+        Theme.of(context).appBarTheme.systemOverlayStyle!);
     return Scaffold(
       body: ChangeNotifierProvider(
         create: (context) => GoogleSignInProvider(),
