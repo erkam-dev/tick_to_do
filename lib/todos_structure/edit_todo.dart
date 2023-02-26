@@ -9,7 +9,7 @@ import 'package:tick_to_do/utils.dart';
 class EditTodo extends StatefulWidget {
   final Todo todo;
 
-  const EditTodo({Key key, @required this.todo}) : super(key: key);
+  const EditTodo({Key? key, required this.todo}) : super(key: key);
 
   @override
   State<EditTodo> createState() => _EditTodoState();
@@ -18,8 +18,8 @@ class EditTodo extends StatefulWidget {
 class _EditTodoState extends State<EditTodo> {
   final _formKey = GlobalKey<FormState>();
 
-  String title;
-  String description;
+  String? title;
+  String? description;
 
   @override
   void initState() {
@@ -38,8 +38,8 @@ class _EditTodoState extends State<EditTodo> {
             Form(
               key: _formKey,
               child: Hero(
-                tag: widget.todo.id,
-                child: Material(
+                tag: widget.todo.id!,
+                child: Card(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25)),
                   child: ConstrainedBox(
@@ -59,7 +59,7 @@ class _EditTodoState extends State<EditTodo> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                AppLocalizations.of(context).editTodo,
+                                AppLocalizations.of(context)!.editTodo,
                                 style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -94,7 +94,7 @@ class _EditTodoState extends State<EditTodo> {
         final provider = Provider.of<TodosProvider>(context, listen: false);
         provider.removeTodo(widget.todo);
         Utils.showSnackBar(
-            context, AppLocalizations.of(context).snackbarDeleted.toString());
+            context, AppLocalizations.of(context)!.snackbarDeleted.toString());
         Navigator.pop(context);
       },
       icon: const Icon(
@@ -106,7 +106,7 @@ class _EditTodoState extends State<EditTodo> {
   }
 
   void saveTodo() {
-    final isValid = _formKey.currentState.validate();
+    final isValid = _formKey.currentState!.validate();
 
     if (!isValid) {
       return;

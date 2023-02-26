@@ -6,7 +6,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 class TimerButtons extends StatefulWidget {
   bool isPause = false;
   CountDownController timerController = CountDownController();
-  TimerButtons({Key key, @required this.timerController}) : super(key: key);
+  TimerButtons({Key? key, required this.timerController}) : super(key: key);
 
   @override
   State<TimerButtons> createState() => _TimerButtonsState();
@@ -69,8 +69,8 @@ class _TimerButtonsState extends State<TimerButtons> {
   }
 
   _button({
-    @required IconData icon,
-    VoidCallback onPressed,
+    required IconData icon,
+    VoidCallback? onPressed,
   }) {
     return ElevatedButton(
       onPressed: onPressed,

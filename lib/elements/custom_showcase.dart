@@ -7,17 +7,17 @@ class CustomShowcaseWidget extends StatelessWidget {
   final String description;
   final GlobalKey globalKey;
   const CustomShowcaseWidget(
-      {Key key,
-      @required this.description,
-      @required this.child,
-      @required this.globalKey})
+      {Key? key,
+      required this.description,
+      required this.child,
+      required this.globalKey})
       : super(key: key);
   @override
   Widget build(BuildContext context) => Showcase(
         key: globalKey,
         description: description,
         overlayOpacity: 0,
-        title: AppLocalizations.of(context).showCaseTips,
+        title: AppLocalizations.of(context)!.showCaseTips,
         child: child,
       );
 }

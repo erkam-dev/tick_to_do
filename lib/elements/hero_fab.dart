@@ -9,19 +9,19 @@ class HeroFAB extends StatelessWidget {
   final String showcaseDescription;
   final IconData icon;
   const HeroFAB({
-    Key key,
-    @required this.globalKey,
-    @required this.heroTag,
-    @required this.onTap,
-    @required this.title,
-    @required this.icon,
-    @required this.showcaseDescription,
+    Key? key,
+    required this.globalKey,
+    required this.heroTag,
+    required this.onTap,
+    required this.title,
+    required this.icon,
+    required this.showcaseDescription,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap as void Function()?,
       child: CustomShowcaseWidget(
         globalKey: globalKey,
         description: showcaseDescription,

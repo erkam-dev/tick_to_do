@@ -4,7 +4,7 @@ import 'package:tick_to_do/todos_structure/todo_card_widget.dart';
 
 // ignore: must_be_immutable
 class TodoListModel extends StatelessWidget {
-  TodoListModel({Key key, @required this.todos, @required this.noTodos})
+  TodoListModel({Key? key, required this.todos, required this.noTodos})
       : super(key: key);
   List todos;
   String noTodos;

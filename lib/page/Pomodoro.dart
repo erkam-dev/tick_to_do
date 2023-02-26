@@ -5,8 +5,8 @@ import 'package:tick_to_do/pomodoro_structure/timer_buttons.dart';
 
 class Pomodoro extends StatefulWidget {
   const Pomodoro({
-    Key key,
-    @required this.buttonDuration,
+    Key? key,
+    required this.buttonDuration,
   }) : super(key: key);
   final int buttonDuration;
 

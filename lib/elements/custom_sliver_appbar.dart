@@ -7,7 +7,7 @@ final user = FirebaseAuth.instance.currentUser;
 class CustomSliverAppbar extends StatefulWidget {
   String title = "Hoşgeldiniz";
 
-  CustomSliverAppbar({Key key, @required this.title}) : super(key: key);
+  CustomSliverAppbar({Key? key, required this.title}) : super(key: key);
 
   @override
   State<CustomSliverAppbar> createState() => _CustomSliverAppbarState();

@@ -3,19 +3,19 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TodoFormWidget extends StatelessWidget {
-  final String title;
-  final String description;
+  final String? title;
+  final String? description;
   final ValueChanged<String> onChangedTitle;
   final ValueChanged<String> onChangedDescription;
   final VoidCallback onSavedTodo;
 
   const TodoFormWidget({
-    Key key,
+    Key? key,
     this.title = '',
     this.description = '',
-    @required this.onChangedTitle,
-    @required this.onChangedDescription,
-    @required this.onSavedTodo,
+    required this.onChangedTitle,
+    required this.onChangedDescription,
+    required this.onSavedTodo,
   }) : super(key: key);
 
   @override
@@ -43,13 +43,13 @@ class TodoFormWidget extends StatelessWidget {
         HapticFeedback.lightImpact();
       },
       validator: (title) {
-        if (title.isEmpty) {
-          return AppLocalizations.of(context).notValid.toString();
+        if (title!.isEmpty) {
+          return AppLocalizations.of(context)!.notValid.toString();
         }
         return null;
       },
       decoration: InputDecoration(
-          label: Text(AppLocalizations.of(context).title.toString())),
+          label: Text(AppLocalizations.of(context)!.title.toString())),
     );
   }
 
@@ -62,7 +62,7 @@ class TodoFormWidget extends StatelessWidget {
       },
       onChanged: onChangedDescription,
       decoration: InputDecoration(
-          label: Text(AppLocalizations.of(context).description.toString())),
+          label: Text(AppLocalizations.of(context)!.description.toString())),
     );
   }
 
@@ -73,7 +73,7 @@ class TodoFormWidget extends StatelessWidget {
         HapticFeedback.heavyImpact();
         onSavedTodo();
       },
-      label: Text(AppLocalizations.of(context).save),
+      label: Text(AppLocalizations.of(context)!.save),
     );
   }
 }

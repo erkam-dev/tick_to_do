@@ -13,7 +13,7 @@ Widget buildError(BuildContext context) => SliverToBoxAdapter(
             Container(
               alignment: Alignment.center,
               child: Text(
-                AppLocalizations.of(context).tryAgain.toString(),
+                AppLocalizations.of(context)!.tryAgain.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontFamily: 'Comfortaa',

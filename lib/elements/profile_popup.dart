@@ -8,7 +8,7 @@ class ProfilePopup extends StatefulWidget {
   // ignore: constant_identifier_names
   static const PREFERENCES_IS_FIRST_LAUNCH_STRING =
       "PREFERENCES_IS_FIRST_LAUNCH_STRING";
-  const ProfilePopup({Key key}) : super(key: key);
+  const ProfilePopup({Key? key}) : super(key: key);
 
   @override
   State<ProfilePopup> createState() => _ProfilePopupState();
@@ -43,7 +43,7 @@ class _ProfilePopupState extends State<ProfilePopup> {
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        user.displayName,
+                        user!.displayName!,
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -59,7 +59,7 @@ class _ProfilePopupState extends State<ProfilePopup> {
                       },
                     ),
                     ListTile(
-                      title: Text(AppLocalizations.of(context).logout),
+                      title: Text(AppLocalizations.of(context)!.logout),
                       leading: const Icon(Icons.logout),
                       textColor: Colors.red,
                       iconColor: Colors.red,
@@ -81,7 +81,7 @@ class _ProfilePopupState extends State<ProfilePopup> {
                 radius: 50,
                 backgroundColor: Colors.white,
                 backgroundImage: const AssetImage('images/profile_pic.png'),
-                foregroundImage: NetworkImage(user.photoURL),
+                foregroundImage: NetworkImage(user!.photoURL!),
               ),
             ),
           ),

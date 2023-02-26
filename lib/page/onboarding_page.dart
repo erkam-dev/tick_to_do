@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:tick_to_do/provider/google_sign_in.dart';
 
 class OnboardingPage extends StatelessWidget {
-  const OnboardingPage({Key key}) : super(key: key);
+  const OnboardingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,18 +15,18 @@ class OnboardingPage extends StatelessWidget {
       child: IntroductionScreen(
         pages: [
           PageViewModel(
-            title: AppLocalizations.of(context).welcomeToTickToDo,
-            body: AppLocalizations.of(context).welcomeDescription1,
+            title: AppLocalizations.of(context)!.welcomeToTickToDo,
+            body: AppLocalizations.of(context)!.welcomeDescription1,
             image: buildImage('images/welcome.svg'),
           ),
           PageViewModel(
-            title: AppLocalizations.of(context).addYourTodosAndComplete,
-            body: AppLocalizations.of(context).welcomeDescription2,
+            title: AppLocalizations.of(context)!.addYourTodosAndComplete,
+            body: AppLocalizations.of(context)!.welcomeDescription2,
             image: buildImage('images/add_notes.svg'),
           ),
           PageViewModel(
-            title: AppLocalizations.of(context).signInToContinue,
-            body: AppLocalizations.of(context).welcomeDescription3,
+            title: AppLocalizations.of(context)!.signInToContinue,
+            body: AppLocalizations.of(context)!.welcomeDescription3,
             image: buildImage('images/login.svg'),
           ),
         ],
@@ -34,7 +34,7 @@ class OnboardingPage extends StatelessWidget {
         next: const Icon(Icons.navigate_next),
         showNextButton: true,
         showSkipButton: true,
-        skip: Text(AppLocalizations.of(context).skip),
+        skip: Text(AppLocalizations.of(context)!.skip),
         onSkip: () => loginWidget(context),
         onDone: () => loginWidget(context),
       ),

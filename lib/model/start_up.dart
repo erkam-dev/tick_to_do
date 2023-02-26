@@ -8,7 +8,7 @@ import 'package:tick_to_do/page/onboarding_page.dart';
 import 'package:tick_to_do/provider/google_sign_in.dart';
 
 class StartUp extends StatelessWidget {
-  const StartUp({Key key}) : super(key: key);
+  const StartUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +16,12 @@ class StartUp extends StatelessWidget {
     return Scaffold(
       body: ChangeNotifierProvider(
         create: (context) => GoogleSignInProvider(),
-        child: StreamBuilder<Object>(
+        child: StreamBuilder<Object?>(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             final provider =
                 Provider.of<GoogleSignInProvider>(context, listen: false);
-            if (provider.isSigningIn) {
+            if (provider.isSigningIn!) {
               return buildLoading();
             } else if (snapshot.hasData) {
               return ShowCaseWidget(

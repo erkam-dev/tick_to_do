@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:tick_to_do/elements/hero_dialog_route.dart';
 import 'package:tick_to_do/model/todo.dart';
-import 'package:tick_to_do/todos_structure/edit_todo.dart';
 import 'package:tick_to_do/provider/todos.dart';
+import 'package:tick_to_do/todos_structure/edit_todo.dart';
 import 'package:tick_to_do/utils.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TodoCardWidget extends StatelessWidget {
   final Todo todo;
 
   const TodoCardWidget({
-    @required this.todo,
-    Key key,
+    required this.todo,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -26,10 +26,11 @@ class TodoCardWidget extends StatelessWidget {
             editTodo(context, todo);
           },
           child: Hero(
-            tag: todo.id,
-            child: Material(
+            tag: todo.id!,
+            child: Card(
               clipBehavior: Clip.antiAlias,
-              borderRadius: BorderRadius.circular(15),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25)),
               child: Container(
                 decoration: BoxDecoration(
                   color: Theme.of(context).cardColor,
@@ -42,14 +43,14 @@ class TodoCardWidget extends StatelessWidget {
                       checkColor: Colors.white,
                       value: todo.isDone,
                       onChanged: (_) {
-                        bool isDone = toggleIsDone(context);
+                        bool isDone = toggleIsDone(context)!;
                         HapticFeedback.heavyImpact();
 
                         Utils.showSnackBar(
                           context,
                           isDone
-                              ? AppLocalizations.of(context).snackbarComplete
-                              : AppLocalizations.of(context)
+                              ? AppLocalizations.of(context)!.snackbarComplete
+                              : AppLocalizations.of(context)!
                                   .snackbarNotComplete,
                         );
                       },
@@ -60,17 +61,17 @@ class TodoCardWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            todo.title,
+                            todo.title!,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 22,
                             ),
                           ),
-                          if (todo.description.isNotEmpty)
+                          if (todo.description!.isNotEmpty)
                             Container(
                               margin: const EdgeInsets.only(top: 4),
                               child: Text(
-                                todo.description,
+                                todo.description!,
                                 style:
                                     const TextStyle(fontSize: 20, height: 1.5),
                               ),
@@ -86,7 +87,7 @@ class TodoCardWidget extends StatelessWidget {
         ),
       );
 
-  bool toggleIsDone(BuildContext context) {
+  bool? toggleIsDone(BuildContext context) {
     final provider = Provider.of<TodosProvider>(context, listen: false);
     final isDone = provider.toggleTodoStatus(todo);
     return isDone;
@@ -96,7 +97,7 @@ class TodoCardWidget extends StatelessWidget {
     final provider = Provider.of<TodosProvider>(context, listen: false);
     provider.removeTodo(todo);
 
-    Utils.showSnackBar(context, AppLocalizations.of(context).snackbarDeleted);
+    Utils.showSnackBar(context, AppLocalizations.of(context)!.snackbarDeleted);
   }
 
   void editTodo(BuildContext context, Todo todo) => Navigator.of(context).push(

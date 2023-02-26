@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:tick_to_do/utils.dart';
 
 class TodoField {
@@ -6,15 +5,15 @@ class TodoField {
 }
 
 class Todo {
-  DateTime createdTime;
-  String title;
-  String id;
-  String description;
-  bool isDone;
+  DateTime? createdTime;
+  String? title;
+  String? id;
+  String? description;
+  bool? isDone;
 
   Todo({
-    @required this.createdTime,
-    @required this.title,
+    required this.createdTime,
+    required this.title,
     this.description = '',
     this.id,
     this.isDone = false,

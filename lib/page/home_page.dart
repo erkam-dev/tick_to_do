@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
   static const PREFERENCES_IS_FIRST_LAUNCH_STRING =
       "PREFERENCES_IS_FIRST_LAUNCH_STRING";
 
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
     List fabList = [
       FloatingActionButton(child: const Icon(Icons.add), onPressed: () {}),
       HeroFAB(
-          showcaseDescription: AppLocalizations.of(context).showCaseAddTodo,
+          showcaseDescription: AppLocalizations.of(context)!.showCaseAddTodo,
           globalKey: addtodo,
           heroTag: 'AddTodo',
           onTap: () {
@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           },
-          title: AppLocalizations.of(context).addTodo,
+          title: AppLocalizations.of(context)!.addTodo,
           icon: Icons.add_task),
       HeroFAB(
           showcaseDescription: "Yeni pomodoro ekleyin",
@@ -138,11 +138,11 @@ class _HomePageState extends State<HomePage> {
           ),
           CustomShowcaseWidget(
             globalKey: todosnavbar,
-            description: AppLocalizations.of(context).showCaseTodos,
+            description: AppLocalizations.of(context)!.showCaseTodos,
             child: NavigationDestination(
               icon: const Icon(Icons.check_box_outlined),
               selectedIcon: const Icon(Icons.check_box),
-              label: AppLocalizations.of(context).todos.toString(),
+              label: AppLocalizations.of(context)!.todos.toString(),
             ),
           ),
           CustomShowcaseWidget(

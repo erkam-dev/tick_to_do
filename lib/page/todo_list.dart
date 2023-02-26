@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:tick_to_do/api/firebase_api.dart';
 import 'package:tick_to_do/elements/build_error.dart';
 import 'package:tick_to_do/model/todo.dart';
-import 'package:tick_to_do/provider/todos.dart';
-import 'package:tick_to_do/todos_structure/todo_card_widget.dart';
+
+import '../api/firebase_api.dart';
+import '../provider/todos.dart';
+import '../todos_structure/todo_card_widget.dart';
 
 class TodoList extends StatelessWidget {
-  const TodoList({Key key}) : super(key: key);
+  const TodoList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<Todo>>(
       stream: FirebaseApi.readTodos(),
-      builder: (context, snapshot) {
+      builder: (context, AsyncSnapshot<List<Todo>> snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
             return Center(
@@ -30,14 +31,14 @@ class TodoList extends StatelessWidget {
             } else {
               final todos = snapshot.data;
               final provider = Provider.of<TodosProvider>(context);
-              provider.setTodos(todos);
-              return todos.isEmpty
+              provider.setTodos(todos ?? []);
+              return todos!.isEmpty
                   ? noDataBuild(context)
                   : ListView(
                       children: [
                         provider.todos.isEmpty
                             ? Container()
-                            : todosSubtitle(AppLocalizations.of(context).todos,
+                            : todosSubtitle(AppLocalizations.of(context)!.todos,
                                 Colors.blue),
                         ListView.builder(
                           shrinkWrap: true,
@@ -49,7 +50,7 @@ class TodoList extends StatelessWidget {
                         provider.todosCompleted.isEmpty
                             ? Container()
                             : todosSubtitle(
-                                AppLocalizations.of(context).completed,
+                                AppLocalizations.of(context)!.completed,
                                 Colors.green),
                         ListView.builder(
                           shrinkWrap: true,
@@ -95,7 +96,7 @@ class TodoList extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             child: Text(
-              AppLocalizations.of(context).noTodos,
+              AppLocalizations.of(context)!.noTodos,
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontFamily: 'Comfortaa',

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TodayPlaceHolder extends StatefulWidget {
-  const TodayPlaceHolder({Key key}) : super(key: key);
+  const TodayPlaceHolder({Key? key}) : super(key: key);
 
   @override
   State<TodayPlaceHolder> createState() => _TodayPlaceHolderState();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AddPomodoro extends StatefulWidget {
-  const AddPomodoro({Key key}) : super(key: key);
+  const AddPomodoro({Key? key}) : super(key: key);
 
   @override
   State<AddPomodoro> createState() => _AddPomodoroState();
@@ -10,7 +10,7 @@ class AddPomodoro extends StatefulWidget {
 
 class _AddPomodoroState extends State<AddPomodoro> {
   final _formKey = GlobalKey<FormState>();
-  String pomodoroDuration;
+  String? pomodoroDuration;
 
   @override
   Widget build(BuildContext context) {
@@ -55,13 +55,13 @@ class _AddPomodoroState extends State<AddPomodoro> {
                   ElevatedButton.icon(
                     // ignore: void_checks
                     onPressed: () {
-                      final isValid = _formKey.currentState.validate();
-                      if (!isValid) {
-                        return null;
-                      } else {
-                        Navigator.pop(context);
-                        return pomodoroDuration;
-                      }
+                      // final isValid = _formKey.currentState!.validate();
+                      // if (!isValid) {
+                      //   return;
+                      // } else {
+                      //   Navigator.pop(context);
+                      //   return pomodoroDuration;
+                      // }
                     },
                     icon: const Icon(Icons.alarm_add),
                     label: const Text("Oluştur"),

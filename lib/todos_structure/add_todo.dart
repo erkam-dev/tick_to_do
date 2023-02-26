@@ -6,7 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 class AddTodo extends StatefulWidget {
-  const AddTodo({Key key}) : super(key: key);
+  const AddTodo({Key? key}) : super(key: key);
 
   @override
   State<AddTodo> createState() => _AddTodoState();
@@ -48,7 +48,7 @@ class _AddTodoState extends State<AddTodo> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                AppLocalizations.of(context).addTodo,
+                                AppLocalizations.of(context)!.addTodo,
                                 style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -77,7 +77,7 @@ class _AddTodoState extends State<AddTodo> {
       );
 
   void addTodo() {
-    final isValid = _formKey.currentState.validate();
+    final isValid = _formKey.currentState!.validate();
 
     if (!isValid) {
       return;

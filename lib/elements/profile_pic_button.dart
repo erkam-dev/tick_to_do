@@ -5,12 +5,12 @@ import 'package:tick_to_do/elements/profile_popup.dart';
 
 class ProfilePicButton extends StatelessWidget {
   const ProfilePicButton({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser;
+    final user = FirebaseAuth.instance.currentUser!;
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -43,7 +43,7 @@ class ProfilePicButton extends StatelessWidget {
                 radius: 25,
                 backgroundColor: Colors.white,
                 backgroundImage: const AssetImage('images/profile_pic.png'),
-                foregroundImage: NetworkImage(user.photoURL),
+                foregroundImage: NetworkImage(user.photoURL!),
               ),
             ),
           ],

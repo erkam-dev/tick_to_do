@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tick_to_do/page/pomodoro.dart';
 
 class PomodoroList extends StatelessWidget {
-  const PomodoroList({Key key}) : super(key: key);
+  const PomodoroList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

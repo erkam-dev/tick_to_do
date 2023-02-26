@@ -1,9 +1,11 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tick_to_do/model/todo.dart';
 import 'package:tick_to_do/utils.dart';
 
-String uid = FirebaseAuth.instance.currentUser.uid;
+String uid = FirebaseAuth.instance.currentUser!.uid;
 
 class FirebaseApi {
   static Future<String> createTodo(Todo todo) async {
@@ -25,7 +27,7 @@ class FirebaseApi {
       .collection('todo')
       .orderBy(TodoField.createdTime, descending: true)
       .snapshots()
-      .transform(Utils.transformer(Todo.fromJson));
+      .transform(Utils.transformer(Todo.fromJson).cast());
 
   static Future updateTodo(Todo todo) async {
     final docTodo = FirebaseFirestore.instance

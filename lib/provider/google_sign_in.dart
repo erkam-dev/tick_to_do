@@ -5,11 +5,11 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleSignInProvider extends ChangeNotifier {
   final googleSignIn = GoogleSignIn();
-  bool _isSigningIn;
+  bool? _isSigningIn;
   GoogleSignInProvider() {
     _isSigningIn = false;
   }
-  bool get isSigningIn => _isSigningIn;
+  bool? get isSigningIn => _isSigningIn;
   set isSigninIn(bool isSigningIn) {
     _isSigningIn = isSigningIn;
     notifyListeners();
