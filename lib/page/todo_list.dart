@@ -111,6 +111,7 @@ class _TodoListState extends State<TodoList> {
                               ),
                             ],
                           ),
+                          const SizedBox(height: 150)
                         ],
                       ),
               );
@@ -122,13 +123,14 @@ class _TodoListState extends State<TodoList> {
 
   ListTile todosSubtitle(String title, Color color) {
     return ListTile(
+      contentPadding: EdgeInsets.zero,
+      horizontalTitleGap: 0,
       title: Text(
         title,
-        style: TextStyle(
-          color: color,
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-        ),
+        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+              color: color,
+              fontWeight: FontWeight.bold,
+            ),
       ),
     );
   }
