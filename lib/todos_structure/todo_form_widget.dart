@@ -18,19 +18,14 @@ class TodoFormWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Container(
-        padding: const EdgeInsets.all(25),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            buildTitle(context),
-            const SizedBox(
-              height: 10,
-            ),
-            buildDescription(context),
-            buildButton(context)
-          ],
-        ),
+  Widget build(BuildContext context) => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          buildTitle(context),
+          const SizedBox(height: 10),
+          buildDescription(context),
+          buildButton(context)
+        ],
       );
 
   TextFormField buildTitle(BuildContext context) {

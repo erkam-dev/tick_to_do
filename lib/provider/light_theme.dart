@@ -87,5 +87,9 @@ ThemeData myLightTheme(BuildContext context) {
       minLeadingWidth: 0,
       horizontalTitleGap: 5,
     ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
+    ),
   );
 }
