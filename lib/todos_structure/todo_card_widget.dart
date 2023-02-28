@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -16,15 +17,21 @@ class TodoCardWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => buildTodo(context);
-
-  Widget buildTodo(BuildContext context) => Hero(
-        tag: todo.id,
-        child: Card(
-          child: ListTile(
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: OpenContainer(
+          closedElevation: Theme.of(context).cardTheme.elevation!,
+          openElevation: 0,
+          tappable: false,
+          openColor: Theme.of(context).scaffoldBackgroundColor,
+          closedColor: Theme.of(context).cardColor,
+          closedShape: Theme.of(context).cardTheme.shape!,
+          transitionType: ContainerTransitionType.fadeThrough,
+          openBuilder: (context, action) => EditTodo(todo: todo),
+          closedBuilder: (context, action) => ListTile(
             dense: true,
+            onTap: () => action(),
             contentPadding: const EdgeInsets.only(right: 10, top: 5, bottom: 5),
-            onTap: () => editTodo(context, todo),
             title: Text(
               todo.title,
               style: Theme.of(context)

@@ -39,16 +39,21 @@ class _HomePageState extends State<HomePage> {
             showModalBottomSheet(
               context: context,
               isScrollControlled: true,
-              useSafeArea: true,
               builder: (context) => ListView(
                 shrinkWrap: true,
-                padding: const EdgeInsets.all(20),
+                padding: EdgeInsets.only(
+                  top: 20,
+                  right: 20,
+                  left: 20,
+                  bottom: MediaQuery.of(context).viewInsets.bottom + 30,
+                ),
                 children: [
                   Text(AppLocalizations.of(context)!.addTodo),
                   const SizedBox(height: 10),
                   TextFormField(
                     decoration: InputDecoration(
-                        labelText: AppLocalizations.of(context)!.title),
+                      labelText: AppLocalizations.of(context)!.title,
+                    ),
                   ),
                 ],
               ),

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -28,67 +29,55 @@ class _EditTodoState extends State<EditTodo> {
   }
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(top: 100),
-        child: Stack(
-          alignment: Alignment.topCenter,
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text(AppLocalizations.of(context)!.editTodo),
+          actions: [
+            IconButton(
+                onPressed: () => moreAction(),
+                icon: Icon(Icons.adaptive.more_outlined))
+          ],
+        ),
+        body: ListView(
+          padding: const EdgeInsets.all(20),
           children: [
             Form(
               key: _formKey,
-              child: Hero(
-                tag: widget.todo.id,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15)),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxHeight: MediaQuery.of(context).size.height / 2,
-                      maxWidth: MediaQuery.of(context).size.width / 1.2,
-                      minWidth: MediaQuery.of(context).size.width / 1.2,
-                    ),
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: [
-                        ListTile(
-                          title: Text(
-                            AppLocalizations.of(context)!.editTodo,
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                          trailing: deleteButton(context),
-                        ),
-                        TodoFormWidget(
-                          title: title,
-                          description: description,
-                          onChangedTitle: (title) =>
-                              setState(() => this.title = title),
-                          onChangedDescription: (description) =>
-                              setState(() => this.description = description),
-                          onSavedTodo: saveTodo,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+              child: TodoFormWidget(
+                title: title,
+                description: description,
+                onChangedTitle: (title) => setState(() => this.title = title),
+                onChangedDescription: (description) =>
+                    setState(() => this.description = description),
+                onSavedTodo: saveTodo,
               ),
             ),
           ],
         ),
       );
 
-  IconButton deleteButton(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        final provider = Provider.of<TodosProvider>(context, listen: false);
-        provider.removeTodo(widget.todo);
-        Utils.showSnackBar(
-            context, AppLocalizations.of(context)!.snackbarDeleted.toString());
-        Navigator.pop(context);
-      },
-      icon: const Icon(
-        Icons.delete_outline_rounded,
-        color: Colors.red,
+  deleteButton() {
+    final provider = Provider.of<TodosProvider>(context, listen: false);
+    provider.removeTodo(widget.todo);
+    Utils.showSnackBar(
+        context, AppLocalizations.of(context)!.snackbarDeleted.toString());
+    Navigator.popUntil(context, (route) => route.isFirst);
+  }
+
+  moreAction() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => ListView(
+        shrinkWrap: true,
+        children: [
+          ListTile(
+            leading: const Icon(CupertinoIcons.delete),
+            title: Text(AppLocalizations.of(context)!.delete),
+            onTap: () => deleteButton(),
+          ),
+        ],
       ),
-      alignment: Alignment.topRight,
     );
   }
 

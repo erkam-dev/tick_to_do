@@ -17,7 +17,7 @@ ThemeData myDarkTheme(BuildContext context) {
     ),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(15),
       ),
     ),
     checkboxTheme: CheckboxThemeData(
