@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: CustomScrollView(slivers: [
         SliverAppBar(
-          expandedHeight: 100,
+          expandedHeight: MediaQuery.of(context).size.height * 0.2,
           pinned: true,
           flexibleSpace: FlexibleSpaceBar(
             title: Text(
@@ -35,6 +35,54 @@ class _HomePageState extends State<HomePage> {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             expandedTitleScale: 1.3,
+            titlePadding: const EdgeInsets.only(bottom: 60),
+          ),
+          leading: IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(50),
+            child: SizedBox(
+              height: 50,
+              child: ListView(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                scrollDirection: Axis.horizontal,
+                children: [
+                  ActionChip(
+                    avatar: const Icon(Icons.sort_rounded),
+                    label: const Text("Sırala"),
+                    onPressed: () {},
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: VerticalDivider(width: 1),
+                  ),
+                  ChoiceChip(
+                    label: const Text("Tamamlananlar"),
+                    selected: completed,
+                    onSelected: (value) {
+                      setState(() {
+                        completed = value;
+                      });
+                    },
+                  ),
+                  const SizedBox(width: 10),
+                  ChoiceChip(
+                    label: const Text("Bugün"),
+                    selected: today,
+                    onSelected: (value) {
+                      setState(() {
+                        today = value;
+                      });
+                    },
+                  ),
+                  const SizedBox(width: 10),
+                  ActionChip(
+                    avatar: const Icon(Icons.add_rounded),
+                    label: const Text("Filtre"),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
           ),
           actions: [
             IconButton(
@@ -84,32 +132,6 @@ class _HomePageState extends State<HomePage> {
         const CupertinoSliverRefreshControl(),
         SliverList(
             delegate: SliverChildListDelegate([
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-            child: Row(
-              children: [
-                ChoiceChip(
-                  label: const Text("Tamamlananlar"),
-                  selected: completed,
-                  onSelected: (value) {
-                    setState(() {
-                      completed = value;
-                    });
-                  },
-                ),
-                const SizedBox(width: 20),
-                ChoiceChip(
-                  label: const Text("Bugün"),
-                  selected: today,
-                  onSelected: (value) {
-                    setState(() {
-                      today = value;
-                    });
-                  },
-                ),
-              ],
-            ),
-          ),
           const TodoList(),
         ]))
       ]),
