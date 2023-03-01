@@ -35,13 +35,6 @@ class _TodoListState extends State<TodoList> {
       stream: FirebaseApi.readTodos(),
       builder: (context, AsyncSnapshot<List<Todo>> snapshot) {
         switch (snapshot.connectionState) {
-          // case ConnectionState.waiting:
-          //   return Center(
-          //     child: Container(
-          //       padding: const EdgeInsets.all(30),
-          //       child: const CircularProgressIndicator(),
-          //     ),
-          //   );
           default:
             if (snapshot.hasError) {
               return buildError(context);
@@ -62,57 +55,12 @@ class _TodoListState extends State<TodoList> {
                 },
                 child: (todos ?? []).isEmpty
                     ? noDataBuild(context)
-                    : ListView(
-                        padding: const EdgeInsets.all(10),
-                        children: [
-                          ExpansionPanelList(
-                            elevation: 0,
-                            expansionCallback: (panelIndex, isExpanded) =>
-                                setState(() =>
-                                    expansionPanelValues[panelIndex] =
-                                        !isExpanded),
-                            children: [
-                              ExpansionPanel(
-                                isExpanded: expansionPanelValues[0],
-                                backgroundColor: Colors.transparent,
-                                headerBuilder: (context, isExpanded) =>
-                                    todosSubtitle(
-                                        AppLocalizations.of(context)!.todos,
-                                        Colors.blue),
-                                canTapOnHeader: true,
-                                body: ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: const ClampingScrollPhysics(),
-                                  itemCount: provider.todos.length,
-                                  itemBuilder: (context, index) =>
-                                      TodoCardWidget(
-                                          todo: provider.todos[index]),
-                                ),
-                              ),
-                              ExpansionPanel(
-                                isExpanded: expansionPanelValues[1],
-                                canTapOnHeader: true,
-                                backgroundColor: Colors.transparent,
-                                headerBuilder: (context, isExpanded) =>
-                                    todosSubtitle(
-                                        AppLocalizations.of(context)!.completed,
-                                        Colors.green),
-                                body: SizedBox(
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    physics: const ClampingScrollPhysics(),
-                                    itemCount: provider.todosCompleted.length,
-                                    itemBuilder: (context, index) =>
-                                        TodoCardWidget(
-                                            todo:
-                                                provider.todosCompleted[index]),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 150)
-                        ],
+                    : Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                            children: provider.allTodos
+                                .map((e) => TodoCardWidget(todo: e))
+                                .toList()),
                       ),
               );
             }

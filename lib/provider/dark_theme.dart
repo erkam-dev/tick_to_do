@@ -5,6 +5,7 @@ ThemeData myDarkTheme(BuildContext context) {
   return ThemeData(
     brightness: Brightness.dark,
     useMaterial3: true,
+    splashFactory: InkSparkle.splashFactory,
     fontFamily: 'Comfortaa',
     appBarTheme: AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
