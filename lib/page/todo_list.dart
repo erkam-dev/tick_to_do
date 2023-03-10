@@ -83,11 +83,12 @@ class _TodoListState extends State<TodoList> {
     );
   }
 
-  Center noDataBuild(BuildContext context) {
+  Widget noDataBuild(BuildContext context) {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          SizedBox(height: MediaQuery.of(context).size.height * 0.2),
           SvgPicture.asset(
             'images/no_data.svg',
             width: MediaQuery.of(context).size.width / 2,

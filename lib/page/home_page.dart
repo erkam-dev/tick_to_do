@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
               "Tick To Do",
               style: Theme.of(context).textTheme.titleLarge,
             ),
-            expandedTitleScale: 1.3,
+            expandedTitleScale: 1.2,
             titlePadding: const EdgeInsets.only(bottom: 60),
           ),
           leading: IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
@@ -137,15 +137,17 @@ class _HomePageState extends State<HomePage> {
       ]),
       resizeToAvoidBottomInset: false,
       floatingActionButton: OpenContainer(
-        transitionType: ContainerTransitionType.fadeThrough,
+        transitionType: ContainerTransitionType.fade,
         tappable: false,
         openShape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         closedShape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         closedElevation: 0,
         openElevation: 0,
         clipBehavior: Clip.none,
+        closedColor: Colors.transparent,
+        openColor: Colors.transparent,
         openBuilder: (context, action) => const CreateTodoPage(),
         closedBuilder: (context, action) => FloatingActionButton.extended(
             onPressed: () => action(),

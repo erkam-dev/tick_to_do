@@ -15,11 +15,12 @@ ThemeData myLightTheme(BuildContext context) {
         systemNavigationBarColor: Colors.grey.shade100,
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
+      // centerTitle: true,
     ),
-    inputDecorationTheme: InputDecorationTheme(
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
+    inputDecorationTheme: const InputDecorationTheme(
+      border: InputBorder.none,
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      isDense: true,
     ),
     checkboxTheme: CheckboxThemeData(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
