@@ -29,6 +29,7 @@ class TodoCardWidget extends StatelessWidget {
           transitionType: ContainerTransitionType.fadeThrough,
           openBuilder: (context, action) => EditTodo(todo: todo),
           closedBuilder: (context, action) => ListTile(
+            tileColor: Theme.of(context).cardColor,
             dense: true,
             onTap: () => action(),
             contentPadding: const EdgeInsets.only(right: 10, top: 5, bottom: 5),

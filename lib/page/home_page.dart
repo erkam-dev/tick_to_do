@@ -21,7 +21,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool completed = false;
-  bool today = false;
+  bool todos = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +37,6 @@ class _HomePageState extends State<HomePage> {
             expandedTitleScale: 1.2,
             titlePadding: const EdgeInsets.only(bottom: 60),
           ),
-          leading: IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(50),
             child: SizedBox(
@@ -46,15 +45,6 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 scrollDirection: Axis.horizontal,
                 children: [
-                  ActionChip(
-                    avatar: const Icon(Icons.sort_rounded),
-                    label: const Text("Sırala"),
-                    onPressed: () {},
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: VerticalDivider(width: 1),
-                  ),
                   ChoiceChip(
                     label: const Text("Tamamlananlar"),
                     selected: completed,
@@ -66,19 +56,13 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(width: 10),
                   ChoiceChip(
-                    label: const Text("Bugün"),
-                    selected: today,
+                    label: const Text("Yapılacaklar"),
+                    selected: todos,
                     onSelected: (value) {
                       setState(() {
-                        today = value;
+                        todos = value;
                       });
                     },
-                  ),
-                  const SizedBox(width: 10),
-                  ActionChip(
-                    avatar: const Icon(Icons.add_rounded),
-                    label: const Text("Filtre"),
-                    onPressed: () {},
                   ),
                 ],
               ),
@@ -129,11 +113,11 @@ class _HomePageState extends State<HomePage> {
                 icon: Icon(Icons.adaptive.more_outlined))
           ],
         ),
-        const CupertinoSliverRefreshControl(),
+        CupertinoSliverRefreshControl(
+            onRefresh: () => Future.delayed(const Duration(seconds: 1))),
         SliverList(
-            delegate: SliverChildListDelegate([
-          const TodoList(),
-        ]))
+            delegate: SliverChildListDelegate(
+                [TodoList(completed: completed, todos: todos)]))
       ]),
       resizeToAvoidBottomInset: false,
       floatingActionButton: OpenContainer(

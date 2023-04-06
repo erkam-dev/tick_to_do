@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -59,17 +60,32 @@ class _CreateTodoPageState extends State<CreateTodoPage> {
                 },
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context)!.title),
+                  hintText: AppLocalizations.of(context)!.title,
+                ),
                 maxLines: 1,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(fontWeight: FontWeight.bold),
               ),
             ),
             TextFormField(
               controller: descriptionController,
               decoration: InputDecoration(
-                labelText: AppLocalizations.of(context)!.description,
+                hintText: AppLocalizations.of(context)!.description,
               ),
             ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            addTodo(context,
+                formKey: titleFormKey,
+                title: titleController.text,
+                description: descriptionController.text);
+          },
+          label: const Text("Oluştur"),
+          icon: const Icon(CupertinoIcons.add),
         ),
       ),
     );

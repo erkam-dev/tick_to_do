@@ -4,7 +4,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:tick_to_do/model/todo.dart';
 import 'package:tick_to_do/provider/todos.dart';
-import 'package:tick_to_do/todos_structure/todo_form_widget.dart';
 import 'package:tick_to_do/utils.dart';
 
 class EditTodo extends StatefulWidget {
@@ -29,30 +28,81 @@ class _EditTodoState extends State<EditTodo> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text(AppLocalizations.of(context)!.editTodo),
-          actions: [
-            IconButton(
-                onPressed: () => moreAction(),
-                icon: Icon(Icons.adaptive.more_outlined))
-          ],
-        ),
-        body: ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            Form(
-              key: _formKey,
-              child: TodoFormWidget(
-                title: title,
-                description: description,
-                onChangedTitle: (title) => setState(() => this.title = title),
-                onChangedDescription: (description) =>
-                    setState(() => this.description = description),
-                onSavedTodo: saveTodo,
-              ),
-            ),
-          ],
+  Widget build(BuildContext context) => WillPopScope(
+        onWillPop: () {
+          saveTodo();
+          return Future.value(true);
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(AppLocalizations.of(context)!.editTodo),
+            actions: [
+              IconButton(
+                  onPressed: deleteButton,
+                  icon: const Icon(Icons.delete_outline_rounded))
+            ],
+          ),
+          body: ListView(
+            padding: const EdgeInsets.all(20),
+            children: [
+              Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextFormField(
+                        maxLines: 1,
+                        initialValue: title,
+                        onChanged: (value) {
+                          title = value;
+                        },
+                        validator: (title) {
+                          if (title!.isEmpty) {
+                            return AppLocalizations.of(context)!
+                                .notValid
+                                .toString();
+                          }
+                          return null;
+                        },
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge!
+                            .copyWith(fontWeight: FontWeight.bold),
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText:
+                              AppLocalizations.of(context)!.title.toString(),
+                        ),
+                      ),
+                      TextFormField(
+                        maxLines: null,
+                        initialValue: description,
+                        onChanged: (value) {
+                          description = value;
+                        },
+                        decoration: InputDecoration(
+                          hintText: AppLocalizations.of(context)!
+                              .description
+                              .toString(),
+                          border: InputBorder.none,
+                        ),
+                      )
+                    ],
+                  )),
+            ],
+          ),
+          floatingActionButton: FloatingActionButton.extended(
+              onPressed: () {
+                setState(() {
+                  final provider =
+                      Provider.of<TodosProvider>(context, listen: false);
+                  provider.toggleTodoStatus(widget.todo);
+                });
+              },
+              label: Icon(widget.todo.isDone
+                  ? CupertinoIcons.checkmark_alt_circle
+                  : CupertinoIcons.circle),
+              icon: Text(widget.todo.isDone ? "Tamamlandı" : "Tamamla")),
         ),
       );
 
@@ -88,9 +138,7 @@ class _EditTodoState extends State<EditTodo> {
       return;
     } else {
       final provider = Provider.of<TodosProvider>(context, listen: false);
-
       provider.updateTodo(widget.todo, title, description);
-      Navigator.of(context).pop();
     }
   }
 }

@@ -28,7 +28,13 @@ ThemeData myDarkTheme(BuildContext context) {
         side: const BorderSide(color: Colors.white30, width: 2)),
     cardTheme: CardTheme(
       clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+          side: const BorderSide(
+            width: 1,
+            color: Colors.grey,
+          )),
+      elevation: 0,
     ),
     listTileTheme: const ListTileThemeData(horizontalTitleGap: 5),
     bottomSheetTheme: const BottomSheetThemeData(

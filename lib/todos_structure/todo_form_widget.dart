@@ -22,9 +22,7 @@ class TodoFormWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           buildTitle(context),
-          const SizedBox(height: 10),
           buildDescription(context),
-          buildButton(context)
         ],
       );
 
@@ -39,8 +37,14 @@ class TodoFormWidget extends StatelessWidget {
         }
         return null;
       },
+      style: Theme.of(context)
+          .textTheme
+          .titleLarge!
+          .copyWith(fontWeight: FontWeight.bold),
       decoration: InputDecoration(
-          label: Text(AppLocalizations.of(context)!.title.toString())),
+        border: InputBorder.none,
+        hintText: AppLocalizations.of(context)!.title.toString(),
+      ),
     );
   }
 
@@ -50,7 +54,9 @@ class TodoFormWidget extends StatelessWidget {
       initialValue: description,
       onChanged: onChangedDescription,
       decoration: InputDecoration(
-          label: Text(AppLocalizations.of(context)!.description.toString())),
+        hintText: AppLocalizations.of(context)!.description.toString(),
+        border: InputBorder.none,
+      ),
     );
   }
 
