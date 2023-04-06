@@ -10,16 +10,15 @@ ThemeData myDarkTheme(BuildContext context) {
     appBarTheme: AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
         statusBarIconBrightness: Brightness.light,
         systemNavigationBarColor: Colors.grey.shade900,
         systemNavigationBarIconBrightness: Brightness.light,
       ),
     ),
-    inputDecorationTheme: InputDecorationTheme(
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
+    inputDecorationTheme: const InputDecorationTheme(
+      border: InputBorder.none,
+      isDense: true,
     ),
     checkboxTheme: CheckboxThemeData(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),

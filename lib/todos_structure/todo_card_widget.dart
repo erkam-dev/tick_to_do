@@ -44,7 +44,7 @@ class TodoCardWidget extends StatelessWidget {
                 ? Text(
                     todo.description,
                     style: Theme.of(context).textTheme.bodyMedium,
-                    maxLines: 5,
+                    maxLines: 10,
                     overflow: TextOverflow.ellipsis,
                     softWrap: false,
                   )

@@ -19,7 +19,6 @@ ThemeData myLightTheme(BuildContext context) {
     ),
     inputDecorationTheme: const InputDecorationTheme(
       border: InputBorder.none,
-      floatingLabelBehavior: FloatingLabelBehavior.never,
       isDense: true,
     ),
     checkboxTheme: CheckboxThemeData(
