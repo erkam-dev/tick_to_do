@@ -16,6 +16,7 @@ class EditTodo extends StatefulWidget {
 }
 
 class _EditTodoState extends State<EditTodo> {
+  late FocusNode descriptionFocus;
   final _formKey = GlobalKey<FormState>();
   late String title;
   late String description;
@@ -25,6 +26,7 @@ class _EditTodoState extends State<EditTodo> {
     super.initState();
     title = widget.todo.title;
     description = widget.todo.description;
+    descriptionFocus = FocusNode();
   }
 
   @override
@@ -75,16 +77,24 @@ class _EditTodoState extends State<EditTodo> {
                         ),
                       ),
                       TextFormField(
-                        maxLines: null,
+                        focusNode: descriptionFocus,
                         initialValue: description,
-                        onChanged: (value) {
-                          description = value;
-                        },
+                        onChanged: (value) => description = value,
                         decoration: InputDecoration(
                           hintText: AppLocalizations.of(context)!
                               .description
                               .toString(),
                           border: InputBorder.none,
+                        ),
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                      ),
+                      GestureDetector(
+                        onTap: () => descriptionFocus.requestFocus(),
+                        child: Container(
+                          color: Colors.transparent,
+                          height: MediaQuery.sizeOf(context).height / 3,
+                          width: MediaQuery.sizeOf(context).width,
                         ),
                       )
                     ],

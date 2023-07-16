@@ -16,12 +16,14 @@ class CreateTodoPage extends StatefulWidget {
 class _CreateTodoPageState extends State<CreateTodoPage> {
   late TextEditingController titleController;
   late TextEditingController descriptionController;
+  late FocusNode descriptionFocus;
   late GlobalKey<FormState> titleFormKey;
   @override
   void initState() {
     super.initState();
     titleController = TextEditingController();
     descriptionController = TextEditingController();
+    descriptionFocus = FocusNode();
     titleFormKey = GlobalKey<FormState>();
   }
 
@@ -71,11 +73,22 @@ class _CreateTodoPageState extends State<CreateTodoPage> {
               ),
             ),
             TextFormField(
+              focusNode: descriptionFocus,
               controller: descriptionController,
               decoration: InputDecoration(
                 hintText: AppLocalizations.of(context)!.description,
               ),
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
             ),
+            GestureDetector(
+              onTap: () => descriptionFocus.requestFocus(),
+              child: Container(
+                color: Colors.transparent,
+                height: MediaQuery.sizeOf(context).height / 3,
+                width: MediaQuery.sizeOf(context).width,
+              ),
+            )
           ],
         ),
         floatingActionButton: FloatingActionButton.extended(
