@@ -36,35 +36,38 @@ class _HomePageState extends State<HomePage> {
             ),
             expandedTitleScale: 1.2,
             titlePadding: const EdgeInsets.only(bottom: 60),
+            centerTitle: true,
           ),
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(50),
             child: SizedBox(
               height: 50,
-              child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                children: [
-                  ChoiceChip(
-                    label: const Text("Tamamlananlar"),
-                    selected: completed,
-                    onSelected: (value) {
-                      setState(() {
-                        completed = value;
-                      });
-                    },
-                  ),
-                  const SizedBox(width: 10),
-                  ChoiceChip(
-                    label: const Text("Yapılacaklar"),
-                    selected: todos,
-                    onSelected: (value) {
-                      setState(() {
-                        todos = value;
-                      });
-                    },
-                  ),
-                ],
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ChoiceChip(
+                      label: Text(AppLocalizations.of(context)!.completed),
+                      selected: completed,
+                      onSelected: (value) {
+                        setState(() {
+                          completed = value;
+                        });
+                      },
+                    ),
+                    const SizedBox(width: 20),
+                    ChoiceChip(
+                      label: Text(AppLocalizations.of(context)!.todos),
+                      selected: todos,
+                      onSelected: (value) {
+                        setState(() {
+                          todos = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -37,7 +37,7 @@ class _TodoListState extends State<TodoList> {
       builder: (context, AsyncSnapshot<List<Todo>> snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return const CircularProgressIndicator.adaptive();
+            return const Center(child: CircularProgressIndicator.adaptive());
           default:
             if (snapshot.hasError) {
               return buildError(context);

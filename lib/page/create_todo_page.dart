@@ -51,6 +51,7 @@ class _CreateTodoPageState extends State<CreateTodoPage> {
             Form(
               key: titleFormKey,
               child: TextFormField(
+                autofocus: true,
                 controller: titleController,
                 validator: (value) {
                   if ((value ?? "").isEmpty) {
