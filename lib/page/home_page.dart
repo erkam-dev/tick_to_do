@@ -20,8 +20,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool completed = false;
-  bool todos = false;
+  bool completed = true;
+  bool todos = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,15 +47,6 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ChoiceChip(
-                      label: Text(AppLocalizations.of(context)!.completed),
-                      selected: completed,
-                      onSelected: (value) {
-                        setState(() {
-                          completed = value;
-                        });
-                      },
-                    ),
                     const SizedBox(width: 20),
                     ChoiceChip(
                       label: Text(AppLocalizations.of(context)!.todos),
@@ -63,9 +54,22 @@ class _HomePageState extends State<HomePage> {
                       onSelected: (value) {
                         setState(() {
                           todos = value;
+                          !todos ? completed = true : null;
                         });
                       },
                     ),
+                    const SizedBox(width: 20),
+                    ChoiceChip(
+                      label: Text(AppLocalizations.of(context)!.completed),
+                      selected: completed,
+                      onSelected: (value) {
+                        setState(() {
+                          completed = value;
+                          !completed ? todos = true : null;
+                        });
+                      },
+                    ),
+                    const SizedBox(width: 20),
                   ],
                 ),
               ),

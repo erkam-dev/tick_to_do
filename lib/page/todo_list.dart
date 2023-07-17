@@ -19,17 +19,6 @@ class TodoList extends StatefulWidget {
 }
 
 class _TodoListState extends State<TodoList> {
-  late bool todosExpanded;
-  late bool completedExpanded;
-  List expansionPanelValues = [];
-  @override
-  void initState() {
-    super.initState();
-    completedExpanded = true;
-    todosExpanded = true;
-    expansionPanelValues = [todosExpanded, completedExpanded];
-  }
-
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<Todo>>(

@@ -5,11 +5,10 @@ import 'package:tick_to_do/model/todo.dart';
 class TodosProvider extends ChangeNotifier {
   List<Todo> _todos = [];
 
-  List<Todo> get allTodos => _todos.toList();
   List<Todo> get todos => _todos.where((todo) => todo.isDone == false).toList();
-
   List<Todo> get todosCompleted =>
       _todos.where((todo) => todo.isDone == true).toList();
+  List<Todo> get allTodos => todos + todosCompleted;
 
   void setTodos(List<Todo> todos) =>
       WidgetsBinding.instance.addPostFrameCallback((_) {
