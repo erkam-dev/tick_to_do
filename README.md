@@ -1,4 +1,9 @@
-![Intro](https://user-images.githubusercontent.com/62347408/147811747-9cdb3ee5-73a9-48f9-9339-50a52eca7b5d.png)
+<p align="center">
+<img src="https://github.com/erkam-dev/tick-to-do/assets/62347408/d0d1974d-1e7a-4c74-9f6a-7f6880725f37" alt="logo" width="150"/>
+<p>
+
+# Tick To Do
+### **Elegant and simple way to track todo's. Built with Flutter**
 
 [![Download](https://user-images.githubusercontent.com/62347408/147811787-b574f20c-568e-4159-8e9b-e1e4bfac2ea6.png)](https://bit.ly/TickToDo)
 
