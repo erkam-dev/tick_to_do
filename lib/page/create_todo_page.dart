@@ -56,7 +56,7 @@ class _CreateTodoPageState extends State<CreateTodoPage> {
                 controller: titleController,
                 validator: (value) {
                   if ((value ?? "").isEmpty) {
-                    return "Başlık boş olamaz";
+                    return AppLocalizations.of(context)!.notValid;
                   }
                   return null;
                 },
@@ -97,7 +97,7 @@ class _CreateTodoPageState extends State<CreateTodoPage> {
                 title: titleController.text,
                 description: descriptionController.text);
           },
-          label: const Text("Oluştur"),
+          label: Text(AppLocalizations.of(context)!.addTodo),
           icon: const Icon(CupertinoIcons.add),
         ),
       ),

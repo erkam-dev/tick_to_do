@@ -109,7 +109,9 @@ class _EditTodoState extends State<EditTodo> {
               label: Icon(widget.todo.isDone
                   ? CupertinoIcons.checkmark_alt_circle
                   : CupertinoIcons.circle),
-              icon: Text(widget.todo.isDone ? "Tamamlandı" : "Tamamla")),
+              icon: Text(widget.todo.isDone
+                  ? AppLocalizations.of(context)!.completed
+                  : AppLocalizations.of(context)!.markComplete)),
         ),
       );
 

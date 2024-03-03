@@ -17,7 +17,7 @@
     "snackbarDeleted":"Görev silindi!",
     "save": "Kaydet",
     "ok":"Tamam",
-    "markCompleted": "Tamamla",
+    "markComplete": "Tamamla",
     "completed": "Tamamlandı",
     "snackbarComplete" : "Görev Tamamlandı",
     "snackbarNotComplete":"Görev Tamamlanmadı olarak işaretlendi",

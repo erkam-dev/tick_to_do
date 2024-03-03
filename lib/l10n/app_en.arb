@@ -17,7 +17,7 @@
     "snackbarDeleted": "Todo deleted!",
     "save": "Save",
     "ok": "Ok",
-    "markCompleted": "Mark Completed",
+    "markComplete": "Mark Complete",
     "completed": "Completed",
     "snackbarComplete": "Task Marked Completed",
     "snackbarNotComplete": "Task Marked Not Completed",
