@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
   static const PREFERENCES_IS_FIRST_LAUNCH_STRING =
       "PREFERENCES_IS_FIRST_LAUNCH_STRING";
 
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();

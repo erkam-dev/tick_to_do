@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AddPomodoro extends StatefulWidget {
-  const AddPomodoro({Key? key}) : super(key: key);
+  const AddPomodoro({super.key});
 
   @override
   State<AddPomodoro> createState() => _AddPomodoroState();

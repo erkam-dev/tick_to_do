@@ -9,7 +9,7 @@ import 'package:tick_to_do/utils.dart';
 class EditTodo extends StatefulWidget {
   final Todo todo;
 
-  const EditTodo({Key? key, required this.todo}) : super(key: key);
+  const EditTodo({super.key, required this.todo});
 
   @override
   State<EditTodo> createState() => _EditTodoState();
@@ -30,11 +30,8 @@ class _EditTodoState extends State<EditTodo> {
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () {
-          saveTodo();
-          return Future.value(true);
-        },
+  Widget build(BuildContext context) => PopScope(
+        onPopInvoked: (value) => saveTodo(),
         child: Scaffold(
           appBar: AppBar(
             title: Text(AppLocalizations.of(context)!.editTodo),

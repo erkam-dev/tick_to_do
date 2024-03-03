@@ -7,7 +7,7 @@ import 'package:tick_to_do/page/onboarding_page.dart';
 import 'package:tick_to_do/provider/google_sign_in.dart';
 
 class StartUp extends StatelessWidget {
-  const StartUp({Key? key}) : super(key: key);
+  const StartUp({super.key});
 
   @override
   Widget build(BuildContext context) {

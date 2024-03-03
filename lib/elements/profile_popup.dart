@@ -8,7 +8,7 @@ class ProfilePopup extends StatefulWidget {
   // ignore: constant_identifier_names
   static const PREFERENCES_IS_FIRST_LAUNCH_STRING =
       "PREFERENCES_IS_FIRST_LAUNCH_STRING";
-  const ProfilePopup({Key? key}) : super(key: key);
+  const ProfilePopup({super.key});
 
   @override
   State<ProfilePopup> createState() => _ProfilePopupState();

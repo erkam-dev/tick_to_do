@@ -8,12 +8,12 @@ class Timer extends StatelessWidget {
   Function? onStart;
   Function? onComplete;
   Timer({
-    Key? key,
+    super.key,
     required this.timerController,
     required this.duration,
     this.onStart,
     this.onComplete,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

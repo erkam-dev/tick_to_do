@@ -11,10 +11,7 @@ import 'package:tick_to_do/utils.dart';
 class TodoCardWidget extends StatelessWidget {
   final Todo todo;
 
-  const TodoCardWidget({
-    required this.todo,
-    Key? key,
-  }) : super(key: key);
+  const TodoCardWidget({required this.todo, super.key});
 
   @override
   Widget build(BuildContext context) => Padding(

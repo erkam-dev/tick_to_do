@@ -7,7 +7,7 @@ import '../model/todo.dart';
 import '../provider/todos.dart';
 
 class CreateTodoPage extends StatefulWidget {
-  const CreateTodoPage({Key? key}) : super(key: key);
+  const CreateTodoPage({super.key});
 
   @override
   State<CreateTodoPage> createState() => _CreateTodoPageState();
@@ -29,15 +29,14 @@ class _CreateTodoPageState extends State<CreateTodoPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () {
+    return PopScope(
+      onPopInvoked: (value) {
         addTodo(
           context,
           formKey: titleFormKey,
           title: titleController.text,
           description: descriptionController.text,
         );
-        return Future.value(true);
       },
       child: Scaffold(
         appBar: AppBar(title: Text(AppLocalizations.of(context)!.addTodo)),

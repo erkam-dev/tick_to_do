@@ -4,9 +4,7 @@ import 'package:tick_to_do/elements/hero_dialog_route.dart';
 import 'package:tick_to_do/elements/profile_popup.dart';
 
 class ProfilePicButton extends StatelessWidget {
-  const ProfilePicButton({
-    Key? key,
-  }) : super(key: key);
+  const ProfilePicButton({super.key});
 
   @override
   Widget build(BuildContext context) {

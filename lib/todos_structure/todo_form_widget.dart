@@ -9,13 +9,13 @@ class TodoFormWidget extends StatelessWidget {
   final VoidCallback onSavedTodo;
 
   const TodoFormWidget({
-    Key? key,
+    super.key,
     this.title = '',
     this.description = '',
     required this.onChangedTitle,
     required this.onChangedDescription,
     required this.onSavedTodo,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) => Column(

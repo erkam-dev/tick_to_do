@@ -12,7 +12,7 @@ import '../todos_structure/todo_card_widget.dart';
 class TodoList extends StatefulWidget {
   final bool? completed;
   final bool? todos;
-  const TodoList({Key? key, this.completed, this.todos}) : super(key: key);
+  const TodoList({super.key, this.completed, this.todos});
 
   @override
   State<TodoList> createState() => _TodoListState();
