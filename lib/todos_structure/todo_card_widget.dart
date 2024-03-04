@@ -2,7 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:tick_to_do/elements/hero_dialog_route.dart';
+import 'package:tick_to_do/common/hero_dialog_route.dart';
 import 'package:tick_to_do/model/todo.dart';
 import 'package:tick_to_do/provider/todos.dart';
 import 'package:tick_to_do/todos_structure/edit_todo.dart';

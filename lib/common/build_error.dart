@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Widget buildError(BuildContext context) => SliverToBoxAdapter(
@@ -8,8 +7,6 @@ Widget buildError(BuildContext context) => SliverToBoxAdapter(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SvgPicture.asset('images/access_denied.svg'),
-            SizedBox(height: MediaQuery.of(context).size.height / 20),
             Container(
               alignment: Alignment.center,
               child: Text(

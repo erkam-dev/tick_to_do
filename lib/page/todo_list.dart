@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:tick_to_do/elements/build_error.dart';
+import 'package:tick_to_do/common/build_error.dart';
 import 'package:tick_to_do/model/todo.dart';
 
 import '../api/firebase_api.dart';
@@ -77,10 +76,10 @@ class _TodoListState extends State<TodoList> {
       mainAxisSize: MainAxisSize.max,
       children: [
         SizedBox(height: MediaQuery.of(context).size.height * 0.2),
-        SvgPicture.asset(
-          'images/no_data.svg',
-          width: MediaQuery.of(context).size.width / 2,
-        ),
+        // SvgPicture.asset(
+        //   'images/no_data.svg',
+        //   width: MediaQuery.of(context).size.width / 2,
+        // ),
         SizedBox(height: MediaQuery.of(context).size.height / 20),
         Container(
           alignment: Alignment.center,

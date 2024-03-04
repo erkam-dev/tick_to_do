@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tick_to_do/elements/hero_dialog_route.dart';
-import 'package:tick_to_do/elements/profile_popup.dart';
+import 'package:tick_to_do/common/hero_dialog_route.dart';
+import 'package:tick_to_do/common/profile_popup.dart';
 
 class ProfilePicButton extends StatelessWidget {
   const ProfilePicButton({super.key});

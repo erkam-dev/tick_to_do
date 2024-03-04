@@ -1,18 +1,22 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:tick_to_do/provider/dark_theme.dart';
-import 'package:tick_to_do/provider/light_theme.dart';
+import 'package:tick_to_do/core/core.dart';
 import 'package:tick_to_do/provider/todos.dart';
 
 import 'model/start_up.dart';
 
 Future main() async {
+  ErrorWidget.builder = (FlutterErrorDetails details) =>
+      Text(kDebugMode ? details.toString() : "Something Went Wrong!")
+          .centered()
+          .pad16()
+          .card();
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await init();
   runApp(const MyApp());
 }
 

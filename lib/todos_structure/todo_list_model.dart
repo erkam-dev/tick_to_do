@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tick_to_do/todos_structure/todo_card_widget.dart';
 
 // ignore: must_be_immutable
@@ -27,10 +26,10 @@ class TodoListModel extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(height: MediaQuery.of(context).size.height / 10),
-          SvgPicture.asset(
-            'images/no_data.svg',
-            width: MediaQuery.of(context).size.width / 2,
-          ),
+          // SvgPicture.asset(
+          //   'images/no_data.svg',
+          //   width: MediaQuery.of(context).size.width / 2,
+          // ),
           SizedBox(height: MediaQuery.of(context).size.height / 20),
           Container(
             alignment: Alignment.center,
