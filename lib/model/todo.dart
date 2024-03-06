@@ -1,4 +1,4 @@
-import 'package:tick_to_do/utils.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TodoField {
   static const createdTime = 'createdTime';
@@ -20,7 +20,7 @@ class Todo {
   });
 
   static Todo fromJson(Map<String, dynamic> json) => Todo(
-        createdTime: Utils.toDateTime(json['createdTime']),
+        createdTime: (json['createdTime'] as Timestamp?)?.toDate(),
         title: json['title'],
         description: json['description'],
         id: json['id'],
@@ -28,7 +28,7 @@ class Todo {
       );
 
   Map<String, dynamic> toJson() => {
-        'createdTime': Utils.fromDateTimeToJson(createdTime),
+        'createdTime': createdTime?.toUtc(),
         'title': title,
         'description': description,
         'id': id,

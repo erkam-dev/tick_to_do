@@ -10,4 +10,5 @@ init() async {
   initSharedPreferencesPlugin();
 
   // features
+  initTodoFeatures();
 }

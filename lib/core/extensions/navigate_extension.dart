@@ -6,8 +6,14 @@ extension NavigateExtension on BuildContext {
           this, MaterialPageRoute(builder: (context) => page))
       : Navigator.push(this, MaterialPageRoute(builder: (context) => page));
 
-  void showSnackBar(String message) =>
-      ScaffoldMessenger.of(this).showSnackBar(SnackBar(content: Text(message)));
+  void hideSnackBar() => ScaffoldMessenger.of(this).hideCurrentSnackBar();
+
+  void hideKeyboard() => FocusScope.of(this).unfocus();
+
+  void showSnackBar(String message) {
+    hideSnackBar();
+    ScaffoldMessenger.of(this).showSnackBar(SnackBar(content: Text(message)));
+  }
 
   showBottomSheet({required Widget child}) => showModalBottomSheet(
         context: this,

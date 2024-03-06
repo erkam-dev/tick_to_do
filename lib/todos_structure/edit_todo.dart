@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:tick_to_do/core/core.dart';
 import 'package:tick_to_do/model/todo.dart';
 import 'package:tick_to_do/provider/todos.dart';
-import 'package:tick_to_do/utils.dart';
 
 class EditTodo extends StatefulWidget {
   final Todo todo;
@@ -118,8 +118,8 @@ class _EditTodoState extends State<EditTodo> {
   deleteButton() {
     final provider = Provider.of<TodosProvider>(context, listen: false);
     provider.removeTodo(widget.todo);
-    Utils.showSnackBar(
-        context, AppLocalizations.of(context)!.snackbarDeleted.toString());
+    context
+        .showSnackBar(AppLocalizations.of(context)!.snackbarDeleted.toString());
     Navigator.popUntil(context, (route) => route.isFirst);
   }
 

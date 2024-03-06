@@ -1,7 +1,31 @@
-// import 'package:tick_to_do/core/injection/injection_container.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../../lib.dart';
 
 initTodoFeatures() {
-  // sl.registerFactory<TodoRepository>(() => TodoRepositoryImpl());
-  // sl.registerFactory<TodoUseCase>(() => TodoUseCaseImpl(sl()));
-  // sl.registerFactory<TodoBloc>(() => TodoBloc(container()));
+  sl.registerFactory<TodoBloc>(() => TodoBloc(
+        getTodosUsecase: sl<GetTodosUsecase>(),
+        addTodoUsecase: sl<AddTodoUsecase>(),
+        updateTodoUsecase: sl<UpdateTodoUsecase>(),
+        deleteTodoUsecase: sl<DeleteTodoUsecase>(),
+      ));
+  sl.registerLazySingleton<Todo>(() => const Todo(
+      id: '', title: '', description: '', isDone: false, createdTime: null));
+  sl.registerLazySingleton<TodoModel>(() => const TodoModel(
+      id: '', title: '', description: '', isDone: false, createdTime: null));
+  sl.registerLazySingleton<GetTodosUsecase>(
+      () => GetTodosUsecase(sl<TodoRepositoryImpl>()));
+  sl.registerLazySingleton<AddTodoUsecase>(
+      () => AddTodoUsecase(sl<TodoRepositoryImpl>()));
+  sl.registerLazySingleton<UpdateTodoUsecase>(
+      () => UpdateTodoUsecase(sl<TodoRepositoryImpl>()));
+  sl.registerLazySingleton<DeleteTodoUsecase>(
+      () => DeleteTodoUsecase(sl<TodoRepositoryImpl>()));
+  sl.registerLazySingleton<TodoRepositoryImpl>(
+      () => TodoRepositoryImpl(sl<TodoRemoteDataSource>()));
+  sl.registerLazySingleton<TodoRemoteDataSource>(() => TodoRemoteDataSourceImpl(
+        firestore: sl<FirebaseFirestore>(),
+        uid: sl<FirebaseAuth>().currentUser!.uid,
+      ));
 }

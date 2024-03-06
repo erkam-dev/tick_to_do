@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../lib.dart';
@@ -22,7 +23,20 @@ class TodoModel with _$TodoModel {
         createdTime: todo.createdTime,
         id: todo.id,
       );
+  factory TodoModel.fromJson(Map<String, dynamic> json) => TodoModel(
+        createdTime: (json['createdTime'] as Timestamp?)?.toDate(),
+        title: json['title'],
+        description: json['description'],
+        id: json['id'],
+        isDone: json['isDone'],
+      );
 
-  factory TodoModel.fromJson(Map<String, dynamic> json) =>
-      _$TodoModelFromJson(json);
+  @override
+  Map<String, dynamic> toJson() => {
+        'createdTime': createdTime?.toUtc(),
+        'title': title,
+        'description': description,
+        'id': id,
+        'isDone': isDone,
+      };
 }

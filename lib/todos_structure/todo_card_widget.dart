@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:tick_to_do/common/hero_dialog_route.dart';
+import 'package:tick_to_do/core/core.dart';
 import 'package:tick_to_do/model/todo.dart';
 import 'package:tick_to_do/provider/todos.dart';
 import 'package:tick_to_do/todos_structure/edit_todo.dart';
-import 'package:tick_to_do/utils.dart';
 
 class TodoCardWidget extends StatelessWidget {
   final Todo todo;
@@ -64,8 +64,7 @@ class TodoCardWidget extends StatelessWidget {
   void deleteTodo(BuildContext context, Todo todo) {
     final provider = Provider.of<TodosProvider>(context, listen: false);
     provider.removeTodo(todo);
-
-    Utils.showSnackBar(context, AppLocalizations.of(context)!.snackbarDeleted);
+    context.showSnackBar(AppLocalizations.of(context)!.snackbarDeleted);
   }
 
   void editTodo(BuildContext context, Todo todo) => Navigator.of(context).push(

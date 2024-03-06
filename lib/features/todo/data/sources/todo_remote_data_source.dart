@@ -10,14 +10,15 @@ abstract class TodoRemoteDataSource {
 }
 
 class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
-  final FirebaseFirestore _firestore;
+  final FirebaseFirestore firestore;
+  final String uid;
 
-  TodoRemoteDataSourceImpl(this._firestore);
+  TodoRemoteDataSourceImpl({required this.firestore, required this.uid});
 
   @override
   Future<List<TodoModel>> getTodos() async {
     try {
-      final snapshot = await _firestore
+      final snapshot = await firestore
           .collection('users')
           .doc(uid)
           .collection('todos')
@@ -33,7 +34,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
   @override
   Future<void> addTodo(TodoModel todo) async {
     try {
-      await _firestore
+      await firestore
           .collection('users')
           .doc(uid)
           .collection('todos')
@@ -46,7 +47,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
   @override
   Future<void> updateTodo(TodoModel todo) async {
     try {
-      await _firestore
+      await firestore
           .collection('users')
           .doc(uid)
           .collection('todos')
@@ -60,7 +61,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
   @override
   Future<void> deleteTodo(String id) async {
     try {
-      await _firestore
+      await firestore
           .collection('users')
           .doc(uid)
           .collection('todos')

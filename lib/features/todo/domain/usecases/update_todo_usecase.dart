@@ -4,13 +4,12 @@ import 'package:tick_to_do/features/todo/domain/repositories/todo_repository.dar
 
 import '../../../../core/core.dart';
 
-class GetTodosUsecase
-    implements Usecase<Either<Failure, List<Todo>>, NoParams> {
+class UpdateTodoUsecase implements Usecase<void, Todo> {
   final TodoRepository repository;
 
-  GetTodosUsecase(this.repository);
+  UpdateTodoUsecase(this.repository);
 
   @override
-  Future<Either<Failure, List<Todo>>> call(NoParams noParams) async =>
-      await repository.getTodos();
+  Future<Either<Failure, void>> call(Todo todo) async =>
+      await repository.updateTodo(todo);
 }
