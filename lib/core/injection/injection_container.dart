@@ -7,7 +7,7 @@ var sl = GetIt.instance;
 init() async {
   // plugins
   await initFirebasePlugin();
-  initSharedPreferencesPlugin();
+  await initSharedPreferencesPlugin();
 
   // features
   initTodoFeatures();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-ThemeData myDarkTheme(BuildContext context) {
+ThemeData myDarkTheme() {
   return ThemeData(
     brightness: Brightness.dark,
     useMaterial3: true,

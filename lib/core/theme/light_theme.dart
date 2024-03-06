@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-ThemeData myLightTheme(BuildContext context) {
+ThemeData myLightTheme() {
   return ThemeData(
     brightness: Brightness.light,
     useMaterial3: true,
