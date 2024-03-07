@@ -20,10 +20,10 @@ class AuthScreenControllerState extends State<AuthScreenController> {
   @override
   Widget build(BuildContext context) {
     final currentUser = sl<FirebaseAuth>().currentUser;
-    return currentUser != null
-        ? const HomeScreen()
-        : sl<SharedPreferences>().getBool(onboardSeenKey) == true
-            ? const LoginScreen()
-            : const OnboardScreen();
+    return sl<SharedPreferences>().getBool(onboardSeenKey) != true
+        ? const OnboardScreen()
+        : currentUser != null
+            ? const HomeScreen()
+            : const LoginScreen();
   }
 }
