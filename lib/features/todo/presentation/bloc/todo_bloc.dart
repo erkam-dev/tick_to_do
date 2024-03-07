@@ -1,15 +1,16 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tick_to_do/core/core.dart';
 import 'package:tick_to_do/features/features.dart';
-
-import '../../../../core/core.dart';
 
 part 'todo_bloc.freezed.dart';
 part 'todo_event.dart';
 part 'todo_state.dart';
 
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
-  List<Todo> todoList = [];
+  StreamSubscription? todoSubscription;
   final GetTodosUsecase getTodosUsecase;
   final AddTodoUsecase addTodoUsecase;
   final UpdateTodoUsecase updateTodoUsecase;
@@ -20,57 +21,40 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     required this.updateTodoUsecase,
     required this.deleteTodoUsecase,
   }) : super(const _Initial()) {
-    on<_GetTodoItems>((event, emit) {
+    on<_GetTodoItems>((event, emit) async {
       emit(const _Loading());
-      getTodosUsecase(NoParams()).then((value) {
-        value.fold(
-          (l) => emit(const _Error()),
-          (r) {
-            todoList = r;
-            emit(const _Initial());
-          },
-        );
-      });
+      todoSubscription = getTodosUsecase.call(NoParams()).listen(
+        (todos) {
+          emit(_Initial(todos));
+        },
+        onError: (e) {
+          todoSubscription?.cancel();
+          emit(const _Error());
+        },
+      );
     });
     on<_AddTodoItem>((event, emit) {
       emit(const _Loading());
-      addTodoUsecase(event.todo).then((value) {
-        value.fold(
-          (l) => emit(const _Error()),
-          (r) {
-            todoList.add(event.todo);
-            emit(const _Initial());
-          },
-        );
+      addTodoUsecase(event.todo).then((_) {
+        emit(const _Initial());
+      }).catchError((e) {
+        emit(const _Error());
       });
     });
     on<_UpdateTodoItem>((event, emit) {
       emit(const _Loading());
       updateTodoUsecase(event.todo).then((value) {
-        value.fold(
-          (l) => emit(const _Error()),
-          (r) {
-            todoList = todoList.map((e) {
-              if (e.id == event.todo.id) {
-                return event.todo;
-              }
-              return e;
-            }).toList();
-            emit(const _Initial());
-          },
-        );
+        emit(const _Initial());
+      }).catchError((e) {
+        emit(const _Error());
       });
     });
     on<_DeleteTodoItem>((event, emit) {
       emit(const _Loading());
       deleteTodoUsecase(event.id).then((value) {
-        value.fold(
-          (l) => emit(const _Error()),
-          (r) {
-            todoList.removeWhere((element) => element.id == event.id);
-            emit(const _Initial());
-          },
-        );
+        emit(const _Initial());
+      }).catchError((e) {
+        emit(const _Error());
       });
     });
   }

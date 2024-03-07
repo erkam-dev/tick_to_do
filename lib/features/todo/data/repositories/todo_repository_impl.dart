@@ -12,13 +12,12 @@ class TodoRepositoryImpl implements TodoRepository {
   TodoRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<Either<Failure, List<Todo>>> getTodos() async {
-    try {
-      final todoModels = await remoteDataSource.getTodos();
-      return Right(todoModels.map((model) => model.toEntity()).toList());
-    } on ServerException {
-      return const Left(ServerFailure());
-    }
+  Stream<List<Todo>> getTodos() {
+    return remoteDataSource.getTodos().map((List<TodoModel> todoModels) {
+      return todoModels
+          .map((TodoModel model) => Todo.fromModel(model))
+          .toList();
+    });
   }
 
   @override

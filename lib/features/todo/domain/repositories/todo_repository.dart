@@ -4,7 +4,7 @@ import 'package:tick_to_do/features/todo/domain/entities/todo.dart';
 import '../../../../core/core.dart';
 
 abstract class TodoRepository {
-  Future<Either<Failure, List<Todo>>> getTodos();
+  Stream<List<Todo>> getTodos();
   Future<Either<Failure, void>> addTodo(Todo todo);
   Future<Either<Failure, void>> updateTodo(Todo todo);
   Future<Either<Failure, void>> deleteTodo(String id);

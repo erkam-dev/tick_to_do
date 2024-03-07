@@ -660,21 +660,21 @@ abstract class _DeleteTodoItem implements TodoEvent {
 mixin _$TodoState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(List<Todo>? todos) initial,
     required TResult Function() loading,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(List<Todo>? todos)? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(List<Todo>? todos)? initial,
     TResult Function()? loading,
     TResult Function()? error,
     required TResult orElse(),
@@ -726,6 +726,8 @@ abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Todo>? todos});
 }
 
 /// @nodoc
@@ -735,57 +737,89 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? todos = freezed,
+  }) {
+    return _then(_$InitialImpl(
+      freezed == todos
+          ? _value._todos
+          : todos // ignore: cast_nullable_to_non_nullable
+              as List<Todo>?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+  const _$InitialImpl([final List<Todo>? todos]) : _todos = todos;
+
+  final List<Todo>? _todos;
+  @override
+  List<Todo>? get todos {
+    final value = _todos;
+    if (value == null) return null;
+    if (_todos is EqualUnmodifiableListView) return _todos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'TodoState.initial()';
+    return 'TodoState.initial(todos: $todos)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$InitialImpl &&
+            const DeepCollectionEquality().equals(other._todos, _todos));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_todos));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(List<Todo>? todos) initial,
     required TResult Function() loading,
     required TResult Function() error,
   }) {
-    return initial();
+    return initial(todos);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(List<Todo>? todos)? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
   }) {
-    return initial?.call();
+    return initial?.call(todos);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(List<Todo>? todos)? initial,
     TResult Function()? loading,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(todos);
     }
     return orElse();
   }
@@ -826,7 +860,12 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements TodoState {
-  const factory _Initial() = _$InitialImpl;
+  const factory _Initial([final List<Todo>? todos]) = _$InitialImpl;
+
+  List<Todo>? get todos;
+  @JsonKey(ignore: true)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -867,7 +906,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(List<Todo>? todos) initial,
     required TResult Function() loading,
     required TResult Function() error,
   }) {
@@ -877,7 +916,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(List<Todo>? todos)? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
   }) {
@@ -887,7 +926,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(List<Todo>? todos)? initial,
     TResult Function()? loading,
     TResult Function()? error,
     required TResult orElse(),
@@ -975,7 +1014,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(List<Todo>? todos) initial,
     required TResult Function() loading,
     required TResult Function() error,
   }) {
@@ -985,7 +1024,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(List<Todo>? todos)? initial,
     TResult? Function()? loading,
     TResult? Function()? error,
   }) {
@@ -995,7 +1034,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(List<Todo>? todos)? initial,
     TResult Function()? loading,
     TResult Function()? error,
     required TResult orElse(),
