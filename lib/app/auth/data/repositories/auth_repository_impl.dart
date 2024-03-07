@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:tick_to_do/app/auth/data/sources/auth_remote_data_source.dart';
 import 'package:tick_to_do/core/types/failure.dart';
 
 import '../../../app.dart';
@@ -10,12 +9,8 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<Option<ProfileModel>> getSignedInUser() async {
-    try {
-      return await remoteDataSource.getSignedInUser();
-    } on ServerException {
-      return const None();
-    }
+  ProfileModel getSignedInUser() {
+    return remoteDataSource.getSignedInUser();
   }
 
   @override

@@ -1,35 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tick_to_do/app/auth/presentation/bloc/auth_bloc.dart';
 
 class GoogleSignInButton extends StatelessWidget {
-  final Function(GoogleSignInAccount googleSignInAccount) onSignInSuccess;
-  final Function(String error) onSignInFailure;
-
-  const GoogleSignInButton({
-    super.key,
-    required this.onSignInSuccess,
-    required this.onSignInFailure,
-  });
+  const GoogleSignInButton({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
     return ElevatedButton.icon(
-      onPressed: _signInWithGoogle,
+      onPressed: () => authBloc.add(const AuthEvent.signInWithGoogle()),
       icon: const Icon(Icons.login),
       label: const Text('Sign in with Google'),
     );
-  }
-
-  Future<void> _signInWithGoogle() async {
-    try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser != null) {
-        onSignInSuccess(googleUser);
-      } else {
-        onSignInFailure('Sign in with Google failed.');
-      }
-    } catch (e) {
-      onSignInFailure('Sign in with Google failed: $e');
-    }
   }
 }

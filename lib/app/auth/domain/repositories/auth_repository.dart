@@ -5,7 +5,7 @@ import '../../../../lib.dart';
 abstract class AuthRepository {
   Future<Either<Failure, Unit>> signInWithGoogle();
 
-  Future<Option<ProfileModel>> getSignedInUser();
+  ProfileModel getSignedInUser();
 
   Future<void> signOut();
 }

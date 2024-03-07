@@ -22,6 +22,7 @@ initTodoFeatures() {
       () => UpdateTodoUsecase(sl<TodoRepositoryImpl>()));
   sl.registerLazySingleton<DeleteTodoUsecase>(
       () => DeleteTodoUsecase(sl<TodoRepositoryImpl>()));
+  sl.registerLazySingleton<TodoRepository>(() => sl<TodoRepositoryImpl>());
   sl.registerLazySingleton<TodoRepositoryImpl>(
       () => TodoRepositoryImpl(sl<TodoRemoteDataSource>()));
   sl.registerLazySingleton<TodoRemoteDataSource>(() => TodoRemoteDataSourceImpl(

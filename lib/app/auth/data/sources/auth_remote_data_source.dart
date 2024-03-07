@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthRemoteDataSource {
-  Future getSignedInUser();
+  getSignedInUser();
   Future signInWithGoogle();
   Future signOut();
 }
@@ -12,7 +12,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   AuthRemoteDataSourceImpl(this.firebaseAuth);
 
   @override
-  Future<User?> getSignedInUser() async {
+  getSignedInUser() {
     return firebaseAuth.currentUser;
   }
 

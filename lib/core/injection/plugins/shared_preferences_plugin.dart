@@ -6,3 +6,5 @@ initSharedPreferencesPlugin() async {
       await SharedPreferences.getInstance();
   sl.registerSingleton<SharedPreferences>(sharedPreferences);
 }
+
+const String onboardSeenKey = "onboardSeenKey";

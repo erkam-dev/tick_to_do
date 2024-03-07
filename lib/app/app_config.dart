@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
               darkTheme: myDarkTheme(),
               themeMode: themeMode,
               scrollBehavior: const CupertinoScrollBehavior(),
-              home: const OnboardScreen(),
+              home: const AuthScreenController(),
             );
           },
         ),
