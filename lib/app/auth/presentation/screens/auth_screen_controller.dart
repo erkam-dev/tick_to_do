@@ -4,26 +4,25 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../lib.dart';
 
-class AuthScreenController extends StatefulWidget {
+class AuthScreenController extends StatelessWidget {
   const AuthScreenController({super.key});
 
   @override
-  AuthScreenControllerState createState() => AuthScreenControllerState();
-}
-
-class AuthScreenControllerState extends State<AuthScreenController> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final currentUser = sl<FirebaseAuth>().currentUser;
-    return sl<SharedPreferences>().getBool(onboardSeenKey) != true
-        ? const OnboardScreen()
-        : currentUser != null
-            ? const HomeScreen()
-            : const LoginScreen();
+    return StreamBuilder<User?>(
+      stream: sl<FirebaseAuth>().authStateChanges(),
+      builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
+        if (snapshot.connectionState == ConnectionState.active) {
+          final User? user = snapshot.data;
+          return sl<SharedPreferences>().getBool(onboardSeenKey) != true
+              ? const OnboardScreen()
+              : user != null
+                  ? const HomeScreen()
+                  : const LoginScreen();
+        } else {
+          return const AuthLoadingScreen();
+        }
+      },
+    );
   }
 }

@@ -5,7 +5,7 @@ import '../../lib.dart';
 
 initTodoFeatures() {
   sl.registerFactory<TodoBloc>(() => TodoBloc(
-        getTodosUsecase: sl<GetTodosUsecase>(),
+        getTodosUsecase: sl<GetTodoStreamUsecase>(),
         addTodoUsecase: sl<AddTodoUsecase>(),
         updateTodoUsecase: sl<UpdateTodoUsecase>(),
         deleteTodoUsecase: sl<DeleteTodoUsecase>(),
@@ -14,8 +14,8 @@ initTodoFeatures() {
       id: '', title: '', description: '', isDone: false, createdTime: null));
   sl.registerLazySingleton<TodoModel>(() => const TodoModel(
       id: '', title: '', description: '', isDone: false, createdTime: null));
-  sl.registerLazySingleton<GetTodosUsecase>(
-      () => GetTodosUsecase(sl<TodoRepositoryImpl>()));
+  sl.registerLazySingleton<GetTodoStreamUsecase>(
+      () => GetTodoStreamUsecase(sl<TodoRepositoryImpl>()));
   sl.registerLazySingleton<AddTodoUsecase>(
       () => AddTodoUsecase(sl<TodoRepositoryImpl>()));
   sl.registerLazySingleton<UpdateTodoUsecase>(

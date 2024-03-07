@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:tick_to_do/app/app.dart';
 
 abstract class AuthRemoteDataSource {
-  getSignedInUser();
+  ProfileModel? getSignedInUser();
+  Stream<User?> getAuthStatusStream();
   Future signInWithGoogle();
   Future signOut();
 }
@@ -12,8 +14,16 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   AuthRemoteDataSourceImpl(this.firebaseAuth);
 
   @override
-  getSignedInUser() {
-    return firebaseAuth.currentUser;
+  ProfileModel? getSignedInUser() {
+    if (firebaseAuth.currentUser != null) {
+      return ProfileModel.fromFirebase(firebaseAuth.currentUser!);
+    }
+    return null;
+  }
+
+  @override
+  Stream<User?> getAuthStatusStream() {
+    return firebaseAuth.authStateChanges();
   }
 
   @override

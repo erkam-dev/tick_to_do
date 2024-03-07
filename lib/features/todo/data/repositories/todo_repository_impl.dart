@@ -12,8 +12,8 @@ class TodoRepositoryImpl implements TodoRepository {
   TodoRepositoryImpl(this.remoteDataSource);
 
   @override
-  Stream<List<Todo>> getTodos() {
-    return remoteDataSource.getTodos().map((List<TodoModel> todoModels) {
+  Stream<List<Todo>> getTodoStream() {
+    return remoteDataSource.getTodoStream().map((List<TodoModel> todoModels) {
       return todoModels
           .map((TodoModel model) => Todo.fromModel(model))
           .toList();

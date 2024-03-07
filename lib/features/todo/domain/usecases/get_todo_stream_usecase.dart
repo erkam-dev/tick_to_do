@@ -3,11 +3,12 @@ import 'package:tick_to_do/features/todo/domain/repositories/todo_repository.dar
 
 import '../../../../core/core.dart';
 
-class GetTodosUsecase implements UsecaseNoFuture<Stream<List<Todo>>, NoParams> {
+class GetTodoStreamUsecase
+    implements UsecaseNoFuture<Stream<List<Todo>>, NoParams> {
   final TodoRepository repository;
 
-  GetTodosUsecase(this.repository);
+  GetTodoStreamUsecase(this.repository);
 
   @override
-  Stream<List<Todo>> call(NoParams noParams) => repository.getTodos();
+  Stream<List<Todo>> call(NoParams noParams) => repository.getTodoStream();
 }

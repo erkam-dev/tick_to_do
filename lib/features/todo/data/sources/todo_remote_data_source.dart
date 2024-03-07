@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../../lib.dart';
 
 abstract class TodoRemoteDataSource {
-  Stream<List<TodoModel>> getTodos();
+  Stream<List<TodoModel>> getTodoStream();
   Future addTodo(TodoModel todo);
   Future updateTodo(TodoModel todo);
   Future deleteTodo(String id);
@@ -16,7 +16,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
   TodoRemoteDataSourceImpl({required this.firestore, required this.uid});
 
   @override
-  Stream<List<TodoModel>> getTodos() {
+  Stream<List<TodoModel>> getTodoStream() {
     return firestore
         .collection('users')
         .doc(uid)

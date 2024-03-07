@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tick_to_do/core/types/failure.dart';
 
 import '../../../app.dart';
@@ -9,8 +10,13 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this.remoteDataSource);
 
   @override
-  ProfileModel getSignedInUser() {
+  ProfileModel? getSignedInUser() {
     return remoteDataSource.getSignedInUser();
+  }
+
+  @override
+  Stream<User?> getAuthStatusStream() {
+    return remoteDataSource.getAuthStatusStream();
   }
 
   @override

@@ -7,6 +7,7 @@ initAuthFeatures() {
         signInWithGoogleUseCase: sl<SignInWithGoogleUseCase>(),
         getSignedInUserUseCase: sl<GetSignedInUserUseCase>(),
         signOutUseCase: sl<SignOutUseCase>(),
+        getAuthStatusStreamUsecase: sl<GetAuthStatusStreamUsecase>(),
       ));
   sl.registerLazySingleton<Profile>(() => const Profile());
   sl.registerLazySingleton<ProfileModel>(() => const ProfileModel());
@@ -17,6 +18,8 @@ initAuthFeatures() {
       () => GetSignedInUserUseCase(sl<AuthRepository>()));
   sl.registerLazySingleton<SignOutUseCase>(
       () => SignOutUseCase(sl<AuthRepository>()));
+  sl.registerLazySingleton<GetAuthStatusStreamUsecase>(
+      () => GetAuthStatusStreamUsecase(sl<AuthRepository>()));
 
   sl.registerLazySingleton<AuthRepository>(() => sl<AuthRepositoryImpl>());
   sl.registerLazySingleton<AuthRepositoryImpl>(
