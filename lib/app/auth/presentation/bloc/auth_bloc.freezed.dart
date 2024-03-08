@@ -19,7 +19,6 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() signInWithGoogle,
-    required TResult Function() getSignedInUser,
     required TResult Function() getAuthStatusStream,
     required TResult Function() signOut,
   }) =>
@@ -27,7 +26,6 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signInWithGoogle,
-    TResult? Function()? getSignedInUser,
     TResult? Function()? getAuthStatusStream,
     TResult? Function()? signOut,
   }) =>
@@ -35,7 +33,6 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signInWithGoogle,
-    TResult Function()? getSignedInUser,
     TResult Function()? getAuthStatusStream,
     TResult Function()? signOut,
     required TResult orElse(),
@@ -44,7 +41,6 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
-    required TResult Function(_GetSignedInUser value) getSignedInUser,
     required TResult Function(_GetAuthStatusStream value) getAuthStatusStream,
     required TResult Function(_SignOut value) signOut,
   }) =>
@@ -52,7 +48,6 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult? Function(_GetSignedInUser value)? getSignedInUser,
     TResult? Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult? Function(_SignOut value)? signOut,
   }) =>
@@ -60,7 +55,6 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult Function(_GetSignedInUser value)? getSignedInUser,
     TResult Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
@@ -124,7 +118,6 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() signInWithGoogle,
-    required TResult Function() getSignedInUser,
     required TResult Function() getAuthStatusStream,
     required TResult Function() signOut,
   }) {
@@ -135,7 +128,6 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signInWithGoogle,
-    TResult? Function()? getSignedInUser,
     TResult? Function()? getAuthStatusStream,
     TResult? Function()? signOut,
   }) {
@@ -146,7 +138,6 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signInWithGoogle,
-    TResult Function()? getSignedInUser,
     TResult Function()? getAuthStatusStream,
     TResult Function()? signOut,
     required TResult orElse(),
@@ -161,7 +152,6 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
-    required TResult Function(_GetSignedInUser value) getSignedInUser,
     required TResult Function(_GetAuthStatusStream value) getAuthStatusStream,
     required TResult Function(_SignOut value) signOut,
   }) {
@@ -172,7 +162,6 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult? Function(_GetSignedInUser value)? getSignedInUser,
     TResult? Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult? Function(_SignOut value)? signOut,
   }) {
@@ -183,7 +172,6 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult Function(_GetSignedInUser value)? getSignedInUser,
     TResult Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
@@ -197,120 +185,6 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
 
 abstract class _SignInWithGoogle implements AuthEvent {
   const factory _SignInWithGoogle() = _$SignInWithGoogleImpl;
-}
-
-/// @nodoc
-abstract class _$$GetSignedInUserImplCopyWith<$Res> {
-  factory _$$GetSignedInUserImplCopyWith(_$GetSignedInUserImpl value,
-          $Res Function(_$GetSignedInUserImpl) then) =
-      __$$GetSignedInUserImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetSignedInUserImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$GetSignedInUserImpl>
-    implements _$$GetSignedInUserImplCopyWith<$Res> {
-  __$$GetSignedInUserImplCopyWithImpl(
-      _$GetSignedInUserImpl _value, $Res Function(_$GetSignedInUserImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$GetSignedInUserImpl implements _GetSignedInUser {
-  const _$GetSignedInUserImpl();
-
-  @override
-  String toString() {
-    return 'AuthEvent.getSignedInUser()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetSignedInUserImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() signInWithGoogle,
-    required TResult Function() getSignedInUser,
-    required TResult Function() getAuthStatusStream,
-    required TResult Function() signOut,
-  }) {
-    return getSignedInUser();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signInWithGoogle,
-    TResult? Function()? getSignedInUser,
-    TResult? Function()? getAuthStatusStream,
-    TResult? Function()? signOut,
-  }) {
-    return getSignedInUser?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signInWithGoogle,
-    TResult Function()? getSignedInUser,
-    TResult Function()? getAuthStatusStream,
-    TResult Function()? signOut,
-    required TResult orElse(),
-  }) {
-    if (getSignedInUser != null) {
-      return getSignedInUser();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SignInWithGoogle value) signInWithGoogle,
-    required TResult Function(_GetSignedInUser value) getSignedInUser,
-    required TResult Function(_GetAuthStatusStream value) getAuthStatusStream,
-    required TResult Function(_SignOut value) signOut,
-  }) {
-    return getSignedInUser(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult? Function(_GetSignedInUser value)? getSignedInUser,
-    TResult? Function(_GetAuthStatusStream value)? getAuthStatusStream,
-    TResult? Function(_SignOut value)? signOut,
-  }) {
-    return getSignedInUser?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult Function(_GetSignedInUser value)? getSignedInUser,
-    TResult Function(_GetAuthStatusStream value)? getAuthStatusStream,
-    TResult Function(_SignOut value)? signOut,
-    required TResult orElse(),
-  }) {
-    if (getSignedInUser != null) {
-      return getSignedInUser(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetSignedInUser implements AuthEvent {
-  const factory _GetSignedInUser() = _$GetSignedInUserImpl;
 }
 
 /// @nodoc
@@ -353,7 +227,6 @@ class _$GetAuthStatusStreamImpl implements _GetAuthStatusStream {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() signInWithGoogle,
-    required TResult Function() getSignedInUser,
     required TResult Function() getAuthStatusStream,
     required TResult Function() signOut,
   }) {
@@ -364,7 +237,6 @@ class _$GetAuthStatusStreamImpl implements _GetAuthStatusStream {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signInWithGoogle,
-    TResult? Function()? getSignedInUser,
     TResult? Function()? getAuthStatusStream,
     TResult? Function()? signOut,
   }) {
@@ -375,7 +247,6 @@ class _$GetAuthStatusStreamImpl implements _GetAuthStatusStream {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signInWithGoogle,
-    TResult Function()? getSignedInUser,
     TResult Function()? getAuthStatusStream,
     TResult Function()? signOut,
     required TResult orElse(),
@@ -390,7 +261,6 @@ class _$GetAuthStatusStreamImpl implements _GetAuthStatusStream {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
-    required TResult Function(_GetSignedInUser value) getSignedInUser,
     required TResult Function(_GetAuthStatusStream value) getAuthStatusStream,
     required TResult Function(_SignOut value) signOut,
   }) {
@@ -401,7 +271,6 @@ class _$GetAuthStatusStreamImpl implements _GetAuthStatusStream {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult? Function(_GetSignedInUser value)? getSignedInUser,
     TResult? Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult? Function(_SignOut value)? signOut,
   }) {
@@ -412,7 +281,6 @@ class _$GetAuthStatusStreamImpl implements _GetAuthStatusStream {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult Function(_GetSignedInUser value)? getSignedInUser,
     TResult Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
@@ -467,7 +335,6 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() signInWithGoogle,
-    required TResult Function() getSignedInUser,
     required TResult Function() getAuthStatusStream,
     required TResult Function() signOut,
   }) {
@@ -478,7 +345,6 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signInWithGoogle,
-    TResult? Function()? getSignedInUser,
     TResult? Function()? getAuthStatusStream,
     TResult? Function()? signOut,
   }) {
@@ -489,7 +355,6 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signInWithGoogle,
-    TResult Function()? getSignedInUser,
     TResult Function()? getAuthStatusStream,
     TResult Function()? signOut,
     required TResult orElse(),
@@ -504,7 +369,6 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
-    required TResult Function(_GetSignedInUser value) getSignedInUser,
     required TResult Function(_GetAuthStatusStream value) getAuthStatusStream,
     required TResult Function(_SignOut value) signOut,
   }) {
@@ -515,7 +379,6 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult? Function(_GetSignedInUser value)? getSignedInUser,
     TResult? Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult? Function(_SignOut value)? signOut,
   }) {
@@ -526,7 +389,6 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult Function(_GetSignedInUser value)? getSignedInUser,
     TResult Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult Function(_SignOut value)? signOut,
     required TResult orElse(),

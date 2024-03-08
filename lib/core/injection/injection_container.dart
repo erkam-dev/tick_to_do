@@ -11,4 +11,5 @@ init() async {
 
   // features
   initTodoFeatures();
+  initAuthFeatures();
 }

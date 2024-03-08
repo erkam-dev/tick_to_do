@@ -8,10 +8,13 @@ class GoogleSignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
-    return ElevatedButton.icon(
-      onPressed: () => authBloc.add(const AuthEvent.signInWithGoogle()),
-      icon: const Icon(Icons.login),
-      label: const Text('Sign in with Google'),
+    return BlocBuilder(
+      bloc: authBloc,
+      builder: (context, state) => ElevatedButton.icon(
+        onPressed: () => authBloc.add(const AuthEvent.signInWithGoogle()),
+        icon: const Icon(Icons.login),
+        label: const Text('Sign in with Google'),
+      ),
     );
   }
 }

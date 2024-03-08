@@ -31,6 +31,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => sl<TodoBloc>()),
+          BlocProvider(create: (context) => sl<AuthBloc>()),
         ],
         child: ValueListenableBuilder(
           valueListenable: appThemeNotifier,

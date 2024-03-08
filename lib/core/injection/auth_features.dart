@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../lib.dart';
 
 initAuthFeatures() {
   sl.registerFactory<AuthBloc>(() => AuthBloc(
         signInWithGoogleUseCase: sl<SignInWithGoogleUseCase>(),
-        getSignedInUserUseCase: sl<GetSignedInUserUseCase>(),
         signOutUseCase: sl<SignOutUseCase>(),
         getAuthStatusStreamUsecase: sl<GetAuthStatusStreamUsecase>(),
       ));
@@ -14,8 +14,6 @@ initAuthFeatures() {
 
   sl.registerLazySingleton<SignInWithGoogleUseCase>(
       () => SignInWithGoogleUseCase(sl<AuthRepository>()));
-  sl.registerLazySingleton<GetSignedInUserUseCase>(
-      () => GetSignedInUserUseCase(sl<AuthRepository>()));
   sl.registerLazySingleton<SignOutUseCase>(
       () => SignOutUseCase(sl<AuthRepository>()));
   sl.registerLazySingleton<GetAuthStatusStreamUsecase>(
@@ -24,6 +22,6 @@ initAuthFeatures() {
   sl.registerLazySingleton<AuthRepository>(() => sl<AuthRepositoryImpl>());
   sl.registerLazySingleton<AuthRepositoryImpl>(
       () => AuthRepositoryImpl(sl<AuthRemoteDataSource>()));
-  sl.registerLazySingleton<AuthRemoteDataSource>(
-      () => AuthRemoteDataSourceImpl(sl<FirebaseAuth>()));
+  sl.registerLazySingleton<AuthRemoteDataSource>(() => AuthRemoteDataSourceImpl(
+      firebaseAuth: sl<FirebaseAuth>(), googleSignIn: sl<GoogleSignIn>()));
 }

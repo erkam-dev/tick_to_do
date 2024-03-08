@@ -10,17 +10,12 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this.remoteDataSource);
 
   @override
-  ProfileModel? getSignedInUser() {
-    return remoteDataSource.getSignedInUser();
-  }
-
-  @override
   Stream<User?> getAuthStatusStream() {
     return remoteDataSource.getAuthStatusStream();
   }
 
   @override
-  Future<Either<Failure, Unit>> signInWithGoogle() async {
+  Future<Either<Failure, UserCredential?>> signInWithGoogle() async {
     try {
       return Right(await remoteDataSource.signInWithGoogle());
     } on ServerException {

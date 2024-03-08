@@ -1,25 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:tick_to_do/app/app.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class AuthRemoteDataSource {
-  ProfileModel? getSignedInUser();
   Stream<User?> getAuthStatusStream();
-  Future signInWithGoogle();
+  Future<UserCredential?> signInWithGoogle();
   Future signOut();
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final FirebaseAuth firebaseAuth;
+  final GoogleSignIn googleSignIn;
 
-  AuthRemoteDataSourceImpl(this.firebaseAuth);
-
-  @override
-  ProfileModel? getSignedInUser() {
-    if (firebaseAuth.currentUser != null) {
-      return ProfileModel.fromFirebase(firebaseAuth.currentUser!);
-    }
-    return null;
-  }
+  AuthRemoteDataSourceImpl({
+    required this.firebaseAuth,
+    required this.googleSignIn,
+  });
 
   @override
   Stream<User?> getAuthStatusStream() {
@@ -29,9 +24,15 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<UserCredential> signInWithGoogle() async {
     try {
-      final GoogleAuthProvider googleProvider = GoogleAuthProvider();
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser!.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
       final UserCredential userCredential =
-          await firebaseAuth.signInWithPopup(googleProvider);
+          await firebaseAuth.signInWithCredential(credential);
       return userCredential;
     } catch (e) {
       throw Exception('Failed to sign in with Google: $e');
