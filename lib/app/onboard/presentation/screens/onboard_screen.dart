@@ -16,6 +16,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
     return Scaffold(
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
               'Welcome to the App!',
@@ -26,8 +27,11 @@ class _OnboardScreenState extends State<OnboardScreen> {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-                onPressed: () => setState(() =>
-                    sl<SharedPreferences>().setBool(onboardSeenKey, true)),
+                onPressed: () async => {
+                      await sl<SharedPreferences>()
+                          .setBool(onboardSeenKey, true),
+                      setState(() {})
+                    },
                 child: const Text("Next"))
           ],
         ),

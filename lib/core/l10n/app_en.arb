@@ -39,5 +39,6 @@
     "showCaseTips":"Tip",
     "showCaseAddTodo":"Create new todos",
     "showCaseTodos":"Your todos are here",
-    "showCaseCompleted":"Your completed todos are here"
+    "showCaseCompleted":"Your completed todos are here",
+    "settings": "Settings"
 }

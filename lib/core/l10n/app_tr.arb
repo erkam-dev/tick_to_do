@@ -39,5 +39,6 @@
     "showCaseTips":"İpucu",
     "showCaseAddTodo":"Yeni görev ekleyin",
     "showCaseTodos":"Yapılacaklarınız burada",
-    "showCaseCompleted":"Tamamlanmışlarınız burada"
+    "showCaseCompleted":"Tamamlanmışlarınız burada",
+    "settings": "Ayarlar"
 }

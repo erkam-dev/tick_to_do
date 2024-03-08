@@ -5,8 +5,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../lib.dart';
 
-class AuthScreenController extends StatelessWidget {
+class AuthScreenController extends StatefulWidget {
   const AuthScreenController({super.key});
+
+  @override
+  State<AuthScreenController> createState() => _AuthScreenControllerState();
+}
+
+class _AuthScreenControllerState extends State<AuthScreenController> {
+  @override
+  void initState() {
+    AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
+    authBloc.add(const AuthEvent.getAuthStatusStream());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
