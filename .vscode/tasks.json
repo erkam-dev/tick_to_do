@@ -2,7 +2,14 @@
     "version": "2.0.0",
     "tasks": [
       {
-        "label": "build_runner",
+        "label": "Create localization files",
+        "type": "shell",
+        "command": "flutter gen-l10n",
+        "problemMatcher": [],
+        "group": "build",
+      },
+      {
+        "label": "Run build_runner",
         "type": "shell",
         "command": "dart run build_runner build --delete-conflicting-outputs",
         "group": {
@@ -12,14 +19,14 @@
         "problemMatcher": []
       },
       {
-        "label": "build_appbundle",
+        "label": "Build App Bundle",
         "type": "shell",
         "command": "flutter build appbundle",
         "group": "build",
         "problemMatcher": []
       },
       {
-        "label": "build_apk",
+        "label": "Build APK",
         "type": "shell",
         "command": "flutter build apk --release",
         "group": "build",

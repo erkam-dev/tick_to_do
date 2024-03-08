@@ -40,5 +40,6 @@
     "showCaseAddTodo":"Yeni görev ekleyin",
     "showCaseTodos":"Yapılacaklarınız burada",
     "showCaseCompleted":"Tamamlanmışlarınız burada",
-    "settings": "Ayarlar"
+    "settings": "Ayarlar",
+    "errorOccured": "Hata meydana geldi! Lütfen daha sonra tekrar deneyin."
 }

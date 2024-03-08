@@ -6,7 +6,7 @@ import '../../../../lib.dart';
 part 'todo.freezed.dart';
 
 @freezed
-abstract class Todo with _$Todo {
+class Todo with _$Todo {
   const Todo._();
   const factory Todo({
     required DateTime? createdTime,

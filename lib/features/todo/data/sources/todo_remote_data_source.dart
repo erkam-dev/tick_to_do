@@ -20,7 +20,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
     return firestore
         .collection('users')
         .doc(uid)
-        .collection('todos')
+        .collection('todo')
         .snapshots()
         .map((snapshot) => snapshot.docs
             .map((doc) => TodoModel.fromJson(doc.data()))
@@ -33,7 +33,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
       await firestore
           .collection('users')
           .doc(uid)
-          .collection('todos')
+          .collection('todo')
           .add(todo.toJson());
     } catch (e) {
       throw Exception('Failed to add todo: $e');
@@ -46,7 +46,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
       await firestore
           .collection('users')
           .doc(uid)
-          .collection('todos')
+          .collection('todo')
           .doc(todo.id)
           .update(todo.toJson());
     } catch (e) {
@@ -60,7 +60,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
       await firestore
           .collection('users')
           .doc(uid)
-          .collection('todos')
+          .collection('todo')
           .doc(id)
           .delete();
     } catch (e) {

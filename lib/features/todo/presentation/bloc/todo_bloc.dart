@@ -11,27 +11,29 @@ part 'todo_state.dart';
 
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
   StreamSubscription? todoSubscription;
-  final GetTodoStreamUsecase getTodosUsecase;
+  final GetTodoStreamUsecase getTodoStreamUsecase;
   final AddTodoUsecase addTodoUsecase;
   final UpdateTodoUsecase updateTodoUsecase;
   final DeleteTodoUsecase deleteTodoUsecase;
+  Stream<List<Todo>> get alltodoStream => getTodoStreamUsecase.call(NoParams());
+  Stream<List<Todo>> get todoStream => alltodoStream
+      .map((event) => event.where((element) => !element.isDone).toList());
+  Stream<List<Todo>> get completedStream => alltodoStream
+      .map((event) => event.where((element) => element.isDone).toList());
+
   TodoBloc({
-    required this.getTodosUsecase,
+    required this.getTodoStreamUsecase,
     required this.addTodoUsecase,
     required this.updateTodoUsecase,
     required this.deleteTodoUsecase,
   }) : super(const _Initial()) {
-    on<_GetTodoStream>((event, emit) async {
+    on<_GetTodoStream>((event, emit) {
       emit(const _Loading());
-      todoSubscription = getTodosUsecase.call(NoParams()).listen(
-        (todos) {
-          emit(_Initial(todos));
-        },
-        onError: (e) {
-          todoSubscription?.cancel();
-          emit(const _Error());
-        },
+      todoSubscription = alltodoStream.listen(
+        (value) {},
+        onError: (e) => todoSubscription?.cancel(),
       );
+      emit(const _Initial());
     });
     on<_AddTodoItem>((event, emit) {
       emit(const _Loading());

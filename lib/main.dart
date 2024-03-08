@@ -5,11 +5,12 @@ import 'package:tick_to_do/core/core.dart';
 import 'app/app.dart';
 
 Future main() async {
-  ErrorWidget.builder = (FlutterErrorDetails details) =>
-      Text(kDebugMode ? details.toString() : "Something Went Wrong!")
-          .centered()
-          .pad16()
-          .card();
+  ErrorWidget.builder = (FlutterErrorDetails details) => SingleChildScrollView(
+          child:
+              Text(kDebugMode ? details.toString() : "Something Went Wrong!"))
+      .centered()
+      .pad16()
+      .card();
   WidgetsFlutterBinding.ensureInitialized();
   await init();
   runApp(const MyApp());

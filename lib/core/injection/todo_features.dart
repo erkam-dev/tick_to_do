@@ -5,7 +5,7 @@ import '../../lib.dart';
 
 initTodoFeatures() {
   sl.registerFactory<TodoBloc>(() => TodoBloc(
-        getTodosUsecase: sl<GetTodoStreamUsecase>(),
+        getTodoStreamUsecase: sl<GetTodoStreamUsecase>(),
         addTodoUsecase: sl<AddTodoUsecase>(),
         updateTodoUsecase: sl<UpdateTodoUsecase>(),
         deleteTodoUsecase: sl<DeleteTodoUsecase>(),
