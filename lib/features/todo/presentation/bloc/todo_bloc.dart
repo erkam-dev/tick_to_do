@@ -10,7 +10,6 @@ part 'todo_event.dart';
 part 'todo_state.dart';
 
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
-  StreamSubscription? todoSubscription;
   final GetTodoStreamUsecase getTodoStreamUsecase;
   final AddTodoUsecase addTodoUsecase;
   final UpdateTodoUsecase updateTodoUsecase;
@@ -27,14 +26,6 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     required this.updateTodoUsecase,
     required this.deleteTodoUsecase,
   }) : super(const _Initial()) {
-    on<_GetTodoStream>((event, emit) {
-      emit(const _Loading());
-      todoSubscription = alltodoStream.listen(
-        (value) {},
-        onError: (e) => todoSubscription?.cancel(),
-      );
-      emit(const _Initial());
-    });
     on<_AddTodoItem>((event, emit) {
       emit(const _Loading());
       addTodoUsecase(event.todo).then((_) {

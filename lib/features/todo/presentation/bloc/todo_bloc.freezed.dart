@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TodoEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getTodoStream,
     required TResult Function(Todo todo) addTodoItem,
     required TResult Function(Todo todo) updateTodoItem,
     required TResult Function(String id) deleteTodoItem,
@@ -26,7 +25,6 @@ mixin _$TodoEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getTodoStream,
     TResult? Function(Todo todo)? addTodoItem,
     TResult? Function(Todo todo)? updateTodoItem,
     TResult? Function(String id)? deleteTodoItem,
@@ -34,7 +32,6 @@ mixin _$TodoEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getTodoStream,
     TResult Function(Todo todo)? addTodoItem,
     TResult Function(Todo todo)? updateTodoItem,
     TResult Function(String id)? deleteTodoItem,
@@ -43,7 +40,6 @@ mixin _$TodoEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetTodoStream value) getTodoStream,
     required TResult Function(_AddTodoItem value) addTodoItem,
     required TResult Function(_UpdateTodoItem value) updateTodoItem,
     required TResult Function(_DeleteTodoItem value) deleteTodoItem,
@@ -51,7 +47,6 @@ mixin _$TodoEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetTodoStream value)? getTodoStream,
     TResult? Function(_AddTodoItem value)? addTodoItem,
     TResult? Function(_UpdateTodoItem value)? updateTodoItem,
     TResult? Function(_DeleteTodoItem value)? deleteTodoItem,
@@ -59,7 +54,6 @@ mixin _$TodoEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetTodoStream value)? getTodoStream,
     TResult Function(_AddTodoItem value)? addTodoItem,
     TResult Function(_UpdateTodoItem value)? updateTodoItem,
     TResult Function(_DeleteTodoItem value)? deleteTodoItem,
@@ -83,120 +77,6 @@ class _$TodoEventCopyWithImpl<$Res, $Val extends TodoEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$GetTodoStreamImplCopyWith<$Res> {
-  factory _$$GetTodoStreamImplCopyWith(
-          _$GetTodoStreamImpl value, $Res Function(_$GetTodoStreamImpl) then) =
-      __$$GetTodoStreamImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetTodoStreamImplCopyWithImpl<$Res>
-    extends _$TodoEventCopyWithImpl<$Res, _$GetTodoStreamImpl>
-    implements _$$GetTodoStreamImplCopyWith<$Res> {
-  __$$GetTodoStreamImplCopyWithImpl(
-      _$GetTodoStreamImpl _value, $Res Function(_$GetTodoStreamImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$GetTodoStreamImpl implements _GetTodoStream {
-  const _$GetTodoStreamImpl();
-
-  @override
-  String toString() {
-    return 'TodoEvent.getTodoStream()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetTodoStreamImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getTodoStream,
-    required TResult Function(Todo todo) addTodoItem,
-    required TResult Function(Todo todo) updateTodoItem,
-    required TResult Function(String id) deleteTodoItem,
-  }) {
-    return getTodoStream();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getTodoStream,
-    TResult? Function(Todo todo)? addTodoItem,
-    TResult? Function(Todo todo)? updateTodoItem,
-    TResult? Function(String id)? deleteTodoItem,
-  }) {
-    return getTodoStream?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getTodoStream,
-    TResult Function(Todo todo)? addTodoItem,
-    TResult Function(Todo todo)? updateTodoItem,
-    TResult Function(String id)? deleteTodoItem,
-    required TResult orElse(),
-  }) {
-    if (getTodoStream != null) {
-      return getTodoStream();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetTodoStream value) getTodoStream,
-    required TResult Function(_AddTodoItem value) addTodoItem,
-    required TResult Function(_UpdateTodoItem value) updateTodoItem,
-    required TResult Function(_DeleteTodoItem value) deleteTodoItem,
-  }) {
-    return getTodoStream(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetTodoStream value)? getTodoStream,
-    TResult? Function(_AddTodoItem value)? addTodoItem,
-    TResult? Function(_UpdateTodoItem value)? updateTodoItem,
-    TResult? Function(_DeleteTodoItem value)? deleteTodoItem,
-  }) {
-    return getTodoStream?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetTodoStream value)? getTodoStream,
-    TResult Function(_AddTodoItem value)? addTodoItem,
-    TResult Function(_UpdateTodoItem value)? updateTodoItem,
-    TResult Function(_DeleteTodoItem value)? deleteTodoItem,
-    required TResult orElse(),
-  }) {
-    if (getTodoStream != null) {
-      return getTodoStream(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetTodoStream implements TodoEvent {
-  const factory _GetTodoStream() = _$GetTodoStreamImpl;
 }
 
 /// @nodoc
@@ -273,7 +153,6 @@ class _$AddTodoItemImpl implements _AddTodoItem {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getTodoStream,
     required TResult Function(Todo todo) addTodoItem,
     required TResult Function(Todo todo) updateTodoItem,
     required TResult Function(String id) deleteTodoItem,
@@ -284,7 +163,6 @@ class _$AddTodoItemImpl implements _AddTodoItem {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getTodoStream,
     TResult? Function(Todo todo)? addTodoItem,
     TResult? Function(Todo todo)? updateTodoItem,
     TResult? Function(String id)? deleteTodoItem,
@@ -295,7 +173,6 @@ class _$AddTodoItemImpl implements _AddTodoItem {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getTodoStream,
     TResult Function(Todo todo)? addTodoItem,
     TResult Function(Todo todo)? updateTodoItem,
     TResult Function(String id)? deleteTodoItem,
@@ -310,7 +187,6 @@ class _$AddTodoItemImpl implements _AddTodoItem {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetTodoStream value) getTodoStream,
     required TResult Function(_AddTodoItem value) addTodoItem,
     required TResult Function(_UpdateTodoItem value) updateTodoItem,
     required TResult Function(_DeleteTodoItem value) deleteTodoItem,
@@ -321,7 +197,6 @@ class _$AddTodoItemImpl implements _AddTodoItem {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetTodoStream value)? getTodoStream,
     TResult? Function(_AddTodoItem value)? addTodoItem,
     TResult? Function(_UpdateTodoItem value)? updateTodoItem,
     TResult? Function(_DeleteTodoItem value)? deleteTodoItem,
@@ -332,7 +207,6 @@ class _$AddTodoItemImpl implements _AddTodoItem {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetTodoStream value)? getTodoStream,
     TResult Function(_AddTodoItem value)? addTodoItem,
     TResult Function(_UpdateTodoItem value)? updateTodoItem,
     TResult Function(_DeleteTodoItem value)? deleteTodoItem,
@@ -429,7 +303,6 @@ class _$UpdateTodoItemImpl implements _UpdateTodoItem {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getTodoStream,
     required TResult Function(Todo todo) addTodoItem,
     required TResult Function(Todo todo) updateTodoItem,
     required TResult Function(String id) deleteTodoItem,
@@ -440,7 +313,6 @@ class _$UpdateTodoItemImpl implements _UpdateTodoItem {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getTodoStream,
     TResult? Function(Todo todo)? addTodoItem,
     TResult? Function(Todo todo)? updateTodoItem,
     TResult? Function(String id)? deleteTodoItem,
@@ -451,7 +323,6 @@ class _$UpdateTodoItemImpl implements _UpdateTodoItem {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getTodoStream,
     TResult Function(Todo todo)? addTodoItem,
     TResult Function(Todo todo)? updateTodoItem,
     TResult Function(String id)? deleteTodoItem,
@@ -466,7 +337,6 @@ class _$UpdateTodoItemImpl implements _UpdateTodoItem {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetTodoStream value) getTodoStream,
     required TResult Function(_AddTodoItem value) addTodoItem,
     required TResult Function(_UpdateTodoItem value) updateTodoItem,
     required TResult Function(_DeleteTodoItem value) deleteTodoItem,
@@ -477,7 +347,6 @@ class _$UpdateTodoItemImpl implements _UpdateTodoItem {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetTodoStream value)? getTodoStream,
     TResult? Function(_AddTodoItem value)? addTodoItem,
     TResult? Function(_UpdateTodoItem value)? updateTodoItem,
     TResult? Function(_DeleteTodoItem value)? deleteTodoItem,
@@ -488,7 +357,6 @@ class _$UpdateTodoItemImpl implements _UpdateTodoItem {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetTodoStream value)? getTodoStream,
     TResult Function(_AddTodoItem value)? addTodoItem,
     TResult Function(_UpdateTodoItem value)? updateTodoItem,
     TResult Function(_DeleteTodoItem value)? deleteTodoItem,
@@ -575,7 +443,6 @@ class _$DeleteTodoItemImpl implements _DeleteTodoItem {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getTodoStream,
     required TResult Function(Todo todo) addTodoItem,
     required TResult Function(Todo todo) updateTodoItem,
     required TResult Function(String id) deleteTodoItem,
@@ -586,7 +453,6 @@ class _$DeleteTodoItemImpl implements _DeleteTodoItem {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getTodoStream,
     TResult? Function(Todo todo)? addTodoItem,
     TResult? Function(Todo todo)? updateTodoItem,
     TResult? Function(String id)? deleteTodoItem,
@@ -597,7 +463,6 @@ class _$DeleteTodoItemImpl implements _DeleteTodoItem {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getTodoStream,
     TResult Function(Todo todo)? addTodoItem,
     TResult Function(Todo todo)? updateTodoItem,
     TResult Function(String id)? deleteTodoItem,
@@ -612,7 +477,6 @@ class _$DeleteTodoItemImpl implements _DeleteTodoItem {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetTodoStream value) getTodoStream,
     required TResult Function(_AddTodoItem value) addTodoItem,
     required TResult Function(_UpdateTodoItem value) updateTodoItem,
     required TResult Function(_DeleteTodoItem value) deleteTodoItem,
@@ -623,7 +487,6 @@ class _$DeleteTodoItemImpl implements _DeleteTodoItem {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetTodoStream value)? getTodoStream,
     TResult? Function(_AddTodoItem value)? addTodoItem,
     TResult? Function(_UpdateTodoItem value)? updateTodoItem,
     TResult? Function(_DeleteTodoItem value)? deleteTodoItem,
@@ -634,7 +497,6 @@ class _$DeleteTodoItemImpl implements _DeleteTodoItem {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetTodoStream value)? getTodoStream,
     TResult Function(_AddTodoItem value)? addTodoItem,
     TResult Function(_UpdateTodoItem value)? updateTodoItem,
     TResult Function(_DeleteTodoItem value)? deleteTodoItem,

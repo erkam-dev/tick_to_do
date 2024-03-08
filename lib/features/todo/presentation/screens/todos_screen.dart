@@ -19,8 +19,6 @@ class TodosScreenState extends State<TodosScreen>
   void initState() {
     super.initState();
     tabController = TabController(length: 2, vsync: this);
-    TodoBloc todoBloc = BlocProvider.of<TodoBloc>(context);
-    todoBloc.add(const TodoEvent.getTodoStream());
   }
 
   @override
