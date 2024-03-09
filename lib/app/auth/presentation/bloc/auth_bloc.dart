@@ -30,15 +30,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       authStatusSubscription = authStatusStream.listen((user) {
         if (user != null) {
           profile = Profile.fromModel(ProfileModel.fromFirebase(user));
-          emit(const _Initial());
         } else {
           profile = null;
-          emit(const _Initial());
         }
       }, onError: (e) {
         authStatusSubscription?.cancel();
-        emit(const _Error());
+        if (emit.isDone) {
+          emit(const _Error());
+        }
       });
+      emit(const _Initial());
     });
     on<_SignInWithGoogle>((event, emit) async {
       emit(const _Loading());
@@ -50,12 +51,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
     on<_SignOut>((event, emit) async {
       emit(const _Loading());
-      try {
-        await signOutUseCase(NoParams());
-        emit(const _Initial());
-      } catch (e) {
-        emit(const _Error());
-      }
+      await signOutUseCase(NoParams());
+      emit(const _Initial());
     });
   }
 }

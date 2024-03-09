@@ -1,6 +1,7 @@
-import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:tick_to_do/app/home/data/constants/home_screen_views_data.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tick_to_do/lib.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,38 +11,52 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int selectedIndex = 0;
-  bool reverse = false;
+  int selectedTabIndex = 0;
   @override
   Widget build(BuildContext context) {
+    TodoBloc todoBloc = BlocProvider.of<TodoBloc>(context);
+    AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
-      body: PageTransitionSwitcher(
-          transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
-              SharedAxisTransition(
-                animation: primaryAnimation,
-                secondaryAnimation: secondaryAnimation,
-                transitionType: SharedAxisTransitionType.horizontal,
-                fillColor: Colors.transparent,
-                child: child,
+      body: CustomScrollView(slivers: [
+        SliverAppBar.large(
+          title: Text(AppLocalizations.of(context)!.todos),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: ClipOval(
+                child: Image.network(
+                  authBloc.profile?.photoUrl ?? "",
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return const Icon(Icons.account_circle_outlined);
+                  },
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.account_circle_outlined),
+                ),
               ),
-          reverse: reverse,
-          child: homeScreenViews[selectedIndex]),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: selectedIndex,
-        onDestinationSelected: (int index) => setState(() {
-          reverse = index < selectedIndex;
-          selectedIndex = index;
-        }),
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.task_alt_rounded),
-            label: 'Todos',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.settings_outlined),
-            label: 'Settings',
-          ),
-        ],
+            )
+          ],
+        ),
+        SliverList(
+            delegate: SliverChildListDelegate([
+          TodosView(selectedTabIndex: selectedTabIndex),
+        ]))
+      ]),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => context.showDraggableScrollableSheet(
+          initialChildSize: 0.7,
+          minChildSize: 0.5,
+          floatingActionButton: FilledButton(
+            onPressed: () {
+              todoBloc.add(TodoEvent.addTodoItem(todoBloc.newTodo));
+              context.pop();
+            },
+            child: Text(AppLocalizations.of(context)!.addTodo),
+          ).expandedWidth(),
+          child: const AddTodoScreen(),
+        ),
+        child: const Icon(Icons.add),
       ),
     );
   }

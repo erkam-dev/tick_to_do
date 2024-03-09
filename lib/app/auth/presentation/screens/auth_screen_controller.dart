@@ -13,6 +13,8 @@ class AuthScreenController extends StatefulWidget {
 }
 
 class _AuthScreenControllerState extends State<AuthScreenController> {
+  bool showOnboard =
+      !(sl<SharedPreferences>().getBool(onboardSeenKey) ?? false);
   @override
   void initState() {
     AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
@@ -26,20 +28,21 @@ class _AuthScreenControllerState extends State<AuthScreenController> {
     return BlocBuilder(
       bloc: authBloc,
       builder: (context, state) => StreamBuilder<User?>(
-        stream: authBloc.authStatusStream,
-        builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
-          if (snapshot.connectionState == ConnectionState.active) {
-            final User? user = snapshot.data;
-            return sl<SharedPreferences>().getBool(onboardSeenKey) != true
-                ? const OnboardScreen()
-                : user != null
-                    ? const HomeScreen()
-                    : const LoginScreen();
-          } else {
-            return const AuthLoadingScreen();
-          }
-        },
-      ),
+          stream: authBloc.authStatusStream,
+          builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
+            return (showOnboard
+                    ? OnboardScreen(onNext: () async {
+                        await sl<SharedPreferences>()
+                            .setBool(onboardSeenKey, true);
+                        setState(() => showOnboard = false);
+                      })
+                    : snapshot.hasError
+                        ? AuthErrorScreen(message: snapshot.error.toString())
+                        : snapshot.data != null
+                            ? const HomeScreen()
+                            : const LoginScreen())
+                .fadeThroughTransition();
+          }),
     );
   }
 }

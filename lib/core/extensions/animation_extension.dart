@@ -10,7 +10,6 @@ extension AnimationExtension on Widget {
             FadeThroughTransition(
           animation: animation,
           secondaryAnimation: secondaryAnimation,
-          fillColor: Colors.transparent,
           child: child,
         ),
         child: this,

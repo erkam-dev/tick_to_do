@@ -74,8 +74,6 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case "/home":
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      case "/todo":
-        return MaterialPageRoute(builder: (_) => const TodosScreen());
       default:
         return MaterialPageRoute(builder: (_) => const AuthLoadingScreen());
     }
