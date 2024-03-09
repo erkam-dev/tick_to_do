@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-ThemeData myDarkTheme() {
+ThemeData darkTheme() {
   return ThemeData(
     brightness: Brightness.dark,
     splashFactory: InkSparkle.splashFactory,

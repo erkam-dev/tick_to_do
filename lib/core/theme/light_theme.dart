@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-ThemeData myLightTheme() {
+ThemeData lightTheme() {
   return ThemeData(
     brightness: Brightness.light,
     splashFactory: InkSparkle.splashFactory,

@@ -10,6 +10,7 @@ part 'todo_event.dart';
 part 'todo_state.dart';
 
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
+  Todo newTodo = sl<Todo>();
   final GetTodoStreamUsecase getTodoStreamUsecase;
   final AddTodoUsecase addTodoUsecase;
   final UpdateTodoUsecase updateTodoUsecase;
@@ -29,6 +30,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     on<_AddTodoItem>((event, emit) {
       emit(const _Loading());
       addTodoUsecase(event.todo);
+      newTodo = sl<Todo>();
       emit(const _Initial());
     });
     on<_UpdateTodoItem>((event, emit) {

@@ -38,8 +38,8 @@ class _MyAppState extends State<MyApp> {
           builder: (context, themeMode, _) {
             SystemChrome.setSystemUIOverlayStyle(
               Theme.of(context).brightness == Brightness.dark
-                  ? myDarkTheme().appBarTheme.systemOverlayStyle!
-                  : myLightTheme().appBarTheme.systemOverlayStyle!,
+                  ? darkTheme().appBarTheme.systemOverlayStyle!
+                  : lightTheme().appBarTheme.systemOverlayStyle!,
             );
             return MaterialApp(
               debugShowCheckedModeBanner: false,
@@ -53,8 +53,8 @@ class _MyAppState extends State<MyApp> {
                 Locale('en', ''),
                 Locale('tr', ''),
               ],
-              theme: myLightTheme(),
-              darkTheme: myDarkTheme(),
+              theme: lightTheme(),
+              darkTheme: darkTheme(),
               themeMode: themeMode,
               initialRoute: "/",
               onGenerateRoute: AppRouter.onGenerateRoute,
