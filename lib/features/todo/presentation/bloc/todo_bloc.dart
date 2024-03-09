@@ -15,11 +15,11 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   final AddTodoUsecase addTodoUsecase;
   final UpdateTodoUsecase updateTodoUsecase;
   final DeleteTodoUsecase deleteTodoUsecase;
-  Stream<List<Todo>> get alltodoStream => getTodoStreamUsecase.call(NoParams());
-  Stream<List<Todo>> get todoStream => alltodoStream
-      .map((event) => event.where((element) => !element.isDone).toList());
-  Stream<List<Todo>> get completedStream => alltodoStream
-      .map((event) => event.where((element) => element.isDone).toList());
+  Stream<List<Todo>> get todoStream => getTodoStreamUsecase.call(NoParams());
+  // Stream<List<Todo>> get todoStream => alltodoStream
+  //     .map((event) => event.where((element) => !element.isDone).toList());
+  // Stream<List<Todo>> get completedStream => alltodoStream
+  //     .map((event) => event.where((element) => element.isDone).toList());
 
   TodoBloc({
     required this.getTodoStreamUsecase,

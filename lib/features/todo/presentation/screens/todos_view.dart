@@ -12,39 +12,40 @@ class TodosView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TodoBloc todoBloc = BlocProvider.of<TodoBloc>(context);
-    List<Stream<List<Todo>>> streams = [
-      todoBloc.todoStream,
-      todoBloc.completedStream,
-    ];
     return StreamBuilder<List<Todo>>(
-      stream: streams[selectedTabIndex],
+      stream: todoBloc.todoStream,
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return snapshot.data!.isEmpty
-              ? Center(
-                  child: Text(
-                    AppLocalizations.of(context)!.noTodos,
-                    style: const TextStyle(fontSize: 18),
-                  ),
-                )
-              : Column(
-                  children: snapshot.data!
-                      .map((e) => TodoItemWidget(todo: e))
-                      .toList(),
-                );
-        } else if (snapshot.hasError) {
-          return Center(
-            child: SingleChildScrollView(
-              child: Text(
-                kDebugMode
-                    ? snapshot.error.toString()
-                    : AppLocalizations.of(context)!.errorOccured,
-                style: const TextStyle(fontSize: 18),
-              ),
-            ).pad16(),
-          );
-        }
-        return const Center(child: CircularProgressIndicator());
+        return (snapshot.hasData
+                ? snapshot.data!.isEmpty
+                    ? Center(
+                        child: Text(
+                          AppLocalizations.of(context)!.noTodos,
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                      )
+                    : Column(
+                        children: snapshot.data!
+                            .where((element) => selectedTabIndex == 0
+                                ? !element.isDone
+                                : element.isDone)
+                            .map((e) => TodoItemWidget(todo: e))
+                            .toList(),
+                      )
+                : snapshot.hasError
+                    ? Center(
+                        child: SingleChildScrollView(
+                          child: Text(
+                            kDebugMode
+                                ? snapshot.error.toString()
+                                : AppLocalizations.of(context)!.errorOccured,
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                        ).pad16(),
+                      )
+                    : snapshot.connectionState == ConnectionState.waiting
+                        ? const Center(child: CircularProgressIndicator())
+                        : const SizedBox())
+            .fadeThroughTransition();
       },
     );
   }

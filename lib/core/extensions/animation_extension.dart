@@ -2,7 +2,8 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 
 extension AnimationExtension on Widget {
-  Widget fadeThroughTransition({Duration? duration, bool? reverse}) =>
+  Widget fadeThroughTransition(
+          {Duration? duration, bool? reverse, Color? fillColors}) =>
       PageTransitionSwitcher(
         duration: duration ?? const Duration(milliseconds: 300),
         reverse: reverse ?? false,
@@ -10,6 +11,7 @@ extension AnimationExtension on Widget {
             FadeThroughTransition(
           animation: animation,
           secondaryAnimation: secondaryAnimation,
+          fillColor: fillColors,
           child: child,
         ),
         child: this,
@@ -34,7 +36,8 @@ extension AnimationExtension on Widget {
         child: this,
       );
 
-  Widget animatedSize({
+  AnimatedSize animatedSize({
+    Key? key,
     Duration? duration,
     Duration? reverseDuration,
     Curve? curve,
@@ -52,7 +55,7 @@ extension AnimationExtension on Widget {
         child: this,
       );
 
-  Widget animatedScale({
+  AnimatedScale animatedScale({
     required double scale,
     Duration? duration,
     Curve? curve,
@@ -68,7 +71,7 @@ extension AnimationExtension on Widget {
         child: this,
       );
 
-  Widget animatedOpacity({
+  AnimatedOpacity animatedOpacity({
     required double opacity,
     Duration? duration,
     Curve? curve,
@@ -79,6 +82,24 @@ extension AnimationExtension on Widget {
         duration: duration ?? const Duration(milliseconds: 300),
         curve: curve ?? Curves.easeOutCubic,
         onEnd: onEnd,
+        child: this,
+      );
+  AnimatedSwitcher animatedSwitcher({
+    Duration? duration,
+    Duration? reverseDuration,
+    Curve? switchInCurve,
+    Curve? switchOutCurve,
+    TransitionBuilder? transitionBuilder,
+    LayoutBuilder? layoutBuilder,
+    Clip? clipBehavior,
+  }) =>
+      AnimatedSwitcher(
+        duration: duration ?? const Duration(milliseconds: 300),
+        reverseDuration: reverseDuration ?? const Duration(milliseconds: 300),
+        switchInCurve: switchInCurve ?? Curves.easeOutCubic,
+        switchOutCurve: switchOutCurve ?? Curves.easeOutCubic,
+        transitionBuilder: (child, animation) =>
+            ScaleTransition(scale: animation, child: child),
         child: this,
       );
 }

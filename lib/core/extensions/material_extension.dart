@@ -41,4 +41,17 @@ extension MaterialExtension on Widget {
       child: this,
     );
   }
+
+  SizedBox sizedBox({
+    Key? key,
+    double? width,
+    double? height,
+  }) {
+    return SizedBox(
+      key: key,
+      width: width,
+      height: height,
+      child: this,
+    );
+  }
 }

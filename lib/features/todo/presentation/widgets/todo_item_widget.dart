@@ -18,6 +18,7 @@ class TodoItemWidget extends StatelessWidget {
       ),
       title: Text(todo.title.toString()),
       subtitle: Text(todo.description.toString()),
+      onTap: () {},
       trailing: IconButton(
         icon: const Icon(Icons.delete),
         onPressed: () => todoBloc.add(TodoEvent.deleteTodoItem(todo.id)),
