@@ -6,16 +6,15 @@ ThemeData myLightTheme() {
     brightness: Brightness.light,
     useMaterial3: true,
     splashFactory: InkSparkle.splashFactory,
-    fontFamily: 'Comfortaa',
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.light,
-        systemNavigationBarColor: Colors.grey.shade100,
+        systemNavigationBarColor: Colors.transparent,
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
-      // centerTitle: true,
+      centerTitle: false,
     ),
     inputDecorationTheme: const InputDecorationTheme(
       border: InputBorder.none,

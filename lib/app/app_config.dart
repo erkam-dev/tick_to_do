@@ -56,10 +56,28 @@ class _MyAppState extends State<MyApp> {
               theme: myLightTheme(),
               darkTheme: myDarkTheme(),
               themeMode: themeMode,
+              initialRoute: "/",
+              onGenerateRoute: AppRouter.onGenerateRoute,
               scrollBehavior: const CupertinoScrollBehavior(),
-              home: const AuthScreenController(),
             );
           },
         ),
       );
+}
+
+class AppRouter {
+  static Route onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case "/":
+        return MaterialPageRoute(builder: (_) => const AuthScreenController());
+      case "/login":
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case "/home":
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case "/todo":
+        return MaterialPageRoute(builder: (_) => const TodosScreen());
+      default:
+        return MaterialPageRoute(builder: (_) => const AuthLoadingScreen());
+    }
+  }
 }

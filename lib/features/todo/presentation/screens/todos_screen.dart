@@ -74,9 +74,10 @@ class TodosScreenState extends State<TodosScreen>
                     .toList(),
               ),
           },
-          floatingActionButton: FloatingActionButton(
+          floatingActionButton: FloatingActionButton.extended(
             onPressed: () => {},
-            child: const Icon(Icons.add),
+            icon: const Icon(Icons.add),
+            label: Text(AppLocalizations.of(context)!.addTodo),
           ),
         );
       },

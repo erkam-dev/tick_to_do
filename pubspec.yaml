@@ -52,11 +52,3 @@ flutter:
   generate: true
   assets:
      - images/
-  fonts:
-    - family: Comfortaa
-      fonts:
-        - asset: fonts/Comfortaa-Regular.ttf
-        - asset: fonts/Comfortaa-Bold.ttf
-          weight: 700
-        - asset: fonts/Comfortaa-Light.ttf
-          weight: 200
