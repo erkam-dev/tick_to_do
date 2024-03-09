@@ -28,27 +28,18 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   }) : super(const _Initial()) {
     on<_AddTodoItem>((event, emit) {
       emit(const _Loading());
-      addTodoUsecase(event.todo).then((_) {
-        emit(const _Initial());
-      }).catchError((e) {
-        emit(const _Error());
-      });
+      addTodoUsecase(event.todo);
+      emit(const _Initial());
     });
     on<_UpdateTodoItem>((event, emit) {
       emit(const _Loading());
-      updateTodoUsecase(event.todo).then((value) {
-        emit(const _Initial());
-      }).catchError((e) {
-        emit(const _Error());
-      });
+      updateTodoUsecase(event.todo);
+      emit(const _Initial());
     });
     on<_DeleteTodoItem>((event, emit) {
       emit(const _Loading());
-      deleteTodoUsecase(event.id).then((value) {
-        emit(const _Initial());
-      }).catchError((e) {
-        emit(const _Error());
-      });
+      deleteTodoUsecase(event.id);
+      emit(const _Initial());
     });
   }
 }

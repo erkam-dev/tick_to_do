@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:tick_to_do/features/features.dart';
 import 'package:tick_to_do/lib.dart';
 
 class TodosScreen extends StatefulWidget {
@@ -14,6 +13,7 @@ class TodosScreen extends StatefulWidget {
 class TodosScreenState extends State<TodosScreen>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
+  Todo newTodo = sl<Todo>();
 
   @override
   void initState() {
@@ -60,14 +60,28 @@ class TodosScreenState extends State<TodosScreen>
                             if (snapshot.hasData) {
                               return ListView(
                                 children: snapshot.data!
-                                    .map((e) => ListTile(
+                                    .map((Todo e) => ListTile(
+                                          leading: Checkbox(
+                                            value: e.isDone,
+                                            onChanged: (value) => todoBloc.add(
+                                                TodoEvent.updateTodoItem(e
+                                                    .copyWith(isDone: value!))),
+                                          ),
                                           title: Text(e.title.toString()),
+                                          subtitle:
+                                              Text(e.description.toString()),
+                                          trailing: IconButton(
+                                            icon: const Icon(Icons.delete),
+                                            onPressed: () => todoBloc.add(
+                                                TodoEvent.deleteTodoItem(e.id)),
+                                          ),
                                         ))
                                     .toList(),
                               );
                             } else {
-                              return const Center(
-                                  child: CircularProgressIndicator());
+                              return Card(
+                                child: Text(snapshot.error.toString()),
+                              );
                             }
                           },
                         ))
@@ -75,7 +89,39 @@ class TodosScreenState extends State<TodosScreen>
               ),
           },
           floatingActionButton: FloatingActionButton.extended(
-            onPressed: () => {},
+            onPressed: () => {
+              showModalBottomSheet(
+                  context: context,
+                  showDragHandle: true,
+                  builder: (context) {
+                    return Column(
+                      children: [
+                        TextField(
+                          decoration: InputDecoration(
+                            labelText: AppLocalizations.of(context)!.title,
+                          ),
+                          onChanged: (value) => setState(
+                              () => newTodo = newTodo.copyWith(title: value)),
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                            labelText:
+                                AppLocalizations.of(context)!.description,
+                          ),
+                          onChanged: (value) => setState(() =>
+                              newTodo = newTodo.copyWith(description: value)),
+                        ),
+                        ElevatedButton(
+                          onPressed: () => {
+                            todoBloc.add(TodoEvent.addTodoItem(newTodo)),
+                            newTodo = sl<Todo>()
+                          },
+                          child: Text(AppLocalizations.of(context)!.addTodo),
+                        ),
+                      ],
+                    );
+                  }),
+            },
             icon: const Icon(Icons.add),
             label: Text(AppLocalizations.of(context)!.addTodo),
           ),

@@ -30,13 +30,14 @@ class TodoModel with _$TodoModel {
         id: json['id'],
         isDone: json['isDone'],
       );
+}
 
-  @override
-  Map<String, dynamic> toJson() => {
-        'createdTime': createdTime?.toUtc(),
-        'title': title,
-        'description': description,
-        'id': id,
-        'isDone': isDone,
-      };
+Map<String, dynamic> todoModelToJson(TodoModel todoModel) {
+  return {
+    'createdTime': todoModel.createdTime?.toUtc(),
+    'title': todoModel.title,
+    'description': todoModel.description,
+    'id': todoModel.id,
+    'isDone': todoModel.isDone,
+  };
 }

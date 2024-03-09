@@ -10,10 +10,20 @@ initTodoFeatures() {
         updateTodoUsecase: sl<UpdateTodoUsecase>(),
         deleteTodoUsecase: sl<DeleteTodoUsecase>(),
       ));
-  sl.registerLazySingleton<Todo>(() => const Todo(
-      id: '', title: '', description: '', isDone: false, createdTime: null));
-  sl.registerLazySingleton<TodoModel>(() => const TodoModel(
-      id: '', title: '', description: '', isDone: false, createdTime: null));
+  sl.registerLazySingleton<Todo>(() => Todo(
+        id: DateTime.now().toString(),
+        title: '',
+        description: '',
+        isDone: false,
+        createdTime: DateTime.now(),
+      ));
+  sl.registerLazySingleton<TodoModel>(() => TodoModel(
+        id: DateTime.now().toString(),
+        title: '',
+        description: '',
+        isDone: false,
+        createdTime: DateTime.now(),
+      ));
   sl.registerLazySingleton<GetTodoStreamUsecase>(
       () => GetTodoStreamUsecase(sl<TodoRepositoryImpl>()));
   sl.registerLazySingleton<AddTodoUsecase>(

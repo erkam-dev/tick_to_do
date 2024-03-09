@@ -30,11 +30,10 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
   @override
   Future<void> addTodo(TodoModel todo) async {
     try {
-      await firestore
-          .collection('users')
-          .doc(uid)
-          .collection('todo')
-          .add(todo.toJson());
+      var docTodo =
+          firestore.collection('users').doc(uid).collection('todo').doc();
+      todo = todo.copyWith(id: docTodo.id);
+      await docTodo.set(todoModelToJson(todo));
     } catch (e) {
       throw Exception('Failed to add todo: $e');
     }
@@ -48,7 +47,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
           .doc(uid)
           .collection('todo')
           .doc(todo.id)
-          .update(todo.toJson());
+          .update(todoModelToJson(todo));
     } catch (e) {
       throw Exception('Failed to update todo: $e');
     }
