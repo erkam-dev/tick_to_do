@@ -15,38 +15,42 @@ class TodosView extends StatelessWidget {
     return StreamBuilder<List<Todo>>(
       stream: todoBloc.todoStream,
       builder: (context, snapshot) {
-        List<TodoItemWidget> children = snapshot.data!
-            .where((element) =>
-                selectedTabIndex == 0 ? !element.isDone : element.isDone)
-            .map((e) => TodoItemWidget(todo: e))
-            .toList();
-        children.sort((a, b) {
-          if (a.todo.createdTime != null && b.todo.createdTime != null) {
-            return a.todo.createdTime!.compareTo(b.todo.createdTime!);
-          }
-          return 0;
-        });
+        List<TodoItemWidget> children = [];
+        if (snapshot.hasData) {
+          children = snapshot.data!
+              .where((element) =>
+                  selectedTabIndex == 0 ? !element.isDone : element.isDone)
+              .map((e) => TodoItemWidget(key: ValueKey(e.id), todo: e))
+              .toList();
+          children.sort((a, b) {
+            if (a.todo.createdTime != null && b.todo.createdTime != null) {
+              return a.todo.createdTime!.compareTo(b.todo.createdTime!);
+            }
+            return 0;
+          });
+        }
         return (snapshot.hasData
-                ? snapshot.data!.isEmpty || children.isEmpty
-                    ? Center(
-                        child: ListTile(
-                          leading: const IconButton(
-                            onPressed: null,
-                            icon: Icon(Icons.content_paste_off_rounded),
-                          ),
-                          subtitle: Text(
-                            AppLocalizations.of(context)!
-                                .addYourTodosAndCompleteThem,
-                          ),
-                          title: Text(
-                            selectedTabIndex == 0
-                                ? AppLocalizations.of(context)!.noTodos
-                                : AppLocalizations.of(context)!
-                                    .noCompletedTodos,
-                          ),
-                        ),
-                      )
-                    : Column(children: children)
+                ? Column(
+                    children: snapshot.data!.isEmpty || children.isEmpty
+                        ? [
+                            ListTile(
+                              leading: const IconButton(
+                                onPressed: null,
+                                icon: Icon(Icons.content_paste_off_rounded),
+                              ),
+                              subtitle: Text(
+                                AppLocalizations.of(context)!
+                                    .addYourTodosAndCompleteThem,
+                              ),
+                              title: Text(
+                                selectedTabIndex == 0
+                                    ? AppLocalizations.of(context)!.noTodos
+                                    : AppLocalizations.of(context)!
+                                        .noCompletedTodos,
+                              ),
+                            )
+                          ]
+                        : children)
                 : snapshot.hasError
                     ? Center(
                         child: SingleChildScrollView(
@@ -60,6 +64,7 @@ class TodosView extends StatelessWidget {
                       )
                     : snapshot.connectionState == ConnectionState.waiting
                         ? const Center(child: CircularProgressIndicator())
+                            .sizedBox(height: 70)
                         : const SizedBox())
             .fadeThroughTransition();
       },

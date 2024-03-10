@@ -13,10 +13,10 @@ class AuthScreenController extends StatefulWidget {
 }
 
 class _AuthScreenControllerState extends State<AuthScreenController> {
-  bool showOnboard =
-      !(sl<SharedPreferences>().getBool(onboardSeenKey) ?? false);
+  bool showOnboard = true;
   @override
   void initState() {
+    showOnboard = !(sl<SharedPreferences>().getBool(onboardSeenKey) ?? false);
     AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
     authBloc.add(const AuthEvent.getAuthStatusStream());
     super.initState();
@@ -25,8 +25,9 @@ class _AuthScreenControllerState extends State<AuthScreenController> {
   @override
   Widget build(BuildContext context) {
     AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
-    return BlocBuilder(
+    return BlocConsumer(
       bloc: authBloc,
+      listener: authBlocDefaultListener,
       builder: (context, state) => StreamBuilder<User?>(
           stream: authBloc.authStatusStream,
           builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {

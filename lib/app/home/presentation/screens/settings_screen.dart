@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:tick_to_do/app/app.dart';
+import 'package:tick_to_do/lib.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -9,8 +9,9 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
-    return BlocBuilder(
+    return BlocConsumer(
       bloc: authBloc,
+      listener: authBlocDefaultListener,
       builder: (context, state) => Scaffold(
         appBar: AppBar(
           title: Text(AppLocalizations.of(context)!.account),

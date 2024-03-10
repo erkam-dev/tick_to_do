@@ -52,6 +52,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_SignOut>((event, emit) async {
       emit(const _Loading());
       await signOutUseCase(NoParams());
+      emit(const _SignedOut());
       emit(const _Initial());
     });
   }

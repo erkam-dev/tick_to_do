@@ -9,6 +9,8 @@ extension NavigateExtension on BuildContext {
 
   void pop() => Navigator.pop(this);
 
+  void popUntilFirst() => Navigator.popUntil(this, (route) => route.isFirst);
+
   void hideSnackBar() => ScaffoldMessenger.of(this).hideCurrentSnackBar();
 
   void hideKeyboard() => FocusScope.of(this).unfocus();
