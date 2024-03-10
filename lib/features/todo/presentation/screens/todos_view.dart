@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tick_to_do/features/todo/presentation/widgets/no_todos_widget.dart';
+import 'package:tick_to_do/features/todo/presentation/widgets/todo_error_widget.dart';
 
 import '../../../../lib.dart';
 
@@ -32,36 +32,10 @@ class TodosView extends StatelessWidget {
         return (snapshot.hasData
                 ? Column(
                     children: snapshot.data!.isEmpty || children.isEmpty
-                        ? [
-                            ListTile(
-                              leading: const IconButton(
-                                onPressed: null,
-                                icon: Icon(Icons.content_paste_off_rounded),
-                              ),
-                              subtitle: Text(
-                                AppLocalizations.of(context)!
-                                    .addYourTodosAndCompleteThem,
-                              ),
-                              title: Text(
-                                selectedTabIndex == 0
-                                    ? AppLocalizations.of(context)!.noTodos
-                                    : AppLocalizations.of(context)!
-                                        .noCompletedTodos,
-                              ),
-                            )
-                          ]
+                        ? [NoTodosWidget(selectedTabIndex: selectedTabIndex)]
                         : children)
                 : snapshot.hasError
-                    ? Center(
-                        child: SingleChildScrollView(
-                          child: Text(
-                            kDebugMode
-                                ? snapshot.error.toString()
-                                : AppLocalizations.of(context)!.errorOccured,
-                            style: const TextStyle(fontSize: 18),
-                          ),
-                        ).pad16(),
-                      )
+                    ? TodoErrorWidget(error: snapshot.error)
                     : snapshot.connectionState == ConnectionState.waiting
                         ? const Center(child: CircularProgressIndicator())
                             .sizedBox(height: 70)
