@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -41,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen>
         selectedTabIndex = index;
       });
       useAnimateTo ? tabController!.animateTo(index) : null;
+      HapticFeedback.lightImpact();
     }
 
     Future addTodoModalSheet() {
@@ -89,8 +91,7 @@ class _HomeScreenState extends State<HomeScreen>
                     Text(
                       authBloc.profile?.name ?? "",
                       style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    const SizedBox(height: 24),
+                    ).pad8(),
                     ListTile(
                       leading: const Icon(Icons.palette_outlined),
                       title: Text(AppLocalizations.of(context)!.theme),
@@ -128,6 +129,7 @@ class _HomeScreenState extends State<HomeScreen>
                         context.pop();
                         context.navigateTo(const SettingsScreen());
                       },
+                      trailing: const Icon(Icons.keyboard_arrow_right_rounded),
                     ),
                   ],
                 ));
@@ -160,24 +162,21 @@ class _HomeScreenState extends State<HomeScreen>
               }
             },
             child: ListTile(
-              leading: IconButton(
-                onPressed: addTodoModalSheet,
-                icon: const Icon(Icons.add_rounded),
+              iconColor: Theme.of(context).colorScheme.primary,
+              textColor: Theme.of(context).colorScheme.primary,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+                side: BorderSide(
+                  color: Theme.of(context).colorScheme.surfaceVariant,
+                ),
               ),
+              leading: const Icon(Icons.add_rounded),
               onTap: addTodoModalSheet,
-              title: Text(AppLocalizations.of(context)!.addTodo),
-            ).padOnly(bottom: 150),
+              title: Text(AppLocalizations.of(context)!.newTodo),
+            ).padOnly(right: 16, left: 16, top: 16, bottom: 150),
           ),
         ])),
-      ]).sharedAxisTransition(reverse: reverse).gestureDetector(
-        onHorizontalDragUpdate: (dragUpdateDetails) {
-          if (dragUpdateDetails.primaryDelta! < -1) {
-            changeTab(1);
-          } else if (dragUpdateDetails.primaryDelta! > 1) {
-            changeTab(0);
-          }
-        },
-      ),
+      ]).sharedAxisTransition(reverse: reverse),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Column(
         mainAxisSize: MainAxisSize.min,
@@ -186,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen>
                   ? FilledButton.icon(
                       icon: const Icon(Icons.add_rounded),
                       onPressed: addTodoModalSheet,
-                      label: Text(AppLocalizations.of(context)!.addTodo),
+                      label: Text(AppLocalizations.of(context)!.newTodo),
                     )
                   : const SizedBox())
               .animatedSwitcher(),

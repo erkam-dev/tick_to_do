@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../lib.dart';
@@ -13,15 +14,20 @@ class TodoItemWidget extends StatelessWidget {
     return ListTile(
       leading: Checkbox(
         value: todo.isDone,
-        onChanged: (value) => todoBloc
-            .add(TodoEvent.updateTodoItem(todo.copyWith(isDone: value!))),
+        onChanged: (value) {
+          todoBloc.add(TodoEvent.updateTodoItem(todo.copyWith(isDone: value!)));
+          HapticFeedback.lightImpact();
+        },
       ),
       title: Text(todo.title.toString()),
       subtitle: Text(todo.description.toString()),
       onTap: () {},
       trailing: IconButton(
         icon: const Icon(Icons.delete),
-        onPressed: () => todoBloc.add(TodoEvent.deleteTodoItem(todo.id)),
+        onPressed: () {
+          todoBloc.add(TodoEvent.deleteTodoItem(todo.id));
+          HapticFeedback.lightImpact();
+        },
       ),
     );
   }
