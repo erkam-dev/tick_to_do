@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tick_to_do/app/app.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -10,16 +11,16 @@ class LoginScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Tick To Do'),
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Sign in with Google',
-              style: TextStyle(fontSize: 20),
+              AppLocalizations.of(context)!.signInToContinue,
+              style: const TextStyle(fontSize: 20),
             ),
-            SizedBox(height: 16),
-            GoogleSignInButton()
+            const SizedBox(height: 16),
+            const GoogleSignInButton()
           ],
         ),
       ),

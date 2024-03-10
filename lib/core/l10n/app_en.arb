@@ -27,7 +27,7 @@
     "tips":"Tips",
     "notifications":"Notifications",
     "reminders":"Reminders",
-    "themeSettings":"Theme Settings",
+    "theme":"Theme",
     "skip":"Skip",
     "welcomeToTickToDo":"Welcome to Tick To Do",
     "welcomeDescription1":"A simple and elegant to-do list app",
@@ -41,5 +41,11 @@
     "showCaseTodos":"Your todos are here",
     "showCaseCompleted":"Your completed todos are here",
     "settings": "Settings",
-    "errorOccured": "Error occured! Please try again later."
+    "errorOccured": "Error occured! Please try again later.",
+    "next": "Next",
+    "letsStart": "Let's Get Started",
+    "account": "Account",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
 }

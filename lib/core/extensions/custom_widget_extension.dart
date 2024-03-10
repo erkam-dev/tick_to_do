@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:tick_to_do/core/core.dart';
 
 extension CustomWidgetExtension on Widget {
-  DraggableScrollableSheet draggableScrollableSheet({
+  Widget draggableScrollableSheet({
     double? initialChildSize,
     double? minChildSize,
     double? maxChildSize,
@@ -19,10 +19,8 @@ extension CustomWidgetExtension on Widget {
           children: [
             SingleChildScrollView(
               controller: scrollController,
-              child: padOnly(
-                  bottom:
-                      (MediaQuery.of(context).viewInsets.bottom - 100).abs()),
-            ),
+              child: this,
+            ).sizedBox(height: MediaQuery.of(context).size.height / 1.1),
             Align(
               alignment: Alignment.bottomCenter,
               child: (floatingActionButton ?? const SizedBox())

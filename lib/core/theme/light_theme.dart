@@ -15,6 +15,12 @@ ThemeData lightTheme() {
       ),
       centerTitle: false,
     ),
+    dropdownMenuTheme: DropdownMenuThemeData(
+      menuStyle: MenuStyle(
+        shape: MaterialStatePropertyAll(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+      ),
+    ),
     bottomSheetTheme: const BottomSheetThemeData(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(25))),

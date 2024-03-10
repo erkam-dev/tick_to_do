@@ -27,7 +27,7 @@
     "tips":"İpuçları",
     "notifications":"Bildirimler",
     "reminders":"Hatırlatıcılar",
-    "themeSettings":"Tema Ayarları",
+    "theme":"Tema",
     "skip":"Atla",
     "welcomeToTickToDo":"Tick To Do'ya Hoşgeldiniz",
     "welcomeDescription1":"Sade ve elegant bir yapılacaklar listesi uygulaması",
@@ -41,5 +41,11 @@
     "showCaseTodos":"Yapılacaklarınız burada",
     "showCaseCompleted":"Tamamlanmışlarınız burada",
     "settings": "Ayarlar",
-    "errorOccured": "Hata meydana geldi! Lütfen daha sonra tekrar deneyin."
+    "errorOccured": "Hata meydana geldi! Lütfen daha sonra tekrar deneyin.",
+    "next": "Devam Et",
+    "letsStart": "Hadi Başlayalım",
+    "account": "Hesap",
+    "light": "Aydınlık",
+    "dark": "Karanlık",
+    "system": "Sistem"
 }

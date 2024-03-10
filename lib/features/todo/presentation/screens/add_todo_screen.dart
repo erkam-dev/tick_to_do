@@ -30,11 +30,8 @@ class _AddTodoScreenState extends State<AddTodoScreen> {
           decoration: InputDecoration(
             labelText: AppLocalizations.of(context)!.description,
           ),
-          textInputAction: TextInputAction.go,
-          onSubmitted: (value) {
-            todoBloc.add(TodoEvent.addTodoItem(todoBloc.newTodo));
-            context.pop();
-          },
+          maxLines: null,
+          textInputAction: TextInputAction.newline,
           onChanged: (value) => setState(() =>
               todoBloc.newTodo = todoBloc.newTodo.copyWith(description: value)),
         ),

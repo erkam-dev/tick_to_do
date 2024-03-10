@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tick_to_do/lib.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -34,14 +35,22 @@ class _HomeScreenState extends State<HomeScreen>
     TodoBloc todoBloc = BlocProvider.of<TodoBloc>(context);
     AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
 
+    changeTab(int index, {bool useAnimateTo = true}) {
+      setState(() {
+        reverse = index < selectedTabIndex;
+        selectedTabIndex = index;
+      });
+      useAnimateTo ? tabController!.animateTo(index) : null;
+    }
+
     Future addTodoModalSheet() {
       return context.showDraggableScrollableSheet(
-        initialChildSize: 0.7,
-        minChildSize: 0.5,
+        initialChildSize: 0.75,
+        minChildSize: 0.55,
         floatingActionButton: FilledButton(
           onPressed: () {
             todoBloc.add(TodoEvent.addTodoItem(todoBloc.newTodo));
-            setState(() => selectedTabIndex = 0);
+            changeTab(0);
             context.pop();
           },
           child: Text(AppLocalizations.of(context)!.addTodo),
@@ -62,7 +71,67 @@ class _HomeScreenState extends State<HomeScreen>
               .sharedAxisTransition(reverse: reverse),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.showDraggableScrollableSheet(
+                    child: Column(
+                  children: [
+                    ClipOval(
+                      child: Image.network(
+                        authBloc.profile?.photoUrl ?? "",
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return const Icon(Icons.account_circle_outlined);
+                        },
+                        errorBuilder: (context, error, stackTrace) =>
+                            const Icon(Icons.account_circle_outlined),
+                      ),
+                    ),
+                    Text(
+                      authBloc.profile?.name ?? "",
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    const SizedBox(height: 24),
+                    ListTile(
+                      leading: const Icon(Icons.palette_outlined),
+                      title: Text(AppLocalizations.of(context)!.theme),
+                      trailing: DropdownButton(
+                        underline: const SizedBox(),
+                        icon: const Icon(Icons.keyboard_arrow_down_rounded),
+                        value: appThemeNotifier.value,
+                        borderRadius: BorderRadius.circular(24),
+                        items: [
+                          DropdownMenuItem(
+                            value: ThemeMode.system,
+                            child: Text(AppLocalizations.of(context)!.system),
+                          ),
+                          DropdownMenuItem(
+                            value: ThemeMode.light,
+                            child: Text(AppLocalizations.of(context)!.light),
+                          ),
+                          DropdownMenuItem(
+                            value: ThemeMode.dark,
+                            child: Text(AppLocalizations.of(context)!.dark),
+                          ),
+                        ],
+                        onChanged: (value) => {
+                          appThemeNotifier.value = value as ThemeMode,
+                          context.pop(),
+                          sl<SharedPreferences>()
+                              .setInt(themeModeKey, getIntByThemeMode(value))
+                        },
+                      ).padOnly(right: 10),
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.account_circle_outlined),
+                      title: Text(AppLocalizations.of(context)!.account),
+                      onTap: () {
+                        context.pop();
+                        context.navigateTo(const SettingsScreen());
+                      },
+                    ),
+                  ],
+                ));
+              },
               icon: ClipOval(
                 child: Image.network(
                   authBloc.profile?.photoUrl ?? "",
@@ -103,13 +172,9 @@ class _HomeScreenState extends State<HomeScreen>
       ]).sharedAxisTransition(reverse: reverse).gestureDetector(
         onHorizontalDragUpdate: (dragUpdateDetails) {
           if (dragUpdateDetails.primaryDelta! < -1) {
-            reverse = false;
-            setState(() => selectedTabIndex = 1);
-            tabController!.animateTo(1);
+            changeTab(1);
           } else if (dragUpdateDetails.primaryDelta! > 1) {
-            reverse = true;
-            setState(() => selectedTabIndex = 0);
-            tabController!.animateTo(0);
+            changeTab(0);
           }
         },
       ),
@@ -138,10 +203,7 @@ class _HomeScreenState extends State<HomeScreen>
             ),
             indicatorPadding: EdgeInsets.zero,
             indicatorSize: TabBarIndicatorSize.tab,
-            onTap: (index) => setState(() {
-              reverse = index < selectedTabIndex;
-              selectedTabIndex = index;
-            }),
+            onTap: (value) => changeTab(value, useAnimateTo: false),
             splashBorderRadius: BorderRadius.circular(32),
             tabs: [
               Tab(
