@@ -13,10 +13,9 @@ extension PaddingExtension on Widget {
 
   Widget pad(double padding) =>
       Padding(padding: EdgeInsets.all(padding), child: this);
-  Widget padSymmetric({required double vertical, required double horizontal}) =>
-      Padding(
-        padding:
-            EdgeInsets.symmetric(vertical: vertical, horizontal: horizontal),
+  Widget padSymmetric({double? vertical, double? horizontal}) => Padding(
+        padding: EdgeInsets.symmetric(
+            vertical: vertical ?? 0, horizontal: horizontal ?? 0),
         child: this,
       );
   Widget pad4() => pad(4);

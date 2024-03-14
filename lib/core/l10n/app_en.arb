@@ -18,7 +18,8 @@
     "snackbarDeleted": "Todo deleted!",
     "save": "Save",
     "ok": "Ok",
-    "markComplete": "Mark Complete",
+    "markCompleted": "Mark as Completed",
+    "markNotCompleted": "Mark as Not Completed",
     "completed": "Completed",
     "snackbarComplete": "Task Marked Completed",
     "snackbarNotComplete": "Task Marked Not Completed",
@@ -49,5 +50,8 @@
     "light": "Light",
     "dark": "Dark",
     "system": "System",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "deleteTodo": "Delete Todo",
+    "deleteTodoMessage": "Are you sure you want to delete this todo?",
+    "requiredField": "This field is required"
 }

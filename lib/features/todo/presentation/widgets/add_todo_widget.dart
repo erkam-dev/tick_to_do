@@ -12,12 +12,13 @@ class AddTodoWidget extends StatefulWidget {
 
 class _AddTodoWidgetState extends State<AddTodoWidget> {
   bool expanded = false;
+  FocusNode titleFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     TodoBloc todoBloc = BlocProvider.of<TodoBloc>(context);
     List<Widget> todoFields = [
       TextField(
-        autofocus: true,
+        focusNode: titleFocusNode,
         decoration: InputDecoration(
           labelText: AppLocalizations.of(context)!.title,
         ),
@@ -35,37 +36,30 @@ class _AddTodoWidgetState extends State<AddTodoWidget> {
             todoBloc.newTodo = todoBloc.newTodo.copyWith(description: value)),
       ),
     ];
-    return Column(
-      mainAxisSize: MainAxisSize.min,
+    return Stack(
+      alignment: Alignment.topRight,
       children: [
-        (expanded
-                ? ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxHeight: MediaQuery.of(context).size.height * 0.3,
-                    ),
-                    child: SingleChildScrollView(
-                        child: Column(children: todoFields).pad16()),
-                  )
-                : const SizedBox())
-            .animatedSize(alignment: Alignment.topCenter),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             (expanded
-                    ? TextButton(
-                        onPressed: () {
-                          todoBloc.newTodo = sl<Todo>();
-                          setState(() => expanded = false);
-                        },
-                        child: Text(AppLocalizations.of(context)!.cancel),
-                      ).padOnly(right: 8)
+                    ? ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxHeight: MediaQuery.of(context).size.height * 0.3,
+                        ),
+                        child: SingleChildScrollView(
+                            child: Column(children: todoFields).pad16()),
+                      )
                     : const SizedBox())
-                .animatedSize(),
+                .animatedSize(alignment: Alignment.topCenter),
             FilledButton.icon(
               icon: const Icon(Icons.add_rounded),
               onPressed: !expanded
-                  ? () => setState(() => expanded = true)
+                  ? () {
+                      setState(() => expanded = true);
+                      context.hideKeyboard();
+                      titleFocusNode.requestFocus();
+                    }
                   : () {
                       todoBloc.add(TodoEvent.addTodoItem(todoBloc.newTodo));
                       setState(() => expanded = false);
@@ -76,8 +70,18 @@ class _AddTodoWidgetState extends State<AddTodoWidget> {
                   : AppLocalizations.of(context)!.newTodo),
             ),
           ],
-        ),
+        ).pad8().card(elevation: expanded ? 8 : 0).pad16(),
+        (expanded
+                ? IconButton(
+                        onPressed: () {
+                          todoBloc.newTodo = sl<Todo>();
+                          setState(() => expanded = false);
+                        },
+                        icon: const Icon(Icons.cancel_outlined))
+                    .pad24()
+                : const SizedBox())
+            .animatedSwitcher()
       ],
-    ).card(elevation: expanded ? 8 : 0).pad16();
+    );
   }
 }

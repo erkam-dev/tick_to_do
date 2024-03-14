@@ -18,7 +18,8 @@
     "snackbarDeleted":"Görev silindi!",
     "save": "Kaydet",
     "ok":"Tamam",
-    "markComplete": "Tamamla",
+    "markCompleted": "Tamamlandı İşaretle",
+    "markNotCompleted": "Tamamlanmadı İşaretle",
     "completed": "Tamamlandı",
     "snackbarComplete" : "Görev Tamamlandı",
     "snackbarNotComplete":"Görev Tamamlanmadı olarak işaretlendi",
@@ -49,5 +50,8 @@
     "light": "Aydınlık",
     "dark": "Karanlık",
     "system": "Sistem",
-    "cancel": "İptal"
+    "cancel": "İptal",
+    "deleteTodo": "Görevi Sil",
+    "deleteTodoMessage": "Bu görevi silmek istediğine emin misin?",
+    "requiredField": "Bu alan boş olmamalıdır"
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 ThemeData lightTheme() {
-  return ThemeData(
+  return ThemeData.light().copyWith(
     brightness: Brightness.light,
     splashFactory: InkSparkle.splashFactory,
     appBarTheme: const AppBarTheme(
@@ -23,6 +23,7 @@ ThemeData lightTheme() {
     ),
     cardTheme: CardTheme(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+      clipBehavior: Clip.antiAlias,
     ),
     inputDecorationTheme: const InputDecorationTheme(
       border: InputBorder.none,

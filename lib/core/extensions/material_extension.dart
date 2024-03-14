@@ -31,13 +31,15 @@ extension MaterialExtension on Widget {
     Clip? clipBehavior,
     bool? semanticContainer,
     double? shadowColorOpacity,
+    EdgeInsets? margin,
   }) {
     return Card(
       key: key,
       color: color,
       elevation: elevation,
       shape: shape,
-      clipBehavior: clipBehavior ?? Clip.none,
+      clipBehavior: clipBehavior,
+      margin: margin,
       child: this,
     );
   }
@@ -51,6 +53,17 @@ extension MaterialExtension on Widget {
       key: key,
       width: width,
       height: height,
+      child: this,
+    );
+  }
+
+  ConstrainedBox constrainedBox({
+    Key? key,
+    required BoxConstraints constraints,
+  }) {
+    return ConstrainedBox(
+      key: key,
+      constraints: constraints,
       child: this,
     );
   }

@@ -11,12 +11,16 @@ class CustomTabbar extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> tabs = [
       Tab(
-        icon: const Icon(Icons.list),
+        icon: Icon(tabController?.index == 0
+            ? Icons.note_alt
+            : Icons.note_alt_outlined),
         text: AppLocalizations.of(context)!.todos,
         iconMargin: EdgeInsets.zero,
       ),
       Tab(
-        icon: const Icon(Icons.check),
+        icon: Icon(tabController?.index == 1
+            ? Icons.fact_check_rounded
+            : Icons.fact_check_outlined),
         text: AppLocalizations.of(context)!.completed,
         iconMargin: EdgeInsets.zero,
       )
