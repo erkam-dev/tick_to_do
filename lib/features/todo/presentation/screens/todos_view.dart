@@ -30,17 +30,20 @@ class TodosView extends StatelessWidget {
           });
         }
         return (snapshot.hasData
-                ? Column(
-                    children: snapshot.data!.isEmpty || children.isEmpty
+            ? SliverList(
+                delegate: SliverChildListDelegate(
+                    snapshot.data!.isEmpty || children.isEmpty
                         ? [NoTodosWidget(selectedTabIndex: selectedTabIndex)]
-                        : children)
-                : snapshot.hasError
+                        : children),
+              )
+            : SliverToBoxAdapter(
+                child: snapshot.hasError
                     ? TodoErrorWidget(error: snapshot.error)
                     : snapshot.connectionState == ConnectionState.waiting
                         ? const Center(child: CircularProgressIndicator())
                             .sizedBox(height: 70)
-                        : const SizedBox())
-            .fadeThroughTransition();
+                        : const SizedBox(),
+              ));
       },
     );
   }

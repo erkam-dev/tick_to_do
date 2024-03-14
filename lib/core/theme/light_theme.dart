@@ -21,6 +21,12 @@ ThemeData lightTheme() {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
       ),
     ),
+    cardTheme: CardTheme(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+    ),
+    inputDecorationTheme: const InputDecorationTheme(
+      border: InputBorder.none,
+    ),
     bottomSheetTheme: const BottomSheetThemeData(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(25))),

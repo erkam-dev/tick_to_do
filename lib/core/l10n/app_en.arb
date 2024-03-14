@@ -48,5 +48,6 @@
     "account": "Account",
     "light": "Light",
     "dark": "Dark",
-    "system": "System"
+    "system": "System",
+    "cancel": "Cancel"
 }

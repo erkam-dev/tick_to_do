@@ -48,5 +48,6 @@
     "account": "Hesap",
     "light": "Aydınlık",
     "dark": "Karanlık",
-    "system": "Sistem"
+    "system": "Sistem",
+    "cancel": "İptal"
 }

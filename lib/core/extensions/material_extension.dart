@@ -35,7 +35,7 @@ extension MaterialExtension on Widget {
     return Card(
       key: key,
       color: color,
-      elevation: elevation ?? 0,
+      elevation: elevation,
       shape: shape,
       clipBehavior: clipBehavior ?? Clip.none,
       child: this,

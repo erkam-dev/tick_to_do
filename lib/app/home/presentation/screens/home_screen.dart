@@ -12,8 +12,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   int selectedTabIndex = 0;
-  GlobalKey addTodoButtonKey = GlobalKey();
-  bool showAddTodoFAB = false;
   bool reverse = false;
   TabController? tabController;
 
@@ -30,45 +28,44 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     changeTab(int index, {bool useAnimateTo = true}) {
+      if (selectedTabIndex != index) HapticFeedback.lightImpact();
       setState(() {
         reverse = index < selectedTabIndex;
         selectedTabIndex = index;
       });
       useAnimateTo ? tabController!.animateTo(index) : null;
-      HapticFeedback.lightImpact();
     }
 
     return Scaffold(
-      body: CustomScrollView(slivers: [
-        SliverAppBar.large(
-          stretch: true,
-          title: Text(selectedTabIndex == 0
-                  ? AppLocalizations.of(context)!.todos
-                  : AppLocalizations.of(context)!.completed)
-              .sizedBox(
-                  key: ValueKey("${selectedTabIndex}appBarTitle"), width: 200)
-              .sharedAxisTransition(reverse: reverse),
-          actions: const [ProfileIcon()],
-        ),
-        SliverPadding(
-          padding: const EdgeInsets.only(bottom: 250),
-          sliver: SliverToBoxAdapter(
-            child: TodosView(selectedTabIndex: selectedTabIndex)
-                .animatedSize(alignment: Alignment.topCenter),
-          ),
-        ),
-      ]).sharedAxisTransition(reverse: reverse),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Column(
-        mainAxisSize: MainAxisSize.min,
+      resizeToAvoidBottomInset: false,
+      body: Stack(
+        alignment: Alignment.bottomCenter,
         children: [
-          AddTodoWidget(onTap: () => changeTab(0)),
-          CustomTabbar(
-            tabController: tabController,
-            onTap: (index) => changeTab(index, useAnimateTo: false),
+          CustomScrollView(slivers: [
+            CustomAppbar(selectedTabIndex: selectedTabIndex, reverse: reverse),
+            TodosView(selectedTabIndex: selectedTabIndex),
+          ]),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CustomTabbar(
+                tabController: tabController,
+                onTap: (index) => changeTab(index, useAnimateTo: false),
+              ),
+            ],
           ),
         ],
       ),
-    );
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: AnimatedContainer(
+        duration: const Duration(milliseconds: 0),
+        curve: Curves.easeOutCubic,
+        padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom > 50
+                ? MediaQuery.of(context).viewInsets.bottom - 24
+                : 50),
+        child: AddTodoWidget(afterAdd: () => changeTab(0)),
+      ),
+    ).gestureDetector(onTap: () => FocusScope.of(context).unfocus());
   }
 }

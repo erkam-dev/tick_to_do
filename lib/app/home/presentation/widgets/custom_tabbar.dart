@@ -37,10 +37,16 @@ class CustomTabbar extends StatelessWidget {
       onTap: onTap,
       splashBorderRadius: BorderRadius.circular(32),
       tabs: tabs,
-    ).sizedBox(height: 60, width: 275).card(
+    )
+        .sizedBox(height: 60, width: 275)
+        .card(
           elevation: 4,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
-        );
+        )
+        .animatedSwitcher()
+        .animatedSize()
+        .padOnly(bottom: 8)
+        .safeArea();
   }
 }
