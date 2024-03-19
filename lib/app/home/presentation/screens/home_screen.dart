@@ -14,6 +14,7 @@ class _HomeScreenState extends State<HomeScreen>
   int selectedTabIndex = 0;
   bool reverse = false;
   TabController? tabController;
+  ScrollController? scrollController;
 
   @override
   void initState() {
@@ -37,21 +38,28 @@ class _HomeScreenState extends State<HomeScreen>
     }
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          CustomScrollView(slivers: [
-            CustomAppbar(selectedTabIndex: selectedTabIndex, reverse: reverse),
-            TodosView(selectedTabIndex: selectedTabIndex),
-          ]),
+          CustomScrollView(
+            controller: scrollController,
+            slivers: [
+              CustomAppbar(
+                  selectedTabIndex: selectedTabIndex, reverse: reverse),
+              TodosView(selectedTabIndex: selectedTabIndex),
+              SliverPadding(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom + 150))
+            ],
+          ),
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               CustomTabbar(
                 tabController: tabController,
                 onTap: (index) => changeTab(index, useAnimateTo: false),
-              ),
+              ).animatedScale(
+                  scale: MediaQuery.of(context).viewInsets.bottom > 0 ? 0 : 1),
             ],
           ),
         ],
@@ -61,9 +69,7 @@ class _HomeScreenState extends State<HomeScreen>
         duration: const Duration(milliseconds: 0),
         curve: Curves.easeOutCubic,
         padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom > 50
-                ? MediaQuery.of(context).viewInsets.bottom - 24
-                : 50),
+            bottom: MediaQuery.of(context).viewInsets.bottom > 50 ? 0 : 50),
         child: AddTodoWidget(afterAdd: () => changeTab(0)),
       ),
     ).gestureDetector(onTap: () => FocusScope.of(context).unfocus());

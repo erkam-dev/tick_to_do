@@ -29,7 +29,11 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   }) : super(const _Initial()) {
     on<_AddTodoItem>((event, emit) {
       emit(const _Loading());
-      addTodoUsecase(event.todo);
+      Todo todo = event.todo.copyWith(
+        title: event.todo.title.trim(),
+        description: event.todo.description.trim(),
+      );
+      addTodoUsecase(todo);
       newTodo = sl<Todo>();
       emit(const _Initial());
     });

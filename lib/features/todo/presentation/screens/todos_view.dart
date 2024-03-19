@@ -7,7 +7,9 @@ import '../../../../lib.dart';
 
 class TodosView extends StatelessWidget {
   final int selectedTabIndex;
-  const TodosView({super.key, required this.selectedTabIndex});
+  final ScrollController? scrollController;
+  const TodosView(
+      {super.key, required this.selectedTabIndex, this.scrollController});
 
   @override
   Widget build(BuildContext context) {
@@ -15,26 +17,28 @@ class TodosView extends StatelessWidget {
     return StreamBuilder<List<Todo>>(
       stream: todoBloc.todoStream,
       builder: (context, snapshot) {
-        List<TodoItemWidget> children = [];
+        List<Widget> children = [];
         if (snapshot.hasData) {
-          children = snapshot.data!
+          List<Todo> todos = snapshot.data!.toList();
+          todos.sort((a, b) {
+            if (a.createdTime != null && b.createdTime != null) {
+              return a.createdTime!.compareTo(b.createdTime!);
+            }
+            return 0;
+          });
+          children = todos
               .where((element) =>
                   selectedTabIndex == 0 ? !element.isDone : element.isDone)
               .map((e) => TodoItemWidget(key: ValueKey(e.id), todo: e))
               .toList();
-          children.sort((a, b) {
-            if (a.todo.createdTime != null && b.todo.createdTime != null) {
-              return a.todo.createdTime!.compareTo(b.todo.createdTime!);
-            }
-            return 0;
-          });
         }
         return (snapshot.hasData
             ? SliverList(
                 delegate: SliverChildListDelegate(
-                    snapshot.data!.isEmpty || children.isEmpty
-                        ? [NoTodosWidget(selectedTabIndex: selectedTabIndex)]
-                        : children),
+                  (snapshot.data!.isEmpty || children.isEmpty)
+                      ? [NoTodosWidget(selectedTabIndex: selectedTabIndex)]
+                      : children,
+                ),
               )
             : SliverToBoxAdapter(
                 child: snapshot.hasError

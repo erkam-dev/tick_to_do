@@ -12,28 +12,59 @@ class AddTodoWidget extends StatefulWidget {
 
 class _AddTodoWidgetState extends State<AddTodoWidget> {
   bool expanded = false;
+  FocusNode titleTextFocusNode = FocusNode();
   FocusNode titleFocusNode = FocusNode();
+  FocusNode descriptionFocusNode = FocusNode();
+  FocusNode descriptionTextFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     TodoBloc todoBloc = BlocProvider.of<TodoBloc>(context);
     List<Widget> todoFields = [
-      TextField(
+      Focus(
         focusNode: titleFocusNode,
-        decoration: InputDecoration(
-          labelText: AppLocalizations.of(context)!.title,
+        onFocusChange: (value) {
+          if (!value &&
+              !descriptionTextFocusNode.hasFocus &&
+              !titleTextFocusNode.hasFocus &&
+              !descriptionFocusNode.hasFocus) {
+            setState(() => expanded = false);
+          }
+        },
+        child: TextFormField(
+          initialValue: todoBloc.newTodo.title,
+          focusNode: titleTextFocusNode,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: InputDecoration(
+            labelText: AppLocalizations.of(context)!.title,
+          ),
+          onFieldSubmitted: (value) => descriptionTextFocusNode.requestFocus(),
+          textInputAction: TextInputAction.next,
+          onChanged: (value) => setState(
+              () => todoBloc.newTodo = todoBloc.newTodo.copyWith(title: value)),
         ),
-        textInputAction: TextInputAction.next,
-        onChanged: (value) => setState(
-            () => todoBloc.newTodo = todoBloc.newTodo.copyWith(title: value)),
       ),
-      TextField(
-        decoration: InputDecoration(
-          labelText: AppLocalizations.of(context)!.description,
+      Focus(
+        focusNode: descriptionFocusNode,
+        onFocusChange: (value) {
+          if (!value &&
+              !descriptionTextFocusNode.hasFocus &&
+              !titleTextFocusNode.hasFocus &&
+              !titleFocusNode.hasFocus) {
+            setState(() => expanded = false);
+          }
+        },
+        child: TextFormField(
+          focusNode: descriptionTextFocusNode,
+          initialValue: todoBloc.newTodo.description,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: InputDecoration(
+            labelText: AppLocalizations.of(context)!.description,
+          ),
+          maxLines: null,
+          textInputAction: TextInputAction.newline,
+          onChanged: (value) => setState(() =>
+              todoBloc.newTodo = todoBloc.newTodo.copyWith(description: value)),
         ),
-        maxLines: null,
-        textInputAction: TextInputAction.newline,
-        onChanged: (value) => setState(() =>
-            todoBloc.newTodo = todoBloc.newTodo.copyWith(description: value)),
       ),
     ];
     return Stack(
@@ -57,8 +88,7 @@ class _AddTodoWidgetState extends State<AddTodoWidget> {
               onPressed: !expanded
                   ? () {
                       setState(() => expanded = true);
-                      context.hideKeyboard();
-                      titleFocusNode.requestFocus();
+                      titleTextFocusNode.requestFocus();
                     }
                   : () {
                       todoBloc.add(TodoEvent.addTodoItem(todoBloc.newTodo));
@@ -70,7 +100,7 @@ class _AddTodoWidgetState extends State<AddTodoWidget> {
                   : AppLocalizations.of(context)!.newTodo),
             ),
           ],
-        ).pad8().card(elevation: expanded ? 8 : 0).pad16(),
+        ).pad(expanded ? 8 : 0).card(elevation: expanded ? 8 : 0).pad16(),
         (expanded
                 ? IconButton(
                         onPressed: () {
