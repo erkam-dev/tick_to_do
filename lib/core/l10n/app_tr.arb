@@ -53,5 +53,6 @@
     "cancel": "İptal",
     "deleteTodo": "Görevi Sil",
     "deleteTodoMessage": "Bu görevi silmek istediğine emin misin?",
-    "requiredField": "Bu alan boş olmamalıdır"
+    "requiredField": "Bu alan boş olmamalıdır",
+    "select": "Seç"
 }

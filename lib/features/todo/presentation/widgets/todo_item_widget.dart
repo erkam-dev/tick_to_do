@@ -6,8 +6,7 @@ import '../../../../lib.dart';
 
 class TodoItemWidget extends StatefulWidget {
   final Todo todo;
-  final Function()? onTap;
-  const TodoItemWidget({super.key, required this.todo, this.onTap});
+  const TodoItemWidget({super.key, required this.todo});
 
   @override
   State<TodoItemWidget> createState() => _TodoItemWidgetState();
@@ -76,7 +75,7 @@ class _TodoItemWidgetState extends State<TodoItemWidget> {
         alignment: Alignment.centerLeft,
         padding: const EdgeInsets.only(left: 16),
         child: Icon(
-          todo.isDone ? Icons.remove_done_rounded : Icons.done_rounded,
+          todo.isDone ? Icons.remove_done_rounded : Icons.done_all_rounded,
           color: Theme.of(context).colorScheme.secondary,
         ),
       ),
@@ -85,7 +84,7 @@ class _TodoItemWidgetState extends State<TodoItemWidget> {
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.only(right: 16),
         child: Icon(
-          Icons.delete_forever_rounded,
+          Icons.delete_sweep_outlined,
           color: Theme.of(context).colorScheme.error,
         ),
       ),
@@ -176,7 +175,7 @@ class _TodoItemWidgetState extends State<TodoItemWidget> {
                         },
                         style: Theme.of(context)
                             .textTheme
-                            .titleLarge!
+                            .titleMedium!
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                     )
@@ -184,7 +183,7 @@ class _TodoItemWidgetState extends State<TodoItemWidget> {
                       ? Text(
                           todo.title,
                           style:
-                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
                                     fontWeight: FontWeight.bold,
                                     decoration: todo.isDone
                                         ? TextDecoration.lineThrough
@@ -252,42 +251,54 @@ class _TodoItemWidgetState extends State<TodoItemWidget> {
                       label: Text(AppLocalizations.of(context)!.save),
                     ),
                   ],
-                ).sizedBox(width: MediaQuery.of(context).size.width).pad4()
+                ).sizedBox(width: MediaQuery.of(context).size.width)
             ],
-          )
-              .constrainedBox(constraints: const BoxConstraints(minHeight: 50))
-              .animatedSize(alignment: Alignment.topCenter)
-              .pad8()
-              .expanded(),
+          ).animatedSize(alignment: Alignment.topCenter).pad8().expanded(),
         ],
       ).pad8(),
     )
         .inkwell(
           onTap: () {
-            setState(() => editMode = true);
-            if (editMode) {
-              titleAutoFocusNode.requestFocus();
+            if (todoBloc.selectedTodos.isNotEmpty) {
+              if (todoBloc.selectedTodos.contains(todo)) {
+                setState(() => todoBloc.selectedTodos.remove(todo));
+              } else {
+                setState(() => todoBloc.selectedTodos.add(todo));
+              }
+            } else {
+              setState(() => editMode = true);
+              if (editMode) {
+                titleAutoFocusNode.requestFocus();
+              }
+              Future.delayed(
+                const Duration(milliseconds: 500),
+                () => Scrollable.ensureVisible(
+                  context,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOutCubic,
+                  alignment: 0.3,
+                ),
+              );
             }
-            Future.delayed(
-              const Duration(milliseconds: 500),
-              () => Scrollable.ensureVisible(
-                context,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOutCubic,
-                alignment: -0.01,
-              ),
-            );
-            widget.onTap?.call();
+          },
+          onLongPress: () {
+            if (todoBloc.selectedTodos.contains(todo)) {
+              setState(() => todoBloc.selectedTodos.remove(todo));
+            } else {
+              setState(() => todoBloc.selectedTodos.add(todo));
+            }
           },
         )
         .card(
-            elevation: editMode ? null : 0,
+            elevation:
+                editMode || todoBloc.selectedTodos.contains(todo) ? null : 0,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(editMode ? 24 : 16),
                 side: BorderSide(
                   color: Theme.of(context).colorScheme.secondary,
-                  width: editMode ? 1 : 0,
+                  width:
+                      editMode || todoBloc.selectedTodos.contains(todo) ? 1 : 0,
                 )))
-        .animatedContainer(margin: const EdgeInsets.all(8));
+        .padSymmetric(vertical: 4, horizontal: 8);
   }
 }

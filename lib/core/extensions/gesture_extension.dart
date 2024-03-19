@@ -24,8 +24,9 @@ extension GestureDetectorExtension on Widget {
 extension InkWellExtension on Widget {
   InkWell inkwell({
     VoidCallback? onTap,
-    Function(TapDownDetails)? onTapDown,
-    Function(TapUpDetails)? onTapUp,
+    VoidCallback? onLongPress,
+    Function(TapDownDetails tapDownDetails)? onTapDown,
+    Function(TapUpDetails tapUpDetails)? onTapUp,
     VoidCallback? onTapCancel,
   }) {
     return InkWell(
@@ -33,6 +34,7 @@ extension InkWellExtension on Widget {
       onTapDown: onTapDown,
       onTapUp: onTapUp,
       onTapCancel: onTapCancel,
+      onLongPress: onLongPress,
       child: this,
     );
   }

@@ -44,8 +44,7 @@ class _HomeScreenState extends State<HomeScreen>
           CustomScrollView(
             controller: scrollController,
             slivers: [
-              CustomAppbar(
-                  selectedTabIndex: selectedTabIndex, reverse: reverse),
+              TodosAppbar(selectedTabIndex: selectedTabIndex, reverse: reverse),
               TodosView(selectedTabIndex: selectedTabIndex),
               SliverPadding(
                   padding: EdgeInsets.only(

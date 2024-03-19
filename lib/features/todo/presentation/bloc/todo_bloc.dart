@@ -10,6 +10,7 @@ part 'todo_event.dart';
 part 'todo_state.dart';
 
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
+  List<Todo> selectedTodos = [];
   Todo newTodo = sl<Todo>();
   final GetTodoStreamUsecase getTodoStreamUsecase;
   final AddTodoUsecase addTodoUsecase;
@@ -39,7 +40,11 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     });
     on<_UpdateTodoItem>((event, emit) {
       emit(const _Loading());
-      updateTodoUsecase(event.todo);
+      Todo todo = event.todo.copyWith(
+        title: event.todo.title.trim(),
+        description: event.todo.description.trim(),
+      );
+      updateTodoUsecase(todo);
       emit(const _Initial());
     });
     on<_DeleteTodoItem>((event, emit) {
