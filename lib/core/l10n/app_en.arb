@@ -54,5 +54,6 @@
     "deleteTodo": "Delete Todo",
     "deleteTodoMessage": "Are you sure you want to delete this todo?",
     "requiredField": "This field is required",
-    "select": "Select"
+    "select": "Select",
+    "selected": "Selected"
 }

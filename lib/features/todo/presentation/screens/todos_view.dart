@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tick_to_do/features/todo/presentation/widgets/no_todos_widget.dart';
-import 'package:tick_to_do/features/todo/presentation/widgets/todo_error_widget.dart';
 
 import '../../../../lib.dart';
 

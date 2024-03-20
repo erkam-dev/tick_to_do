@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tick_to_do/common/value_notifier_list.dart';
 import 'package:tick_to_do/core/core.dart';
 import 'package:tick_to_do/features/features.dart';
 
@@ -10,7 +11,7 @@ part 'todo_event.dart';
 part 'todo_state.dart';
 
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
-  List<Todo> selectedTodos = [];
+  ValueNotifierList<Todo> selectedTodos = ValueNotifierList([]);
   Todo newTodo = sl<Todo>();
   final GetTodoStreamUsecase getTodoStreamUsecase;
   final AddTodoUsecase addTodoUsecase;
