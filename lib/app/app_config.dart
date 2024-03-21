@@ -36,11 +36,9 @@ class _MyAppState extends State<MyApp> {
         child: ValueListenableBuilder(
           valueListenable: appThemeNotifier,
           builder: (context, themeMode, _) {
-            SystemChrome.setSystemUIOverlayStyle(
-              Theme.of(context).brightness == Brightness.dark
-                  ? darkTheme().appBarTheme.systemOverlayStyle!
-                  : lightTheme().appBarTheme.systemOverlayStyle!,
-            );
+            Future.microtask(() => SystemChrome.setSystemUIOverlayStyle(
+                Theme.of(context).appBarTheme.systemOverlayStyle ??
+                    const SystemUiOverlayStyle()));
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               localizationsDelegates: const [

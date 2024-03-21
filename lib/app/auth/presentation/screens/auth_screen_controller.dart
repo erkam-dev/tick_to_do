@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,6 +20,9 @@ class _AuthScreenControllerState extends State<AuthScreenController> {
     showOnboard = !(sl<SharedPreferences>().getBool(onboardSeenKey) ?? false);
     AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
     authBloc.add(const AuthEvent.getAuthStatusStream());
+    WidgetsBinding.instance.addPostFrameCallback((_) =>
+        SystemChrome.setSystemUIOverlayStyle(
+            Theme.of(context).appBarTheme.systemOverlayStyle!));
     super.initState();
   }
 
