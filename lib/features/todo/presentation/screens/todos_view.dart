@@ -12,6 +12,7 @@ class TodosView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TodoBloc todoBloc = BlocProvider.of<TodoBloc>(context);
+    AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
     return StreamBuilder<List<Todo>>(
       stream: todoBloc.todoStream,
       builder: (context, snapshot) {
@@ -30,22 +31,24 @@ class TodosView extends StatelessWidget {
               .map((e) => TodoItemWidget(key: ValueKey(e.id), todo: e))
               .toList();
         }
-        return (snapshot.hasData
-            ? SliverList(
-                delegate: SliverChildListDelegate(
-                  (snapshot.data!.isEmpty || children.isEmpty)
-                      ? [NoTodosWidget(selectedTabIndex: selectedTabIndex)]
-                      : children,
-                ),
-              )
-            : SliverToBoxAdapter(
-                child: snapshot.hasError
-                    ? TodoErrorWidget(error: snapshot.error)
-                    : snapshot.connectionState == ConnectionState.waiting
-                        ? const Center(child: CircularProgressIndicator())
-                            .sizedBox(height: 70)
-                        : const SizedBox(),
-              ));
+        return authBloc.profile == null
+            ? const SliverToBoxAdapter(child: LoginWidget())
+            : snapshot.hasData
+                ? SliverList(
+                    delegate: SliverChildListDelegate(
+                      (snapshot.data!.isEmpty || children.isEmpty)
+                          ? [NoTodosWidget(selectedTabIndex: selectedTabIndex)]
+                          : children,
+                    ),
+                  )
+                : SliverToBoxAdapter(
+                    child: snapshot.hasError
+                        ? TodoErrorWidget(error: snapshot.error)
+                        : snapshot.connectionState == ConnectionState.waiting
+                            ? const Center(child: CircularProgressIndicator())
+                                .sizedBox(height: 70)
+                            : const SizedBox(),
+                  );
       },
     );
   }

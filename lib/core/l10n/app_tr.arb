@@ -32,7 +32,7 @@
     "theme":"Tema",
     "skip":"Atla",
     "signInToContinue":"Başlamak için Giriş Yapın",
-        "addYourTodosAndCompleteThem":"Görevlerinizi ekleyin ve tamamlayın",
+    "addYourTodosAndCompleteThem":"Görevlerinizi ekleyin ve tamamlayın",
     "welcomeToTickToDo":"Tick To Do'ya Hoşgeldiniz",
     "welcomeTitle1":"Güçlü & Sezgisel",
     "welcomeTitle2":"Görevlerinizi Yedekler",
@@ -58,5 +58,6 @@
     "deleteTodoMessage": "Bu görevi silmek istediğine emin misin?",
     "requiredField": "Bu alan boş olmamalıdır",
     "select": "Seç",
-    "selected": "Seçildi"
+    "selected": "Seçildi",
+    "signInToContinueDescription": "Yapılacak işlerinizi oluşturmak, silmek veya güncellemek için oturum açmanız gerekir. Kullanıcı deneyiminizin hiçbir açıdan eksik noktası olmadığından emin olmamız gerekiyor."
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tick_to_do/lib.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
+    AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
     changeTab(int index, {bool useAnimateTo = true}) {
       if (selectedTabIndex != index) HapticFeedback.lightImpact();
       setState(() {
@@ -64,13 +66,16 @@ class _HomeScreenState extends State<HomeScreen>
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: AnimatedContainer(
-        duration: const Duration(milliseconds: 0),
-        curve: Curves.easeOutCubic,
-        padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom > 50 ? 0 : 50),
-        child: AddTodoWidget(afterAdd: () => changeTab(0)),
-      ),
+      floatingActionButton: authBloc.profile == null
+          ? null
+          : AnimatedContainer(
+              duration: const Duration(milliseconds: 0),
+              curve: Curves.easeOutCubic,
+              padding: EdgeInsets.only(
+                  bottom:
+                      MediaQuery.of(context).viewInsets.bottom > 50 ? 0 : 50),
+              child: AddTodoWidget(afterAdd: () => changeTab(0)),
+            ),
     ).gestureDetector(onTap: () => FocusScope.of(context).unfocus());
   }
 }

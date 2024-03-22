@@ -43,12 +43,9 @@ class _AuthScreenControllerState extends State<AuthScreenController> {
                       })
                     : snapshot.hasError
                         ? AuthErrorScreen(message: snapshot.error.toString())
-                        : snapshot.data != null
-                            ? const HomeScreen()
-                            : snapshot.connectionState ==
-                                    ConnectionState.waiting
-                                ? const AuthLoadingScreen()
-                                : const LoginScreen())
+                        : snapshot.connectionState == ConnectionState.waiting
+                            ? const AuthLoadingScreen()
+                            : const HomeScreen())
                 .fadeThroughTransition();
           }),
     );
