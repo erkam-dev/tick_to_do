@@ -8,6 +8,7 @@ init() async {
   // plugins
   await initFirebasePlugin();
   await initSharedPreferencesPlugin();
+  await initInAppReviewPlugin();
 
   // features
   initTodoFeatures();

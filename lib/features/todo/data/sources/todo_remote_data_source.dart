@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../lib.dart';
 
@@ -11,24 +12,29 @@ abstract class TodoRemoteDataSource {
 
 class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
   final FirebaseFirestore firestore;
-  final String uid;
 
-  TodoRemoteDataSourceImpl({required this.firestore, required this.uid});
+  TodoRemoteDataSourceImpl({required this.firestore});
 
   @override
   Stream<List<TodoModel>> getTodoStream() {
-    return firestore
-        .collection('users')
-        .doc(uid)
-        .collection('todo')
-        .snapshots()
-        .map((snapshot) => snapshot.docs
-            .map((doc) => TodoModel.fromJson(doc.data()))
-            .toList());
+    String? uid = sl<FirebaseAuth>().currentUser?.uid;
+    if (uid != null) {
+      return firestore
+          .collection('users')
+          .doc(uid)
+          .collection('todo')
+          .snapshots()
+          .map((snapshot) => snapshot.docs
+              .map((doc) => TodoModel.fromJson(doc.data()))
+              .toList());
+    } else {
+      return const Stream.empty();
+    }
   }
 
   @override
   Future<void> addTodo(TodoModel todo) async {
+    String? uid = sl<FirebaseAuth>().currentUser?.uid;
     try {
       var docTodo =
           firestore.collection('users').doc(uid).collection('todo').doc();
@@ -41,6 +47,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
 
   @override
   Future<void> updateTodo(TodoModel todo) async {
+    String? uid = sl<FirebaseAuth>().currentUser?.uid;
     try {
       await firestore
           .collection('users')
@@ -55,6 +62,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
 
   @override
   Future<void> deleteTodo(String id) async {
+    String? uid = sl<FirebaseAuth>().currentUser?.uid;
     try {
       await firestore
           .collection('users')

@@ -68,8 +68,6 @@ class AppRouter {
     switch (settings.name) {
       case "/":
         return MaterialPageRoute(builder: (_) => const AuthScreenController());
-      case "/login":
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
       case "/home":
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       default:

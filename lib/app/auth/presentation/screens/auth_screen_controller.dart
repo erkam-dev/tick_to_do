@@ -40,6 +40,7 @@ class _AuthScreenControllerState extends State<AuthScreenController> {
                         await sl<SharedPreferences>()
                             .setBool(onboardSeenKey, true);
                         setState(() => showOnboard = false);
+                        authBloc.add(const AuthEvent.signInWithGoogle());
                       })
                     : snapshot.hasError
                         ? AuthErrorScreen(message: snapshot.error.toString())

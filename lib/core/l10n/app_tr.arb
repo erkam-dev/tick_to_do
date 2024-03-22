@@ -26,6 +26,7 @@
     "signInWithGoogle":"Google ile giriş yap",
     "welcome":"Hoş Geldiniz",
     "logout":"Çıkış yap",
+    "deleteAccount": "Hesabı Sil",
     "tips":"İpuçları",
     "notifications":"Bildirimler",
     "reminders":"Hatırlatıcılar",
@@ -55,9 +56,15 @@
     "system": "Sistem",
     "cancel": "İptal",
     "deleteTodo": "Görevi Sil",
+    "deleteTodos": "Görevleri Sil",
+    "deleteAllTodos": "Tüm Görevleri Sil",
     "deleteTodoMessage": "Bu görevi silmek istediğine emin misin?",
+    "deleteTodosMessage": "Bu görevleri silmek istediğine emin misin?",
     "requiredField": "Bu alan boş olmamalıdır",
     "select": "Seç",
     "selected": "Seçildi",
-    "signInToContinueDescription": "Yapılacak işlerinizi oluşturmak, silmek veya güncellemek için oturum açmanız gerekir. Kullanıcı deneyiminizin hiçbir açıdan eksik noktası olmadığından emin olmamız gerekiyor."
+    "signInToContinueDescription": "Yapılacak işlerinizi oluşturmak, silmek veya güncellemek için oturum açmanız gerekir. Kullanıcı deneyiminizin hiçbir açıdan eksik noktası olmadığından emin olmamız gerekiyor.",
+    "todoTipMessage": "Görevleri tamamlamak veya silmek için yana kaydırabilir, üzerine basılı tutarak çoklu seçebilirsiniz",
+    "rateApp": "Tick To Do'yu puanlayın",
+    "aboutApp": "Uygulama hakkında"
 }

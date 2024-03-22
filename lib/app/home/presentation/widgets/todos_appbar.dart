@@ -68,9 +68,9 @@ class _TodosAppbarState extends State<TodosAppbar> {
                               context: context,
                               builder: (context) => AlertDialog(
                                 title: Text(
-                                    AppLocalizations.of(context)!.deleteTodo),
+                                    AppLocalizations.of(context)!.deleteTodos),
                                 content: Text(AppLocalizations.of(context)!
-                                    .deleteTodoMessage),
+                                    .deleteTodosMessage),
                                 actions: [
                                   TextButton(
                                       onPressed: () => Navigator.pop(context),

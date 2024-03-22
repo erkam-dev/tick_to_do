@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../lib.dart';
 
@@ -35,8 +34,6 @@ initTodoFeatures() {
   sl.registerLazySingleton<TodoRepository>(() => sl<TodoRepositoryImpl>());
   sl.registerLazySingleton<TodoRepositoryImpl>(
       () => TodoRepositoryImpl(sl<TodoRemoteDataSource>()));
-  sl.registerLazySingleton<TodoRemoteDataSource>(() => TodoRemoteDataSourceImpl(
-        firestore: sl<FirebaseFirestore>(),
-        uid: sl<FirebaseAuth>().currentUser!.uid,
-      ));
+  sl.registerLazySingleton<TodoRemoteDataSource>(
+      () => TodoRemoteDataSourceImpl(firestore: sl<FirebaseFirestore>()));
 }

@@ -9,3 +9,4 @@ initSharedPreferencesPlugin() async {
 
 const String onboardSeenKey = "onboardSeenKey";
 const String themeModeKey = "themeModeKey";
+const String hideTipKey = "hideTipKey";
