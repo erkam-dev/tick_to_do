@@ -62,6 +62,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
           .doc(currentUser?.uid)
           .delete();
       await currentUser!.delete();
+      await googleSignIn.disconnect();
     } catch (e) {
       throw Exception('Failed to delete account: $e');
     }
