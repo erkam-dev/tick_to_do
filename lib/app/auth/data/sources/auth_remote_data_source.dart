@@ -1,14 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
-import '../../../../lib.dart';
 
 abstract class AuthRemoteDataSource {
   Stream<User?> getAuthStatusStream();
   Future<UserCredential?> signInWithGoogle();
-  Future signOut();
-  Future deleteAccount();
+  Future<void> signOut();
+  Future<void> deleteAccount();
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -55,16 +52,16 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<void> deleteAccount() async {
+    final currentUser = firebaseAuth.currentUser;
     try {
-      final currentUser = firebaseAuth.currentUser;
-      sl<FirebaseFirestore>()
-          .collection('users')
-          .doc(currentUser?.uid)
-          .delete();
       await currentUser!.delete();
-      await googleSignIn.disconnect();
     } catch (e) {
       throw Exception('Failed to delete account: $e');
+    }
+    try {
+      await googleSignIn.disconnect();
+    } catch (e) {
+      throw Exception('Failed to disconnect google signin: $e');
     }
   }
 }
