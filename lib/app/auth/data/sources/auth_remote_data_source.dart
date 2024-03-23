@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../../../../lib.dart';
 
 abstract class AuthRemoteDataSource {
   Stream<User?> getAuthStatusStream();
@@ -54,6 +57,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<void> deleteAccount() async {
     try {
       final currentUser = firebaseAuth.currentUser;
+      sl<FirebaseFirestore>()
+          .collection('users')
+          .doc(currentUser?.uid)
+          .delete();
       await currentUser!.delete();
     } catch (e) {
       throw Exception('Failed to delete account: $e');
