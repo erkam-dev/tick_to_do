@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tick_to_do/common/value_notifier_list.dart';
 import 'package:tick_to_do/core/core.dart';
 import 'package:tick_to_do/features/features.dart';
@@ -41,6 +42,18 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
         title: event.todo.title.trim(),
         description: event.todo.description.trim(),
       );
+      int? requestRateCount = sl<SharedPreferences>().getInt(requestRateKey);
+      if (requestRateCount == null) {
+        requestRateCount = 1;
+        sl<SharedPreferences>().setInt(requestRateKey, requestRateCount);
+      } else if (requestRateCount == 3) {
+        requestReview();
+        requestRateCount++;
+        sl<SharedPreferences>().setInt(requestRateKey, requestRateCount);
+      } else if (requestRateCount < 3) {
+        requestRateCount++;
+        sl<SharedPreferences>().setInt(requestRateKey, requestRateCount);
+      }
       updateTodoUsecase(todo);
       emit(const _Initial());
     });
