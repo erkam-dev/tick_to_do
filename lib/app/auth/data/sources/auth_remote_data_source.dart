@@ -5,6 +5,7 @@ abstract class AuthRemoteDataSource {
   Stream<User?> getAuthStatusStream();
   Future<UserCredential?> signInWithGoogle();
   Future signOut();
+  Future deleteAccount();
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -46,6 +47,16 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       await firebaseAuth.signOut();
     } catch (e) {
       throw Exception('Failed to sign out: $e');
+    }
+  }
+
+  @override
+  Future<void> deleteAccount() async {
+    try {
+      final currentUser = firebaseAuth.currentUser;
+      await currentUser!.delete();
+    } catch (e) {
+      throw Exception('Failed to delete account: $e');
     }
   }
 }

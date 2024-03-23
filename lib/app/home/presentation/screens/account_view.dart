@@ -49,7 +49,32 @@ class AccountView extends StatelessWidget {
                 ).expandedWidth(),
                 const SizedBox(height: 16),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.pop();
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title:
+                            Text(AppLocalizations.of(context)!.deleteAccount),
+                        content: Text(AppLocalizations.of(context)!
+                            .deleteAccountConfirmation),
+                        actions: [
+                          TextButton(
+                            onPressed: () => context.pop(),
+                            child: Text(AppLocalizations.of(context)!.cancel),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              authBloc.add(const AuthEvent.deleteAccount());
+                              context.pop();
+                            },
+                            child: Text(
+                                AppLocalizations.of(context)!.deleteAccount),
+                          ).colorFiltered(Theme.of(context).colorScheme.error)
+                        ],
+                      ),
+                    );
+                  },
                   child: Text(AppLocalizations.of(context)!.deleteAccount),
                 ).colorFiltered(Theme.of(context).colorScheme.error)
               ],

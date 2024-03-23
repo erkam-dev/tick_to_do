@@ -21,6 +21,7 @@ mixin _$AuthEvent {
     required TResult Function() signInWithGoogle,
     required TResult Function() getAuthStatusStream,
     required TResult Function() signOut,
+    required TResult Function() deleteAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$AuthEvent {
     TResult? Function()? signInWithGoogle,
     TResult? Function()? getAuthStatusStream,
     TResult? Function()? signOut,
+    TResult? Function()? deleteAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$AuthEvent {
     TResult Function()? signInWithGoogle,
     TResult Function()? getAuthStatusStream,
     TResult Function()? signOut,
+    TResult Function()? deleteAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$AuthEvent {
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
     required TResult Function(_GetAuthStatusStream value) getAuthStatusStream,
     required TResult Function(_SignOut value) signOut,
+    required TResult Function(_DeleteAccount value) deleteAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$AuthEvent {
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$AuthEvent {
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult Function(_SignOut value)? signOut,
+    TResult Function(_DeleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +126,7 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
     required TResult Function() signInWithGoogle,
     required TResult Function() getAuthStatusStream,
     required TResult Function() signOut,
+    required TResult Function() deleteAccount,
   }) {
     return signInWithGoogle();
   }
@@ -130,6 +137,7 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
     TResult? Function()? signInWithGoogle,
     TResult? Function()? getAuthStatusStream,
     TResult? Function()? signOut,
+    TResult? Function()? deleteAccount,
   }) {
     return signInWithGoogle?.call();
   }
@@ -140,6 +148,7 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
     TResult Function()? signInWithGoogle,
     TResult Function()? getAuthStatusStream,
     TResult Function()? signOut,
+    TResult Function()? deleteAccount,
     required TResult orElse(),
   }) {
     if (signInWithGoogle != null) {
@@ -154,6 +163,7 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
     required TResult Function(_GetAuthStatusStream value) getAuthStatusStream,
     required TResult Function(_SignOut value) signOut,
+    required TResult Function(_DeleteAccount value) deleteAccount,
   }) {
     return signInWithGoogle(this);
   }
@@ -164,6 +174,7 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
   }) {
     return signInWithGoogle?.call(this);
   }
@@ -174,6 +185,7 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult Function(_SignOut value)? signOut,
+    TResult Function(_DeleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) {
     if (signInWithGoogle != null) {
@@ -229,6 +241,7 @@ class _$GetAuthStatusStreamImpl implements _GetAuthStatusStream {
     required TResult Function() signInWithGoogle,
     required TResult Function() getAuthStatusStream,
     required TResult Function() signOut,
+    required TResult Function() deleteAccount,
   }) {
     return getAuthStatusStream();
   }
@@ -239,6 +252,7 @@ class _$GetAuthStatusStreamImpl implements _GetAuthStatusStream {
     TResult? Function()? signInWithGoogle,
     TResult? Function()? getAuthStatusStream,
     TResult? Function()? signOut,
+    TResult? Function()? deleteAccount,
   }) {
     return getAuthStatusStream?.call();
   }
@@ -249,6 +263,7 @@ class _$GetAuthStatusStreamImpl implements _GetAuthStatusStream {
     TResult Function()? signInWithGoogle,
     TResult Function()? getAuthStatusStream,
     TResult Function()? signOut,
+    TResult Function()? deleteAccount,
     required TResult orElse(),
   }) {
     if (getAuthStatusStream != null) {
@@ -263,6 +278,7 @@ class _$GetAuthStatusStreamImpl implements _GetAuthStatusStream {
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
     required TResult Function(_GetAuthStatusStream value) getAuthStatusStream,
     required TResult Function(_SignOut value) signOut,
+    required TResult Function(_DeleteAccount value) deleteAccount,
   }) {
     return getAuthStatusStream(this);
   }
@@ -273,6 +289,7 @@ class _$GetAuthStatusStreamImpl implements _GetAuthStatusStream {
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
   }) {
     return getAuthStatusStream?.call(this);
   }
@@ -283,6 +300,7 @@ class _$GetAuthStatusStreamImpl implements _GetAuthStatusStream {
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult Function(_SignOut value)? signOut,
+    TResult Function(_DeleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) {
     if (getAuthStatusStream != null) {
@@ -337,6 +355,7 @@ class _$SignOutImpl implements _SignOut {
     required TResult Function() signInWithGoogle,
     required TResult Function() getAuthStatusStream,
     required TResult Function() signOut,
+    required TResult Function() deleteAccount,
   }) {
     return signOut();
   }
@@ -347,6 +366,7 @@ class _$SignOutImpl implements _SignOut {
     TResult? Function()? signInWithGoogle,
     TResult? Function()? getAuthStatusStream,
     TResult? Function()? signOut,
+    TResult? Function()? deleteAccount,
   }) {
     return signOut?.call();
   }
@@ -357,6 +377,7 @@ class _$SignOutImpl implements _SignOut {
     TResult Function()? signInWithGoogle,
     TResult Function()? getAuthStatusStream,
     TResult Function()? signOut,
+    TResult Function()? deleteAccount,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -371,6 +392,7 @@ class _$SignOutImpl implements _SignOut {
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
     required TResult Function(_GetAuthStatusStream value) getAuthStatusStream,
     required TResult Function(_SignOut value) signOut,
+    required TResult Function(_DeleteAccount value) deleteAccount,
   }) {
     return signOut(this);
   }
@@ -381,6 +403,7 @@ class _$SignOutImpl implements _SignOut {
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
   }) {
     return signOut?.call(this);
   }
@@ -391,6 +414,7 @@ class _$SignOutImpl implements _SignOut {
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_GetAuthStatusStream value)? getAuthStatusStream,
     TResult Function(_SignOut value)? signOut,
+    TResult Function(_DeleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -402,6 +426,120 @@ class _$SignOutImpl implements _SignOut {
 
 abstract class _SignOut implements AuthEvent {
   const factory _SignOut() = _$SignOutImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteAccountImplCopyWith<$Res> {
+  factory _$$DeleteAccountImplCopyWith(
+          _$DeleteAccountImpl value, $Res Function(_$DeleteAccountImpl) then) =
+      __$$DeleteAccountImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteAccountImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$DeleteAccountImpl>
+    implements _$$DeleteAccountImplCopyWith<$Res> {
+  __$$DeleteAccountImplCopyWithImpl(
+      _$DeleteAccountImpl _value, $Res Function(_$DeleteAccountImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeleteAccountImpl implements _DeleteAccount {
+  const _$DeleteAccountImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.deleteAccount()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DeleteAccountImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() signInWithGoogle,
+    required TResult Function() getAuthStatusStream,
+    required TResult Function() signOut,
+    required TResult Function() deleteAccount,
+  }) {
+    return deleteAccount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? signInWithGoogle,
+    TResult? Function()? getAuthStatusStream,
+    TResult? Function()? signOut,
+    TResult? Function()? deleteAccount,
+  }) {
+    return deleteAccount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? signInWithGoogle,
+    TResult Function()? getAuthStatusStream,
+    TResult Function()? signOut,
+    TResult Function()? deleteAccount,
+    required TResult orElse(),
+  }) {
+    if (deleteAccount != null) {
+      return deleteAccount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(_GetAuthStatusStream value) getAuthStatusStream,
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_DeleteAccount value) deleteAccount,
+  }) {
+    return deleteAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(_GetAuthStatusStream value)? getAuthStatusStream,
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
+  }) {
+    return deleteAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(_GetAuthStatusStream value)? getAuthStatusStream,
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_DeleteAccount value)? deleteAccount,
+    required TResult orElse(),
+  }) {
+    if (deleteAccount != null) {
+      return deleteAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteAccount implements AuthEvent {
+  const factory _DeleteAccount() = _$DeleteAccountImpl;
 }
 
 /// @nodoc

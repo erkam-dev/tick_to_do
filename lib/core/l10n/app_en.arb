@@ -27,6 +27,7 @@
     "welcome":"Welcome",
     "logout":"Log out",
     "deleteAccount": "Delete Account",
+    "deleteAccountConfirmation": "Are you sure you want to delete your Tick To Do account? This action is NOT REVERSIBLE! All Tick To Do data will be lost FOREVER.",
     "tips":"Tips",
     "notifications":"Notifications",
     "reminders":"Reminders",

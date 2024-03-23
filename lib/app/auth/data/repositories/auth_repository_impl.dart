@@ -31,4 +31,13 @@ class AuthRepositoryImpl implements AuthRepository {
       throw ServerException(e.toString());
     }
   }
+
+  @override
+  Future<void> deleteAccount() async {
+    try {
+      await remoteDataSource.deleteAccount();
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
 }

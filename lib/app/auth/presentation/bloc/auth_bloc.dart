@@ -16,6 +16,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignInWithGoogleUseCase signInWithGoogleUseCase;
   final GetAuthStatusStreamUsecase getAuthStatusStreamUsecase;
   final SignOutUseCase signOutUseCase;
+  final DeleteAccountUseCase deleteAccountUseCase;
 
   StreamSubscription<User?>? authStatusSubscription;
   Stream<User?> get authStatusStream => getAuthStatusStreamUsecase(NoParams());
@@ -24,6 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required this.signInWithGoogleUseCase,
     required this.getAuthStatusStreamUsecase,
     required this.signOutUseCase,
+    required this.deleteAccountUseCase,
   }) : super(const _Initial()) {
     on<_GetAuthStatusStream>((event, emit) {
       emit(const _Loading());
@@ -52,6 +54,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_SignOut>((event, emit) async {
       emit(const _Loading());
       await signOutUseCase(NoParams());
+      emit(const _SignedOut());
+      emit(const _Initial());
+    });
+    on<_DeleteAccount>((event, emit) async {
+      emit(const _Loading());
+      await deleteAccountUseCase(NoParams());
       emit(const _SignedOut());
       emit(const _Initial());
     });

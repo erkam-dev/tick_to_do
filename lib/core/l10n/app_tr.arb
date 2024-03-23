@@ -27,6 +27,7 @@
     "welcome":"Hoş Geldiniz",
     "logout":"Çıkış yap",
     "deleteAccount": "Hesabı Sil",
+    "deleteAccountConfirmation": "Tick To Do hesabınızı silmek istediğinizden emin misiniz? Bu eylem GERİ DÖNÜŞTÜRÜLEMEZ! Tüm yapılacaklar verileri SONSUZA KADAR kaybolacaktır.",
     "tips":"İpuçları",
     "notifications":"Bildirimler",
     "reminders":"Hatırlatıcılar",
