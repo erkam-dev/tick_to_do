@@ -3,7 +3,7 @@ description: Elegant and simple To Do app
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: "2.0.0+8"
+version: "3.0.0+9"
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
