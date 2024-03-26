@@ -1,6 +1,6 @@
 <div align="center">
     <a href="https://bit.ly/TickToDo" target="_blank">
-        <img src="https://github.com/erkam-dev/tick_to_do/assets/62347408/c64e70f4-4b8d-49d4-8aef-9be92d731f14" alt="logo" width=""/>
+        <img src="https://github.com/erkam-dev/tick_to_do/assets/62347408/c64e70f4-4b8d-49d4-8aef-9be92d731f14" alt="logo" width="500"/>
     </a>
 </div>
 
