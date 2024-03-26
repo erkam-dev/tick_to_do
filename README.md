@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://github.com/erkam-dev/tick-to-do/assets/62347408/d0d1974d-1e7a-4c74-9f6a-7f6880725f37" alt="logo" width="150"/>
+    <img src="https://github.com/erkam-dev/tick_to_do/assets/62347408/b32605fb-19ac-48a7-9c22-a62b92043e18" alt="logo" width="150"/>
 </div>
 
 <h1 align="center">Tick To Do</h1>

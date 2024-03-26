@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "tick-to-do",
+            "name": "tick_to_do",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "tick-to-do (profile mode)",
+            "name": "tick_to_do (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "tick-to-do (release mode)",
+            "name": "tick_to_do (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
