@@ -10,7 +10,7 @@ class AccountView extends StatelessWidget {
   Widget build(BuildContext context) {
     AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
     return PopScope(
-      onPopInvoked: (didPop) => onBack?.call(),
+      onPopInvokedWithResult: (didPop, result) => onBack?.call(),
       canPop: false,
       child: BlocConsumer(
         bloc: authBloc,

@@ -17,7 +17,7 @@ ThemeData darkTheme() {
     ),
     dropdownMenuTheme: DropdownMenuThemeData(
       menuStyle: MenuStyle(
-        shape: MaterialStatePropertyAll(
+        shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
       ),
     ),
