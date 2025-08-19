@@ -31,8 +31,17 @@ def keystoreProperties = new Properties()
    }
 
 android {
-    compileSdkVersion 34
-    ndkVersion "26.1.10909125"
+    namespace "com.mehmeterkam.tick_to_do"
+    compileSdkVersion 36
+    ndkVersion "27.0.12077973"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+    kotlinOptions {
+        jvmTarget = "21"
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -41,7 +50,7 @@ android {
     defaultConfig {
         applicationId "com.mehmeterkam.tick_to_do"
         minSdkVersion 25
-        targetSdkVersion 34
+        targetSdkVersion 36
         multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -75,7 +84,7 @@ flutter {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.21"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
     implementation 'com.android.support:multidex:2.0.1'
     implementation "androidx.activity:activity:1.6.0-alpha05"
 }

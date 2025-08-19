@@ -3,7 +3,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../lib.dart';
 
-initAuthFeatures() {
+void initAuthFeatures() {
   sl.registerFactory<AuthBloc>(() => AuthBloc(
         signInWithGoogleUseCase: sl<SignInWithGoogleUseCase>(),
         signOutUseCase: sl<SignOutUseCase>(),

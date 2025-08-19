@@ -32,7 +32,7 @@ class CustomTabbar extends StatelessWidget {
         borderRadius: BorderRadius.circular(32),
         color: Theme.of(context).colorScheme.onSecondary,
         border: Border.all(
-          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+          color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),
           width: 2,
         ),
       ),

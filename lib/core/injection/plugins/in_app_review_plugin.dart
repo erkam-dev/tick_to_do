@@ -1,7 +1,7 @@
 import 'package:in_app_review/in_app_review.dart';
 import 'package:tick_to_do/core/core.dart';
 
-initInAppReviewPlugin() {
+void initInAppReviewPlugin() {
   InAppReview inAppReview = InAppReview.instance;
   sl.registerLazySingleton<InAppReview>(() => inAppReview);
 }

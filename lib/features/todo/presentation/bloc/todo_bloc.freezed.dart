@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,400 +9,409 @@ part of 'todo_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TodoEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Todo todo) addTodoItem,
-    required TResult Function(Todo todo) updateTodoItem,
-    required TResult Function(String id) deleteTodoItem,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Todo todo)? addTodoItem,
-    TResult? Function(Todo todo)? updateTodoItem,
-    TResult? Function(String id)? deleteTodoItem,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Todo todo)? addTodoItem,
-    TResult Function(Todo todo)? updateTodoItem,
-    TResult Function(String id)? deleteTodoItem,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AddTodoItem value) addTodoItem,
-    required TResult Function(_UpdateTodoItem value) updateTodoItem,
-    required TResult Function(_DeleteTodoItem value) deleteTodoItem,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AddTodoItem value)? addTodoItem,
-    TResult? Function(_UpdateTodoItem value)? updateTodoItem,
-    TResult? Function(_DeleteTodoItem value)? deleteTodoItem,
-  }) =>
-      throw _privateConstructorUsedError;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is TodoEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'TodoEvent()';
+  }
+}
+
+/// @nodoc
+class $TodoEventCopyWith<$Res> {
+  $TodoEventCopyWith(TodoEvent _, $Res Function(TodoEvent) __);
+}
+
+/// Adds pattern-matching-related methods to [TodoEvent].
+extension TodoEventPatterns on TodoEvent {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddTodoItem value)? addTodoItem,
     TResult Function(_UpdateTodoItem value)? updateTodoItem,
     TResult Function(_DeleteTodoItem value)? deleteTodoItem,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TodoEventCopyWith<$Res> {
-  factory $TodoEventCopyWith(TodoEvent value, $Res Function(TodoEvent) then) =
-      _$TodoEventCopyWithImpl<$Res, TodoEvent>;
-}
-
-/// @nodoc
-class _$TodoEventCopyWithImpl<$Res, $Val extends TodoEvent>
-    implements $TodoEventCopyWith<$Res> {
-  _$TodoEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$AddTodoItemImplCopyWith<$Res> {
-  factory _$$AddTodoItemImplCopyWith(
-          _$AddTodoItemImpl value, $Res Function(_$AddTodoItemImpl) then) =
-      __$$AddTodoItemImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Todo todo});
-
-  $TodoCopyWith<$Res> get todo;
-}
-
-/// @nodoc
-class __$$AddTodoItemImplCopyWithImpl<$Res>
-    extends _$TodoEventCopyWithImpl<$Res, _$AddTodoItemImpl>
-    implements _$$AddTodoItemImplCopyWith<$Res> {
-  __$$AddTodoItemImplCopyWithImpl(
-      _$AddTodoItemImpl _value, $Res Function(_$AddTodoItemImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? todo = null,
   }) {
-    return _then(_$AddTodoItemImpl(
-      null == todo
-          ? _value.todo
-          : todo // ignore: cast_nullable_to_non_nullable
-              as Todo,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _AddTodoItem() when addTodoItem != null:
+        return addTodoItem(_that);
+      case _UpdateTodoItem() when updateTodoItem != null:
+        return updateTodoItem(_that);
+      case _DeleteTodoItem() when deleteTodoItem != null:
+        return deleteTodoItem(_that);
+      case _:
+        return orElse();
+    }
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $TodoCopyWith<$Res> get todo {
-    return $TodoCopyWith<$Res>(_value.todo, (value) {
-      return _then(_value.copyWith(todo: value));
-    });
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddTodoItem value) addTodoItem,
+    required TResult Function(_UpdateTodoItem value) updateTodoItem,
+    required TResult Function(_DeleteTodoItem value) deleteTodoItem,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AddTodoItem():
+        return addTodoItem(_that);
+      case _UpdateTodoItem():
+        return updateTodoItem(_that);
+      case _DeleteTodoItem():
+        return deleteTodoItem(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddTodoItem value)? addTodoItem,
+    TResult? Function(_UpdateTodoItem value)? updateTodoItem,
+    TResult? Function(_DeleteTodoItem value)? deleteTodoItem,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AddTodoItem() when addTodoItem != null:
+        return addTodoItem(_that);
+      case _UpdateTodoItem() when updateTodoItem != null:
+        return updateTodoItem(_that);
+      case _DeleteTodoItem() when deleteTodoItem != null:
+        return deleteTodoItem(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Todo todo)? addTodoItem,
+    TResult Function(Todo todo)? updateTodoItem,
+    TResult Function(String id)? deleteTodoItem,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AddTodoItem() when addTodoItem != null:
+        return addTodoItem(_that.todo);
+      case _UpdateTodoItem() when updateTodoItem != null:
+        return updateTodoItem(_that.todo);
+      case _DeleteTodoItem() when deleteTodoItem != null:
+        return deleteTodoItem(_that.id);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Todo todo) addTodoItem,
+    required TResult Function(Todo todo) updateTodoItem,
+    required TResult Function(String id) deleteTodoItem,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AddTodoItem():
+        return addTodoItem(_that.todo);
+      case _UpdateTodoItem():
+        return updateTodoItem(_that.todo);
+      case _DeleteTodoItem():
+        return deleteTodoItem(_that.id);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Todo todo)? addTodoItem,
+    TResult? Function(Todo todo)? updateTodoItem,
+    TResult? Function(String id)? deleteTodoItem,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AddTodoItem() when addTodoItem != null:
+        return addTodoItem(_that.todo);
+      case _UpdateTodoItem() when updateTodoItem != null:
+        return updateTodoItem(_that.todo);
+      case _DeleteTodoItem() when deleteTodoItem != null:
+        return deleteTodoItem(_that.id);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
-class _$AddTodoItemImpl implements _AddTodoItem {
-  const _$AddTodoItemImpl(this.todo);
+class _AddTodoItem implements TodoEvent {
+  const _AddTodoItem(this.todo);
+
+  final Todo todo;
+
+  /// Create a copy of TodoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AddTodoItemCopyWith<_AddTodoItem> get copyWith =>
+      __$AddTodoItemCopyWithImpl<_AddTodoItem>(this, _$identity);
 
   @override
-  final Todo todo;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AddTodoItem &&
+            (identical(other.todo, todo) || other.todo == todo));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, todo);
 
   @override
   String toString() {
     return 'TodoEvent.addTodoItem(todo: $todo)';
   }
+}
+
+/// @nodoc
+abstract mixin class _$AddTodoItemCopyWith<$Res>
+    implements $TodoEventCopyWith<$Res> {
+  factory _$AddTodoItemCopyWith(
+          _AddTodoItem value, $Res Function(_AddTodoItem) _then) =
+      __$AddTodoItemCopyWithImpl;
+  @useResult
+  $Res call({Todo todo});
+}
+
+/// @nodoc
+class __$AddTodoItemCopyWithImpl<$Res> implements _$AddTodoItemCopyWith<$Res> {
+  __$AddTodoItemCopyWithImpl(this._self, this._then);
+
+  final _AddTodoItem _self;
+  final $Res Function(_AddTodoItem) _then;
+
+  /// Create a copy of TodoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? todo = null,
+  }) {
+    return _then(_AddTodoItem(
+      null == todo
+          ? _self.todo
+          : todo // ignore: cast_nullable_to_non_nullable
+              as Todo,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _UpdateTodoItem implements TodoEvent {
+  const _UpdateTodoItem(this.todo);
+
+  final Todo todo;
+
+  /// Create a copy of TodoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$UpdateTodoItemCopyWith<_UpdateTodoItem> get copyWith =>
+      __$UpdateTodoItemCopyWithImpl<_UpdateTodoItem>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddTodoItemImpl &&
+            other is _UpdateTodoItem &&
             (identical(other.todo, todo) || other.todo == todo));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, todo);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddTodoItemImplCopyWith<_$AddTodoItemImpl> get copyWith =>
-      __$$AddTodoItemImplCopyWithImpl<_$AddTodoItemImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Todo todo) addTodoItem,
-    required TResult Function(Todo todo) updateTodoItem,
-    required TResult Function(String id) deleteTodoItem,
-  }) {
-    return addTodoItem(todo);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Todo todo)? addTodoItem,
-    TResult? Function(Todo todo)? updateTodoItem,
-    TResult? Function(String id)? deleteTodoItem,
-  }) {
-    return addTodoItem?.call(todo);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Todo todo)? addTodoItem,
-    TResult Function(Todo todo)? updateTodoItem,
-    TResult Function(String id)? deleteTodoItem,
-    required TResult orElse(),
-  }) {
-    if (addTodoItem != null) {
-      return addTodoItem(todo);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AddTodoItem value) addTodoItem,
-    required TResult Function(_UpdateTodoItem value) updateTodoItem,
-    required TResult Function(_DeleteTodoItem value) deleteTodoItem,
-  }) {
-    return addTodoItem(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AddTodoItem value)? addTodoItem,
-    TResult? Function(_UpdateTodoItem value)? updateTodoItem,
-    TResult? Function(_DeleteTodoItem value)? deleteTodoItem,
-  }) {
-    return addTodoItem?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddTodoItem value)? addTodoItem,
-    TResult Function(_UpdateTodoItem value)? updateTodoItem,
-    TResult Function(_DeleteTodoItem value)? deleteTodoItem,
-    required TResult orElse(),
-  }) {
-    if (addTodoItem != null) {
-      return addTodoItem(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AddTodoItem implements TodoEvent {
-  const factory _AddTodoItem(final Todo todo) = _$AddTodoItemImpl;
-
-  Todo get todo;
-  @JsonKey(ignore: true)
-  _$$AddTodoItemImplCopyWith<_$AddTodoItemImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdateTodoItemImplCopyWith<$Res> {
-  factory _$$UpdateTodoItemImplCopyWith(_$UpdateTodoItemImpl value,
-          $Res Function(_$UpdateTodoItemImpl) then) =
-      __$$UpdateTodoItemImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Todo todo});
-
-  $TodoCopyWith<$Res> get todo;
-}
-
-/// @nodoc
-class __$$UpdateTodoItemImplCopyWithImpl<$Res>
-    extends _$TodoEventCopyWithImpl<$Res, _$UpdateTodoItemImpl>
-    implements _$$UpdateTodoItemImplCopyWith<$Res> {
-  __$$UpdateTodoItemImplCopyWithImpl(
-      _$UpdateTodoItemImpl _value, $Res Function(_$UpdateTodoItemImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? todo = null,
-  }) {
-    return _then(_$UpdateTodoItemImpl(
-      null == todo
-          ? _value.todo
-          : todo // ignore: cast_nullable_to_non_nullable
-              as Todo,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TodoCopyWith<$Res> get todo {
-    return $TodoCopyWith<$Res>(_value.todo, (value) {
-      return _then(_value.copyWith(todo: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$UpdateTodoItemImpl implements _UpdateTodoItem {
-  const _$UpdateTodoItemImpl(this.todo);
-
-  @override
-  final Todo todo;
 
   @override
   String toString() {
     return 'TodoEvent.updateTodoItem(todo: $todo)';
   }
+}
+
+/// @nodoc
+abstract mixin class _$UpdateTodoItemCopyWith<$Res>
+    implements $TodoEventCopyWith<$Res> {
+  factory _$UpdateTodoItemCopyWith(
+          _UpdateTodoItem value, $Res Function(_UpdateTodoItem) _then) =
+      __$UpdateTodoItemCopyWithImpl;
+  @useResult
+  $Res call({Todo todo});
+}
+
+/// @nodoc
+class __$UpdateTodoItemCopyWithImpl<$Res>
+    implements _$UpdateTodoItemCopyWith<$Res> {
+  __$UpdateTodoItemCopyWithImpl(this._self, this._then);
+
+  final _UpdateTodoItem _self;
+  final $Res Function(_UpdateTodoItem) _then;
+
+  /// Create a copy of TodoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? todo = null,
+  }) {
+    return _then(_UpdateTodoItem(
+      null == todo
+          ? _self.todo
+          : todo // ignore: cast_nullable_to_non_nullable
+              as Todo,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _DeleteTodoItem implements TodoEvent {
+  const _DeleteTodoItem(this.id);
+
+  final String id;
+
+  /// Create a copy of TodoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$DeleteTodoItemCopyWith<_DeleteTodoItem> get copyWith =>
+      __$DeleteTodoItemCopyWithImpl<_DeleteTodoItem>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UpdateTodoItemImpl &&
-            (identical(other.todo, todo) || other.todo == todo));
+            other is _DeleteTodoItem &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, todo);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateTodoItemImplCopyWith<_$UpdateTodoItemImpl> get copyWith =>
-      __$$UpdateTodoItemImplCopyWithImpl<_$UpdateTodoItemImpl>(
-          this, _$identity);
+  int get hashCode => Object.hash(runtimeType, id);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Todo todo) addTodoItem,
-    required TResult Function(Todo todo) updateTodoItem,
-    required TResult Function(String id) deleteTodoItem,
-  }) {
-    return updateTodoItem(todo);
+  String toString() {
+    return 'TodoEvent.deleteTodoItem(id: $id)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Todo todo)? addTodoItem,
-    TResult? Function(Todo todo)? updateTodoItem,
-    TResult? Function(String id)? deleteTodoItem,
-  }) {
-    return updateTodoItem?.call(todo);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Todo todo)? addTodoItem,
-    TResult Function(Todo todo)? updateTodoItem,
-    TResult Function(String id)? deleteTodoItem,
-    required TResult orElse(),
-  }) {
-    if (updateTodoItem != null) {
-      return updateTodoItem(todo);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AddTodoItem value) addTodoItem,
-    required TResult Function(_UpdateTodoItem value) updateTodoItem,
-    required TResult Function(_DeleteTodoItem value) deleteTodoItem,
-  }) {
-    return updateTodoItem(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AddTodoItem value)? addTodoItem,
-    TResult? Function(_UpdateTodoItem value)? updateTodoItem,
-    TResult? Function(_DeleteTodoItem value)? deleteTodoItem,
-  }) {
-    return updateTodoItem?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddTodoItem value)? addTodoItem,
-    TResult Function(_UpdateTodoItem value)? updateTodoItem,
-    TResult Function(_DeleteTodoItem value)? deleteTodoItem,
-    required TResult orElse(),
-  }) {
-    if (updateTodoItem != null) {
-      return updateTodoItem(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdateTodoItem implements TodoEvent {
-  const factory _UpdateTodoItem(final Todo todo) = _$UpdateTodoItemImpl;
-
-  Todo get todo;
-  @JsonKey(ignore: true)
-  _$$UpdateTodoItemImplCopyWith<_$UpdateTodoItemImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeleteTodoItemImplCopyWith<$Res> {
-  factory _$$DeleteTodoItemImplCopyWith(_$DeleteTodoItemImpl value,
-          $Res Function(_$DeleteTodoItemImpl) then) =
-      __$$DeleteTodoItemImplCopyWithImpl<$Res>;
+abstract mixin class _$DeleteTodoItemCopyWith<$Res>
+    implements $TodoEventCopyWith<$Res> {
+  factory _$DeleteTodoItemCopyWith(
+          _DeleteTodoItem value, $Res Function(_DeleteTodoItem) _then) =
+      __$DeleteTodoItemCopyWithImpl;
   @useResult
   $Res call({String id});
 }
 
 /// @nodoc
-class __$$DeleteTodoItemImplCopyWithImpl<$Res>
-    extends _$TodoEventCopyWithImpl<$Res, _$DeleteTodoItemImpl>
-    implements _$$DeleteTodoItemImplCopyWith<$Res> {
-  __$$DeleteTodoItemImplCopyWithImpl(
-      _$DeleteTodoItemImpl _value, $Res Function(_$DeleteTodoItemImpl) _then)
-      : super(_value, _then);
+class __$DeleteTodoItemCopyWithImpl<$Res>
+    implements _$DeleteTodoItemCopyWith<$Res> {
+  __$DeleteTodoItemCopyWithImpl(this._self, this._then);
 
+  final _DeleteTodoItem _self;
+  final $Res Function(_DeleteTodoItem) _then;
+
+  /// Create a copy of TodoEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$DeleteTodoItemImpl(
+    return _then(_DeleteTodoItem(
       null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -410,224 +419,228 @@ class __$$DeleteTodoItemImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-class _$DeleteTodoItemImpl implements _DeleteTodoItem {
-  const _$DeleteTodoItemImpl(this.id);
-
-  @override
-  final String id;
-
-  @override
-  String toString() {
-    return 'TodoEvent.deleteTodoItem(id: $id)';
-  }
-
+mixin _$TodoState {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DeleteTodoItemImpl &&
-            (identical(other.id, id) || other.id == id));
+        (other.runtimeType == runtimeType && other is TodoState);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DeleteTodoItemImplCopyWith<_$DeleteTodoItemImpl> get copyWith =>
-      __$$DeleteTodoItemImplCopyWithImpl<_$DeleteTodoItemImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Todo todo) addTodoItem,
-    required TResult Function(Todo todo) updateTodoItem,
-    required TResult Function(String id) deleteTodoItem,
-  }) {
-    return deleteTodoItem(id);
+  String toString() {
+    return 'TodoState()';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Todo todo)? addTodoItem,
-    TResult? Function(Todo todo)? updateTodoItem,
-    TResult? Function(String id)? deleteTodoItem,
-  }) {
-    return deleteTodoItem?.call(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Todo todo)? addTodoItem,
-    TResult Function(Todo todo)? updateTodoItem,
-    TResult Function(String id)? deleteTodoItem,
-    required TResult orElse(),
-  }) {
-    if (deleteTodoItem != null) {
-      return deleteTodoItem(id);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AddTodoItem value) addTodoItem,
-    required TResult Function(_UpdateTodoItem value) updateTodoItem,
-    required TResult Function(_DeleteTodoItem value) deleteTodoItem,
-  }) {
-    return deleteTodoItem(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AddTodoItem value)? addTodoItem,
-    TResult? Function(_UpdateTodoItem value)? updateTodoItem,
-    TResult? Function(_DeleteTodoItem value)? deleteTodoItem,
-  }) {
-    return deleteTodoItem?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddTodoItem value)? addTodoItem,
-    TResult Function(_UpdateTodoItem value)? updateTodoItem,
-    TResult Function(_DeleteTodoItem value)? deleteTodoItem,
-    required TResult orElse(),
-  }) {
-    if (deleteTodoItem != null) {
-      return deleteTodoItem(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _DeleteTodoItem implements TodoEvent {
-  const factory _DeleteTodoItem(final String id) = _$DeleteTodoItemImpl;
-
-  String get id;
-  @JsonKey(ignore: true)
-  _$$DeleteTodoItemImplCopyWith<_$DeleteTodoItemImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$TodoState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<Todo>? todos, List<Todo>? completed) initial,
-    required TResult Function() loading,
-    required TResult Function() error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Todo>? todos, List<Todo>? completed)? initial,
-    TResult? Function()? loading,
-    TResult? Function()? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Todo>? todos, List<Todo>? completed)? initial,
-    TResult Function()? loading,
-    TResult Function()? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+class $TodoStateCopyWith<$Res> {
+  $TodoStateCopyWith(TodoState _, $Res Function(TodoState) __);
+}
+
+/// Adds pattern-matching-related methods to [TodoState].
+extension TodoStatePatterns on TodoState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TodoStateCopyWith<$Res> {
-  factory $TodoStateCopyWith(TodoState value, $Res Function(TodoState) then) =
-      _$TodoStateCopyWithImpl<$Res, TodoState>;
-}
-
-/// @nodoc
-class _$TodoStateCopyWithImpl<$Res, $Val extends TodoState>
-    implements $TodoStateCopyWith<$Res> {
-  _$TodoStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<Todo>? todos, List<Todo>? completed});
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$TodoStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? todos = freezed,
-    Object? completed = freezed,
   }) {
-    return _then(_$InitialImpl(
-      freezed == todos
-          ? _value._todos
-          : todos // ignore: cast_nullable_to_non_nullable
-              as List<Todo>?,
-      freezed == completed
-          ? _value._completed
-          : completed // ignore: cast_nullable_to_non_nullable
-              as List<Todo>?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that);
+      case _Loading() when loading != null:
+        return loading(_that);
+      case _Error() when error != null:
+        return error(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial():
+        return initial(_that);
+      case _Loading():
+        return loading(_that);
+      case _Error():
+        return error(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that);
+      case _Loading() when loading != null:
+        return loading(_that);
+      case _Error() when error != null:
+        return error(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Todo>? todos, List<Todo>? completed)? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that.todos, _that.completed);
+      case _Loading() when loading != null:
+        return loading();
+      case _Error() when error != null:
+        return error();
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Todo>? todos, List<Todo>? completed) initial,
+    required TResult Function() loading,
+    required TResult Function() error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial():
+        return initial(_that.todos, _that.completed);
+      case _Loading():
+        return loading();
+      case _Error():
+        return error();
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Todo>? todos, List<Todo>? completed)? initial,
+    TResult? Function()? loading,
+    TResult? Function()? error,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that.todos, _that.completed);
+      case _Loading() when loading != null:
+        return loading();
+      case _Error() when error != null:
+        return error();
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl([final List<Todo>? todos, final List<Todo>? completed])
+class _Initial implements TodoState {
+  const _Initial([final List<Todo>? todos, final List<Todo>? completed])
       : _todos = todos,
         _completed = completed;
 
   final List<Todo>? _todos;
-  @override
   List<Todo>? get todos {
     final value = _todos;
     if (value == null) return null;
@@ -637,7 +650,6 @@ class _$InitialImpl implements _Initial {
   }
 
   final List<Todo>? _completed;
-  @override
   List<Todo>? get completed {
     final value = _completed;
     if (value == null) return null;
@@ -646,16 +658,18 @@ class _$InitialImpl implements _Initial {
     return EqualUnmodifiableListView(value);
   }
 
-  @override
-  String toString() {
-    return 'TodoState.initial(todos: $todos, completed: $completed)';
-  }
+  /// Create a copy of TodoState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$InitialCopyWith<_Initial> get copyWith =>
+      __$InitialCopyWithImpl<_Initial>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InitialImpl &&
+            other is _Initial &&
             const DeepCollectionEquality().equals(other._todos, _todos) &&
             const DeepCollectionEquality()
                 .equals(other._completed, _completed));
@@ -667,304 +681,86 @@ class _$InitialImpl implements _Initial {
       const DeepCollectionEquality().hash(_todos),
       const DeepCollectionEquality().hash(_completed));
 
-  @JsonKey(ignore: true)
   @override
+  String toString() {
+    return 'TodoState.initial(todos: $todos, completed: $completed)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$InitialCopyWith<$Res>
+    implements $TodoStateCopyWith<$Res> {
+  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) _then) =
+      __$InitialCopyWithImpl;
+  @useResult
+  $Res call({List<Todo>? todos, List<Todo>? completed});
+}
+
+/// @nodoc
+class __$InitialCopyWithImpl<$Res> implements _$InitialCopyWith<$Res> {
+  __$InitialCopyWithImpl(this._self, this._then);
+
+  final _Initial _self;
+  final $Res Function(_Initial) _then;
+
+  /// Create a copy of TodoState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<Todo>? todos, List<Todo>? completed) initial,
-    required TResult Function() loading,
-    required TResult Function() error,
+  $Res call({
+    Object? todos = freezed,
+    Object? completed = freezed,
   }) {
-    return initial(todos, completed);
+    return _then(_Initial(
+      freezed == todos
+          ? _self._todos
+          : todos // ignore: cast_nullable_to_non_nullable
+              as List<Todo>?,
+      freezed == completed
+          ? _self._completed
+          : completed // ignore: cast_nullable_to_non_nullable
+              as List<Todo>?,
+    ));
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Todo>? todos, List<Todo>? completed)? initial,
-    TResult? Function()? loading,
-    TResult? Function()? error,
-  }) {
-    return initial?.call(todos, completed);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Todo>? todos, List<Todo>? completed)? initial,
-    TResult Function()? loading,
-    TResult Function()? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(todos, completed);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements TodoState {
-  const factory _Initial(
-      [final List<Todo>? todos, final List<Todo>? completed]) = _$InitialImpl;
-
-  List<Todo>? get todos;
-  List<Todo>? get completed;
-  @JsonKey(ignore: true)
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$TodoStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _Loading implements TodoState {
+  const _Loading();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
     return 'TodoState.loading()';
   }
+}
+
+/// @nodoc
+
+class _Error implements TodoState {
+  const _Error();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType && other is _Error);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<Todo>? todos, List<Todo>? completed) initial,
-    required TResult Function() loading,
-    required TResult Function() error,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Todo>? todos, List<Todo>? completed)? initial,
-    TResult? Function()? loading,
-    TResult? Function()? error,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Todo>? todos, List<Todo>? completed)? initial,
-    TResult Function()? loading,
-    TResult Function()? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements TodoState {
-  const factory _Loading() = _$LoadingImpl;
-}
-
-/// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$TodoStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl();
 
   @override
   String toString() {
     return 'TodoState.error()';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ErrorImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<Todo>? todos, List<Todo>? completed) initial,
-    required TResult Function() loading,
-    required TResult Function() error,
-  }) {
-    return error();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Todo>? todos, List<Todo>? completed)? initial,
-    TResult? Function()? loading,
-    TResult? Function()? error,
-  }) {
-    return error?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Todo>? todos, List<Todo>? completed)? initial,
-    TResult Function()? loading,
-    TResult Function()? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
 }
 
-abstract class _Error implements TodoState {
-  const factory _Error() = _$ErrorImpl;
-}
+// dart format on

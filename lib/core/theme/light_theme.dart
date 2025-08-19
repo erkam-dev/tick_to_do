@@ -21,7 +21,7 @@ ThemeData lightTheme() {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
       ),
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       clipBehavior: Clip.antiAlias,
     ),

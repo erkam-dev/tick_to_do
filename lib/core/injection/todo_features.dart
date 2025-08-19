@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../lib.dart';
 
-initTodoFeatures() {
+void initTodoFeatures() {
   sl.registerFactory<TodoBloc>(() => TodoBloc(
         getTodoStreamUsecase: sl<GetTodoStreamUsecase>(),
         addTodoUsecase: sl<AddTodoUsecase>(),

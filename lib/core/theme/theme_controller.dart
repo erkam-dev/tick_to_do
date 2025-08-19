@@ -8,28 +8,15 @@ ValueNotifier<ThemeMode> appThemeNotifier = ValueNotifier(
 
 ValueNotifier<Color?> appColorNotifier = ValueNotifier(null);
 
-ThemeMode getThemeModeByInt(int? value) {
-  switch (value) {
-    case 0:
-      return ThemeMode.system;
-    case 1:
-      return ThemeMode.light;
-    case 2:
-      return ThemeMode.dark;
-    default:
-      return ThemeMode.system;
-  }
-}
+ThemeMode getThemeModeByInt(int? value) => switch (value) {
+      0 => ThemeMode.system,
+      1 => ThemeMode.light,
+      2 => ThemeMode.dark,
+      _ => ThemeMode.system
+    };
 
-int getIntByThemeMode(ThemeMode themeMode) {
-  switch (themeMode) {
-    case ThemeMode.system:
-      return 0;
-    case ThemeMode.light:
-      return 1;
-    case ThemeMode.dark:
-      return 2;
-    default:
-      return 0;
-  }
-}
+int getIntByThemeMode(ThemeMode themeMode) => switch (themeMode) {
+      ThemeMode.system => 0,
+      ThemeMode.light => 1,
+      ThemeMode.dark => 2,
+    };

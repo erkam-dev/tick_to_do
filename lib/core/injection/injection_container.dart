@@ -4,11 +4,11 @@ import '../core.dart';
 
 var sl = GetIt.instance;
 
-init() async {
+Future<void> init() async {
   // plugins
   await initFirebasePlugin();
   await initSharedPreferencesPlugin();
-  await initInAppReviewPlugin();
+  initInAppReviewPlugin();
 
   // features
   initTodoFeatures();

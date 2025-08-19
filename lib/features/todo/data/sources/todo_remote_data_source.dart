@@ -39,7 +39,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
       var docTodo =
           firestore.collection('users').doc(uid).collection('todo').doc();
       todo = todo.copyWith(id: docTodo.id);
-      await docTodo.set(todoModelToJson(todo));
+      await docTodo.set(todo.toJson());
     } catch (e) {
       throw Exception('Failed to add todo: $e');
     }
@@ -54,7 +54,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
           .doc(uid)
           .collection('todo')
           .doc(todo.id)
-          .update(todoModelToJson(todo));
+          .update(todo.toJson());
     } catch (e) {
       throw Exception('Failed to update todo: $e');
     }
